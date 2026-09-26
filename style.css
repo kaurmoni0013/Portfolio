@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
 body{
     background-color: #1e1e1e;
     font-family: sans-serif;
@@ -21,6 +26,7 @@ body{
 }
 
 .sidebar{
+    min-width: 0;
     height: 90vh;
     background-color:#2a2a2a;
     border: 1px solid #3a3a3a;
@@ -31,6 +37,7 @@ body{
 }
 
 .main-content{
+    min-width: 0;
     background-color:#2a2a2a;
     border: 1px solid #3a3a3a;
     border-radius: 16px;
@@ -137,18 +144,6 @@ nav a{
 
 .active, nav a:hover{
     color: #FFBF00;
-
-    .resume-btn{
-    display:block;
-    margin-top:20px;
-    text-align:center;
-    background:#FFBF00;
-    color:black;
-    text-decoration:none;
-    padding:10px;
-    border-radius:8px;
-    font-weight:bold;
-}
 }
 
 
@@ -195,7 +190,7 @@ nav a{
 
 .grid-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit , minmax(120px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(120px, 100%), 1fr));
     gap: 30px;
 }
 
@@ -381,7 +376,7 @@ nav a{
 .certificate-container{
 
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(min(280px, 100%),1fr));
     gap:30px;
     margin-top:35px;
 
@@ -550,6 +545,8 @@ nav a{
 }
 
 .project{
+    display: flex;
+    flex-direction: column;
     background-color: #1e1e1e;
     border-radius: 12px;
     border: 1px solid #3a3a3a;
@@ -569,6 +566,9 @@ nav a{
 }
 
 .card{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
     padding: 20px;
 }
 
@@ -583,20 +583,26 @@ nav a{
     margin-bottom: 15px;
 }
 
+.tech-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
 .card span{
     background-color: rgba(255, 191, 0, 0.1);
     color: #FFBF00;
     padding: 4px 8px;
     border-radius: 5px;
     font-size: 0.75rem;
-    margin-right: 5px;
 }
 
 
 .project-links{
     display:flex;
     gap:10px;
-    margin-top:15px;
+    margin-top:auto;
+    padding-top:15px;
 }
 
 .project-links a{
@@ -616,6 +622,7 @@ nav a{
 @media screen and (max-width:1200px) {
     .main-container{
         grid-template-columns: 1fr;
+        gap: 30px;
         padding: 20px;
     }
 
@@ -625,21 +632,83 @@ nav a{
     }
 }
 
-@media screen and (max-width:750px) {
+@media screen and (max-width:900px) {
     .project-container{
         grid-template-columns: 1fr;
     }
+}
 
-    #navigation nav {
-        /* Adjust nav for smaller screens */
-        justify-content: center;
-        flex-wrap: wrap;
+@media screen and (max-width:750px) {
+    .main-container{
+        gap: 18px;
+        padding: 14px;
     }
 
-    .sidebar{
+    .sidebar,
+    .main-content{
+        padding: 24px;
+    }
+
+    .project-container{
+        gap: 18px;
+    }
+
+    #navigation{
+        padding: 16px 0;
+    }
+
+    #navigation nav{
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+    }
+
+    .contact{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
+        gap: 14px;
+    }
+
+    .email,
+    .phone{
+        margin-bottom: 0;
+    }
+
+    .social{
         display: flex;
         justify-content: center;
-        gap: 40px;
+        gap: 12px;
+    }
+
+    .social img{
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .main-container{
+        padding: 10px;
+    }
+
+    .sidebar,
+    .main-content{
+        padding: 18px;
+    }
+
+    .heading{
+        font-size: 1.6rem;
+    }
+
+    .certificate-card{
+        padding: 22px 16px;
+    }
+
+    .project img{
+        height: 160px;
+    }
+
+    .project-links{
+        flex-wrap: wrap;
     }
 }
 
@@ -654,12 +723,19 @@ footer{
 /* download resume button */
 .resume-btn{
     display:block;
-    margin-top:20px;
+    width:fit-content;
+    margin:20px auto 0;
     text-align:center;
     background:#FFBF00;
     color:black;
     text-decoration:none;
-    padding:10px;
+    padding:10px 20px;
     border-radius:8px;
     font-weight:bold;
+    transition:0.3s;
+}
+
+.resume-btn:hover{
+    background:#ffd54d;
+    transform:translateY(-2px);
 }
