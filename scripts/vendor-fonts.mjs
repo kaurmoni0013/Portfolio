@@ -1,5 +1,5 @@
 /**
- * Copies the three variable font families into src/assets/fonts as latin-only
+ * Copies the variable font families into src/assets/fonts as latin-only
  * woff2 files and prints the matching @font-face block, so the site ships no
  * third-party font request and no unused language subsets.
  * Run with `npm run fonts`.
@@ -9,14 +9,19 @@ import { join } from 'node:path'
 
 const FAMILIES = [
   {
+    module: '@fontsource-variable/fraunces',
+    file: 'fraunces-latin-opsz-normal.woff2',
+    family: 'Fraunces Variable',
+    // Carries the weight axis plus optical size. No font-variation-settings
+    // here on purpose: leaving opsz unset lets the default
+    // `font-optical-sizing: auto` derive it from the computed font-size, so a
+    // 100px heading gets hairline high-contrast serifs and a 14px subhead
+    // gets sturdy ones from the same file.
+  },
+  {
     module: '@fontsource-variable/inter',
     file: 'inter-latin-wght-normal.woff2',
     family: 'Inter Variable',
-  },
-  {
-    module: '@fontsource-variable/space-grotesk',
-    file: 'space-grotesk-latin-wght-normal.woff2',
-    family: 'Space Grotesk Variable',
   },
   {
     module: '@fontsource-variable/jetbrains-mono',

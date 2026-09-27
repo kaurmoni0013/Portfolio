@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moni Kaur — Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="/Portfolio/favicon.svg" />
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #15110f;
+        color: #fbf6f3;
+        font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+        text-align: center;
+        padding: 2rem;
+      }
+      h1 {
+        font-size: clamp(2rem, 6vw, 3.25rem);
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        margin: 0 0 0.75rem;
+      }
+      p {
+        color: #b3a6a2;
+        margin: 0 0 1.75rem;
+      }
+      a {
+        display: inline-block;
+        padding: 0.7rem 1.4rem;
+        border-radius: 999px;
+        background: #e28a7c;
+        color: #15110f;
+        font-weight: 500;
+        text-decoration: none;
+      }
+    </style>
+    <!--
+      GitHub Pages has no rewrite rules, so a request for a client-side route
+      such as /Portfolio/about returns 404. This page stores the requested URL
+      and bounces to the app, which restores the address before React mounts
+      and renders the matching route.
+    -->
+    <script>
+      sessionStorage.setItem('mk:redirect', location.href)
+      location.replace('/Portfolio/')
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>One moment…</h1>
+      <p>Taking you to the right page.</p>
+      <a href="/Portfolio/">Go to the portfolio</a>
+    </div>
+  </body>
+</html>

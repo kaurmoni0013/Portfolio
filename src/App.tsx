@@ -1,43 +1,62 @@
+import { useEffect } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import { Backdrop } from './components/layout/Backdrop'
 import { Footer } from './components/layout/Footer'
-import { Nav } from './components/layout/Nav'
-import { About } from './components/sections/About'
-import { Certificates } from './components/sections/Certificates'
-import { Contact } from './components/sections/Contact'
-import { Dsa } from './components/sections/Dsa'
-import { Hero } from './components/sections/Hero'
-import { Journey } from './components/sections/Journey'
-import { StackBand } from './components/sections/StackBand'
-import { Projects } from './components/sections/Projects'
-import { Skills } from './components/sections/Skills'
+import { SiteHeader } from './components/layout/SiteHeader'
+import Home from './pages/Home'
+import ProjectsPage from './pages/Projects'
+import AboutPage from './pages/About'
+import ContactPage from './pages/Contact'
+import NotFound from './pages/NotFound'
+
+/**
+ * A route change does not reset scroll the way a document load does, so
+ * without this you land halfway down the new page — or at the bottom of the
+ * previous one. Any in-page hash still wins, and an already-current location is
+ * left alone so a re-render cannot yank the reader back to the top.
+ */
+function ScrollToTop() {
+ const { pathname, hash } = useLocation()
+
+ useEffect(() => {
+ if (hash) {
+ const el = document.getElementById(hash.slice(1))
+ if (el) {
+ el.scrollIntoView()
+ return
+ }
+ }
+ window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
+ }, [pathname, hash])
+
+ return null
+}
 
 export default function App() {
-  return (
-    <>
-      <a
-        href="#about"
-        className="sr-only rounded-full bg-ink px-4 py-2.5 text-sm font-medium text-void focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100"
-      >
-        Skip to content
-      </a>
+ return (
+ <>
+ <a
+ href="#main"
+ className="sr-only rounded-full bg-ink px-4 py-2.5 text-sm font-medium text-void focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100"
+ >
+ Skip to content
+ </a>
 
-      <Backdrop />
+ <Backdrop />
+ <SiteHeader />
 
-      <Nav />
+ <main id="main">
+ <ScrollToTop />
+ <Routes>
+ <Route path="/" element={<Home />} />
+ <Route path="/projects" element={<ProjectsPage />} />
+ <Route path="/about" element={<AboutPage />} />
+ <Route path="/contact" element={<ContactPage />} />
+ <Route path="*" element={<NotFound />} />
+ </Routes>
+ </main>
 
-      <main id="main">
-        <Hero />
-        <StackBand />
-        <About />
-        <Skills />
-        <Projects />
-        <Dsa />
-        <Journey />
-        <Certificates />
-        <Contact />
-      </main>
-
-      <Footer />
-    </>
-  )
+ <Footer />
+ </>
+ )
 }

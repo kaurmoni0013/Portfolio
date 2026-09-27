@@ -1,349 +1,413 @@
 /* Fonts are self-hosted latin-only variable faces: no third-party request,
-   no late stylesheet, and one file per family instead of one per weight. */
+ no late stylesheet, and one file per family instead of one per weight.
+
+ Fraunces is the only display face. It carries the optical-size axis, left
+ unset on purpose so the browser derives opsz from the computed font-size —
+ that is what gives a 100px heading hairline serifs while keeping a 14px
+ subhead sturdy, out of a single file. */
 @font-face {
-  font-family: 'Inter Variable';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 100 900;
-  src: url('./assets/fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+ font-family: 'Fraunces Variable';
+ font-style: normal;
+ font-display: swap;
+ font-weight: 100 900;
+ src: url('./assets/fonts/fraunces-latin-opsz-normal.woff2') format('woff2-variations');
 }
 @font-face {
-  font-family: 'Space Grotesk Variable';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 100 900;
-  src: url('./assets/fonts/space-grotesk-latin-wght-normal.woff2') format('woff2-variations');
+ font-family: 'Inter Variable';
+ font-style: normal;
+ font-display: swap;
+ font-weight: 100 900;
+ src: url('./assets/fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
 }
 @font-face {
-  font-family: 'JetBrains Mono Variable';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 100 900;
-  src: url('./assets/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations');
+ font-family: 'JetBrains Mono Variable';
+ font-style: normal;
+ font-display: swap;
+ font-weight: 100 900;
+ src: url('./assets/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations');
 }
 
 @import 'tailwindcss';
 
 /* ------------------------------------------------------------------ *
- *  Design tokens
+ * Design tokens
  * ------------------------------------------------------------------ */
 @theme {
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-display: 'Space Grotesk Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+ --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+ --font-display: 'Fraunces Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+ --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', Consolas, monospace;
 
-  /* Surfaces — near-black charcoal */
-  --color-void: #07080b;
-  --color-base: #0a0c11;
-  --color-raised: #0e1117;
-  --color-line: #191d26;
-  --color-line-soft: #14171f;
+ /* Surfaces — a warm espresso-black. Lighter and warmer than a neutral
+ near-black so panels read as raised paper rather than as holes. */
+ --color-void: #15110f;
+ --color-base: #1c1715;
+ --color-raised: #241d1a;
+ --color-line: #352c28;
+ --color-line-soft: #2b2320;
 
-  /* Ink — every step clears 4.5:1 on the raised surface, so the dimmest text
-     on the page still passes WCAG AA. ink-5 is for non-text marks only. */
-  --color-ink: #f1f4f9;
-  --color-ink-2: #a2abbb;
-  --color-ink-3: #8b95a7;
-  --color-ink-4: #7c8698;
-  --color-ink-5: #3a4353;
+ /* Ink — every step clears 4.5:1 on --color-raised, so even the dimmest
+ body text passes WCAG AA. ink-5 is for non-text marks only. */
+ --color-ink: #fbf6f3;
+ --color-ink-2: #d3c7c2;
+ --color-ink-3: #b3a6a2;
+ --color-ink-4: #9a8c88;
+ --color-ink-5: #5f524f;
 
-  /* Accents — restrained: blue dominant, teal support, violet whisper.
-     accent-soft replaces opacity-tinted accent text, which dropped below
-     4.5:1 once composited over the dark surfaces. */
-  --color-accent: #5b8cff;
-  --color-accent-soft: #7ba0ff;
-  --color-accent-deep: #3a68e0;
-  --color-teal: #2fd4b4;
-  --color-violet: #7f74f0;
+ /* Accent — a muted rose, used sparingly. Champagne is reserved for the
+ signature flourish; teal stays a cool counterweight in tech tags so the
+ two never compete. */
+ --color-accent: #e28a7c;
+ --color-accent-soft: #f0ac9e;
+ --color-accent-deep: #c2665a;
+ --color-champagne: #d9b87c;
+ --color-teal: #6fc2b4;
+ --color-violet: #a99ae0;
 
-  --radius-card: 1.25rem;
+ --radius-card: 1.25rem;
 
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+ --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ------------------------------------------------------------------ *
- *  Base
+ * Base
  * ------------------------------------------------------------------ */
 @layer base {
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+ *,
+ *::before,
+ *::after {
+ box-sizing: border-box;
+ }
 
-  :root {
-    --nav-h: 4.5rem;
-    --gutter: clamp(1.25rem, 5vw, 5rem);
-    --maxw: 84rem;
-    --pointer-x: 50%;
-    --pointer-y: 40%;
-  }
+ :root {
+ --nav-h: 4.5rem;
+ --gutter: clamp(1.25rem, 5vw, 5rem);
+ --maxw: 84rem;
+ --pointer-x: 50%;
+ --pointer-y: 40%;
+ }
 
-  html {
-    -webkit-text-size-adjust: 100%;
-    scroll-padding-top: calc(var(--nav-h) + 1.5rem);
-    background-color: var(--color-void);
-  }
+ @media (max-width: 640px) {
+ html {
+ font-size: 106%;
+ }
+ }
 
-  body {
-    margin: 0;
-    background-color: var(--color-void);
-    color: var(--color-ink);
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.65;
-    font-synthesis-weight: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    overflow-x: clip;
-  }
+ html {
+ /* Reference body copy sits at ~19px. Scaling the root lifts all the
+ rem-based body and label sizes together instead of hand-editing
+ dozens of arbitrary values. */
+ font-size: 112.5%;
+ -webkit-text-size-adjust: 100%;
+ scroll-padding-top: calc(var(--nav-h) + 1.5rem);
+ background-color: var(--color-void);
+ }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    line-height: 1.06;
-    text-wrap: balance;
-    margin: 0;
-  }
+ body {
+ margin: 0;
+ background-color: var(--color-void);
+ color: var(--color-ink);
+ font-family: var(--font-sans);
+ font-size: 1rem;
+ line-height: 1.65;
+ font-synthesis-weight: none;
+ -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
+ text-rendering: optimizeLegibility;
+ overflow-x: clip;
+ }
 
-  p {
-    text-wrap: pretty;
-    margin: 0;
-  }
+ h1,
+ h2,
+ h3,
+ h4 {
+ font-family: var(--font-display);
+ font-weight: 500;
+ /* Serifs need far less negative tracking than a geometric sans does;
+ over-tightening them collides the serifs together at display sizes. */
+ letter-spacing: -0.015em;
+ line-height: 1.08;
+ font-optical-sizing: auto;
+ text-wrap: balance;
+ margin: 0;
+ }
 
-  ul,
-  ol {
-    margin: 0;
-    padding: 0;
-  }
+ p {
+ text-wrap: pretty;
+ margin: 0;
+ }
 
-  img,
-  svg,
-  video {
-    display: block;
-    max-width: 100%;
-  }
+ ul,
+ ol {
+ margin: 0;
+ padding: 0;
+ }
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+ img,
+ svg,
+ video {
+ display: block;
+ max-width: 100%;
+ }
 
-  button {
-    font: inherit;
-    color: inherit;
-    background: none;
-    border: 0;
-    padding: 0;
-  }
+ a {
+ color: inherit;
+ text-decoration: none;
+ }
 
-  :focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
+ button {
+ font: inherit;
+ color: inherit;
+ background: none;
+ border: 0;
+ padding: 0;
+ }
 
-  ::selection {
-    background: color-mix(in oklab, var(--color-accent) 34%, transparent);
-    color: #fff;
-  }
+ :focus-visible {
+ outline: 2px solid var(--color-accent);
+ outline-offset: 3px;
+ border-radius: 4px;
+ }
 
-  /* Scrollbar — quiet, matches the shell */
-  @supports (scrollbar-width: thin) {
-    html {
-      scrollbar-width: thin;
-      scrollbar-color: #222836 transparent;
-    }
-  }
+ ::selection {
+ background: color-mix(in oklab, var(--color-accent) 34%, transparent);
+ color: #fff;
+ }
+
+ /* Scrollbar — quiet, matches the shell */
+ @supports (scrollbar-width: thin) {
+ html {
+ scrollbar-width: thin;
+ scrollbar-color: #3a302c transparent;
+ }
+ }
 }
 
 /* ------------------------------------------------------------------ *
- *  Utilities
+ * Utilities
  * ------------------------------------------------------------------ */
 @utility shell {
-  width: 100%;
-  max-width: var(--maxw);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
+ width: 100%;
+ max-width: var(--maxw);
+ margin-inline: auto;
+ padding-inline: var(--gutter);
 }
 
-@utility eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--color-ink-3);
+/* A section label. Previously an 11px uppercase monospace line, which is what
+ made the page read as a terminal: the label competed with the content it
+ was labelling. Now an ordinary, readable label in the body face, sentence
+ case, with the accent carried by .section-mark beside it instead. */
+ @utility eyebrow {
+ font-family: var(--font-sans);
+ font-size: 0.8125rem;
+ font-weight: 500;
+ letter-spacing: 0.005em;
+ line-height: 1.4;
+ color: var(--color-ink-3);
+ }
+
+ /* Present to assistive tech only. Used where a decorative line break would
+ otherwise mangle the accessible name, e.g. the hero heading. */
+ @utility sr-only {
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ padding: 0;
+ margin: -1px;
+ overflow: hidden;
+ clip-path: inset(50%);
+ white-space: nowrap;
+ border: 0;
+ }
+
+
+/* Reserved for genuinely code-like metadata — file names, stack tags, issue
+ counts — where the monospace is carrying information rather than styling. */
+@utility meta {
+ font-family: var(--font-mono);
+ font-size: 0.75rem;
+ font-weight: 400;
+ letter-spacing: 0.01em;
+ color: var(--color-ink-3);
 }
 
 @utility hairline-t {
-  border-top: 1px solid var(--color-line-soft);
+ border-top: 1px solid var(--color-line-soft);
 }
 
 @utility hairline-b {
-  border-bottom: 1px solid var(--color-line-soft);
+ border-bottom: 1px solid var(--color-line-soft);
+}
+
+/* A short accent rule used as the section signature — the one place the
+ champagne accent appears. It reads as a deliberate mark rather than a
+ border, which is what the page was missing. */
+@utility rule-accent {
+ height: 2px;
+ width: 2.75rem;
+ border-radius: 2px;
+ background: linear-gradient(90deg, var(--color-accent), var(--color-champagne));
 }
 
 @utility text-gradient {
-  background: linear-gradient(96deg, #ffffff 8%, #cdd8f0 42%, #7ea4ff 78%, #2fd4b4 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+ background: linear-gradient(96deg, #fdf9f7 10%, #f3d3cb 46%, #e28a7c 74%, #d9b87c 100%);
+ background-clip: text;
+ -webkit-background-clip: text;
+ color: transparent;
 }
 
 /* Fine 1px rule that fades at both ends — used under section headings. */
 @utility rule-fade {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-line) 12%, var(--color-line) 88%, transparent);
+ height: 1px;
+ background: linear-gradient(90deg, transparent, var(--color-line) 12%, var(--color-line) 88%, transparent);
 }
 
+/* Display sizes are set for a serif: looser tracking, and a touch smaller at
+ the top end than the previous geometric sans, because serif letterforms
+ carry more apparent size at the same point size. */
 @utility display-xl {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 0.94;
-  letter-spacing: -0.045em;
-  font-size: clamp(2.75rem, 9.2vw, 7.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.014em;
+  font-size: clamp(2rem, 3.6vw, 2.95rem);
 }
 
 @utility display-lg {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.035em;
-  font-size: clamp(2rem, 5.4vw, 3.85rem);
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: -0.012em;
+  font-size: clamp(1.7rem, 2.9vw, 2.5rem);
 }
 
 @utility display-md {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.08;
-  letter-spacing: -0.025em;
-  font-size: clamp(1.5rem, 2.9vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.008em;
+  font-size: clamp(1.3rem, 1.9vw, 1.7rem);
+}
+
+/* There was no step between display-md and body copy, so h3 and h4 fell to
+   15px and the outline collapsed. Matches the reference's h3/h4 of 1.75rem
+   and 1.5rem, compressed slightly. */
+@utility display-sm {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.32;
+  letter-spacing: -0.004em;
+  font-size: clamp(1.1rem, 1.35vw, 1.3rem);
 }
 
 @utility body-lg {
-  font-size: clamp(1.0625rem, 1.35vw, 1.25rem);
-  line-height: 1.6;
-  color: var(--color-ink-2);
+  font-size: clamp(1.0625rem, 1.2vw, 1.1875rem);
+ line-height: 1.6;
+ color: var(--color-ink-2);
 }
 
 /* ------------------------------------------------------------------ *
- *  Components / effects
+ * Components / effects
  * ------------------------------------------------------------------ */
 @layer components {
-  /* Panel: the single surface treatment reused across the site.
-     Hairline border + barely-there inner sheen, never heavy glass. */
-  .panel {
-    position: relative;
-    border: 1px solid var(--color-line);
-    border-radius: var(--radius-card);
-    background:
-      linear-gradient(180deg, rgb(255 255 255 / 0.028), rgb(255 255 255 / 0) 42%),
-      var(--color-raised);
-  }
+ /* Panel: the single surface treatment reused across the site. Hairline
+ border plus a barely-there warm sheen — never heavy glass. */
+ .panel {
+ position: relative;
+ border: 1px solid var(--color-line);
+ border-radius: var(--radius-card);
+ background:
+ linear-gradient(180deg, rgb(255 240 235 / 0.045), rgb(255 240 235 / 0) 46%),
+ var(--color-raised);
+ }
 
-  /* A card lifts four pixels on a precise pointer and does nothing on touch,
-     where there is no hover and a transform would only cost a repaint. */
-  .panel-hover {
-    transition:
-      border-color 0.25s var(--ease-out-expo),
-      transform 0.25s var(--ease-out-expo),
-      background-color 0.25s var(--ease-out-expo);
-  }
+ /* A card lifts four pixels on a precise pointer and does nothing on touch,
+ where there is no hover and a transform would only cost a repaint. */
+ .panel-hover {
+ transition:
+ border-color 0.25s var(--ease-out-expo),
+ transform 0.25s var(--ease-out-expo),
+ background-color 0.25s var(--ease-out-expo);
+ }
 
-  @media (hover: hover) and (pointer: fine) {
-    .panel-hover:hover {
-      border-color: #2b3342;
-      transform: translateY(-4px);
-    }
-  }
+ @media (hover: hover) and (pointer: fine) {
+ .panel-hover:hover {
+ border-color: #4a3d38;
+ transform: translateY(-4px);
+ }
+ }
 
-  /* Mono label used for metadata, indices, tags. */
-  .meta {
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-ink-3);
-  }
+ /* Small text and icon links keep their tight visual size but grow a 44px
+ hit area, so they are comfortable to tap without loosening the layout. */
+ .tap {
+ position: relative;
+ }
+ .tap::after {
+ content: '';
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ width: max(100%, 2.75rem);
+ height: max(100%, 2.75rem);
+ transform: translate(-50%, -50%);
+ }
 
-  /* Small text and icon links keep their tight visual size but grow a 44px
-     hit area, so they are comfortable to tap without loosening the layout. */
-  .tap {
-    position: relative;
-  }
-  .tap::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: max(100%, 2.75rem);
-    height: max(100%, 2.75rem);
-    transform: translate(-50%, -50%);
-  }
+ /* Link with an underline that wipes in from the left. */
+ .link-wipe {
+ position: relative;
+ display: inline-block;
+ }
+ .link-wipe::after {
+ content: '';
+ position: absolute;
+ left: 0;
+ bottom: -2px;
+ height: 1px;
+ width: 100%;
+ background: currentColor;
+ transform: scaleX(0);
+ transform-origin: right;
+ transition: transform 0.25s var(--ease-out-expo);
+ }
+ .link-wipe:hover::after,
+ .link-wipe:focus-visible::after {
+ transform: scaleX(1);
+ transform-origin: left;
+ }
 
-  /* Link with an underline that wipes in from the left. */
-  .link-wipe {
-    position: relative;
-    display: inline-block;
-  }
-  .link-wipe::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    height: 1px;
-    width: 100%;
-    background: currentColor;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.25s var(--ease-out-expo);
-  }
-  .link-wipe:hover::after,
-  .link-wipe:focus-visible::after {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-
-  /* Chrome frame for product visuals. */
-  .browser {
-    position: relative;
-    border: 1px solid var(--color-line);
-    border-radius: 1rem;
-    background: var(--color-base);
-    overflow: hidden;
-  }
-  .browser::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05);
-    pointer-events: none;
-  }
+ /* Chrome frame for product visuals. */
+ .browser {
+ position: relative;
+ border: 1px solid var(--color-line);
+ border-radius: 1rem;
+ background: var(--color-base);
+ overflow: hidden;
+ }
+ .browser::after {
+ content: '';
+ position: absolute;
+ inset: 0;
+ border-radius: inherit;
+ box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05);
+ pointer-events: none;
+ }
 }
 
 /* ------------------------------------------------------------------ *
- *  Reduced motion
+ * Reduced motion
  *
- *  The site has no continuous motion left, so this is mostly a guarantee:
- *  any transition or animation that does appear is cut to a cross-fade.
+ * The site has no continuous motion left, so this is mostly a guarantee:
+ * any transition or animation that does appear is cut to a cross-fade.
  * ------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
+ html {
+ scroll-behavior: auto;
+ }
+ *,
+ *::before,
+ *::after {
+ animation-duration: 0.001ms !important;
+ animation-iteration-count: 1 !important;
+ transition-duration: 0.001ms !important;
+ scroll-behavior: auto !important;
+ }
 }

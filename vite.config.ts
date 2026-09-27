@@ -2,9 +2,15 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
+// The site is published at https://kaurmoni0013.github.io/Portfolio/, so the
+// base path is not optional: with client-side routes such as /Portfolio/about,
+// a relative './assets/...' would resolve to /Portfolio/about/assets/... and
+// 404. public/404.html hands unknown paths back to the app.
+const base = '/Portfolio/'
+
 // https://vite.dev/config/
 export default defineConfig({
-  base: './',
+  base,
   plugins: [react(), tailwindcss()],
   build: {
     target: 'es2022',

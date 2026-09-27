@@ -65,19 +65,19 @@ export const brands: Partial<Record<TechKey, Brand>> = {
 
 /** Practices and concepts, drawn as neutral line marks. */
 export const lines: Partial<Record<TechKey, Line>> = {
-  rest: { kind: 'line', icon: Braces, accent: '#5b8cff' },
-  jwt: { kind: 'line', icon: KeyRound, accent: '#2fd4b4' },
-  sse: { kind: 'line', icon: Radio, accent: '#5b8cff' },
-  reactquery: { kind: 'line', icon: GitBranch, accent: '#2fd4b4' },
-  openrouter: { kind: 'line', icon: Network, accent: '#7f74f0' },
-  vscode: { kind: 'line', icon: Braces, accent: '#5b8cff' },
-  dsa: { kind: 'line', icon: GitBranch, accent: '#2fd4b4' },
-  algorithms: { kind: 'line', icon: Workflow, accent: '#5b8cff' },
-  oop: { kind: 'line', icon: Cpu, accent: '#7f74f0' },
-  dbms: { kind: 'line', icon: Database, accent: '#2fd4b4' },
-  os: { kind: 'line', icon: Terminal, accent: '#5b8cff' },
-  networks: { kind: 'line', icon: Network, accent: '#7f74f0' },
-  systemdesign: { kind: 'line', icon: Workflow, accent: '#2fd4b4' },
+  rest: { kind: 'line', icon: Braces, accent: '#e28a7c' },
+  jwt: { kind: 'line', icon: KeyRound, accent: '#6fc2b4' },
+  sse: { kind: 'line', icon: Radio, accent: '#e28a7c' },
+  reactquery: { kind: 'line', icon: GitBranch, accent: '#6fc2b4' },
+  openrouter: { kind: 'line', icon: Network, accent: '#a99ae0' },
+  vscode: { kind: 'line', icon: Braces, accent: '#e28a7c' },
+  dsa: { kind: 'line', icon: GitBranch, accent: '#6fc2b4' },
+  algorithms: { kind: 'line', icon: Workflow, accent: '#e28a7c' },
+  oop: { kind: 'line', icon: Cpu, accent: '#a99ae0' },
+  dbms: { kind: 'line', icon: Database, accent: '#6fc2b4' },
+  os: { kind: 'line', icon: Terminal, accent: '#e28a7c' },
+  networks: { kind: 'line', icon: Network, accent: '#a99ae0' },
+  systemdesign: { kind: 'line', icon: Workflow, accent: '#6fc2b4' },
 }
 
 /** Java has no monochrome mark in the icon set; a cup silhouette reads
@@ -90,7 +90,7 @@ export const glyphs: Partial<Record<TechKey, Glyph>> = {
   },
 }
 
-const FALLBACK = '#a2abbb'
+const FALLBACK = '#b3a6a2'
 
 /** The single hue associated with a technology, used for hover tints. */
 export function getTechAccent(key: TechKey): string {

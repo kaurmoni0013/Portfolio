@@ -18,20 +18,20 @@ export const profile = {
 export const socials = [
   { id: 'github', label: 'GitHub', handle: 'kaurmoni0013', href: 'https://github.com/kaurmoni0013' },
   { id: 'linkedin', label: 'LinkedIn', handle: 'in/kaurmoni0013', href: 'https://www.linkedin.com/in/kaurmoni0013' },
-  { id: 'leetcode', label: 'LeetCode', handle: 'u/kaurmoni0013', href: 'https://leetcode.com/u/kaurmoni0013' },
-  { id: 'gfg', label: 'GeeksforGeeks', handle: 'user/kaurmoni0013', href: 'https://www.geeksforgeeks.org/user/kaurmoni0013' },
+  { id: 'leetcode', label: 'LeetCode', handle: 'u/kaurmoni0013', href: 'https://leetcode.com/u/kaurmoni0013/' },
+  { id: 'gfg', label: 'GeeksforGeeks', handle: 'user/kaurmoni0013', href: 'https://www.geeksforgeeks.org/user/kaurmoni0013/' },
   { id: 'email', label: 'Email', handle: 'kaurmoni0013@gmail.com', href: 'mailto:kaurmoni0013@gmail.com' },
 ] as const
 
-export const navSections = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'dsa', label: 'DSA' },
-  { id: 'journey', label: 'Journey' },
-  { id: 'certificates', label: 'Certificates' },
-  { id: 'contact', label: 'Contact' },
+/**
+ * The site's pages. `to` is a react-router path relative to the site basename;
+ * `nav: false` keeps a page out of the header (it is still reachable).
+ */
+export const routes = [
+  { to: '/', label: 'Home', nav: true },
+  { to: '/projects', label: 'Projects', nav: true },
+  { to: '/about', label: 'About', nav: true },
+  { to: '/contact', label: 'Contact', nav: true },
 ] as const
 
-export type NavSectionId = (typeof navSections)[number]['id']
+export type RoutePath = (typeof routes)[number]['to']

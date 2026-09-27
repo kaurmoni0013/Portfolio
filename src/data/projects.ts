@@ -66,22 +66,6 @@ export const featuredProjects: Project[] = [
       'Bounded AI integration — server-side model allowlist, capped message size, a character budget for assembled context, and provider-reported usage recorded rather than estimated.',
     ],
   },
-  {
-    id: 'railqr-mark',
-    name: 'RailQR-Mark',
-    kicker: 'Laser QR Track Fitting Traceability for Indian Railways',
-    year: '2025',
-    summary:
-      'A prototype built for the Smart India Hackathon: every track fitting gets a laser QR code and a digital passport covering its full lifecycle, with scikit-learn risk scoring, inspection scheduling and a maintenance ticket workflow. React and TypeScript on the front, Python FastAPI with SQLAlchemy behind it.',
-    tech: ['react', 'typescript', 'tailwind', 'python', 'fastapi', 'jwt', 'sql'],
-    links: [{ label: 'Source', href: 'https://github.com/kaurmoni0013/railqr-mark', kind: 'repo' }],
-    highlights: [
-      'Digital passport per fitting — traceability across the full lifecycle instead of paper registers.',
-      'Risk scoring with scikit-learn, surfaced as decision support rather than automation.',
-      'Inspection scheduling with compliance tracking, plus a Kanban maintenance ticket workflow.',
-      'React + TypeScript front end with dashboards, charts and an interactive map of fitting locations.',
-    ],
-  },
 ]
 
 export const selectedProjects: Project[] = [

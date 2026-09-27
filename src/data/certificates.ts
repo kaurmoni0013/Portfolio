@@ -76,7 +76,7 @@ export const certificates: Credential[] = [
     id: 'sih',
     title: 'Smart India Hackathon',
     issuer: 'Smart India Hackathon',
-    period: 'RailQR-Mark · team participant',
+    period: '2025',
     credential: 'Participation',
     tone: 'participation',
     file: 'certificates/sih.pdf',
