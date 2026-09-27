@@ -65,19 +65,19 @@ export const brands: Partial<Record<TechKey, Brand>> = {
 
 /** Practices and concepts, drawn as neutral line marks. */
 export const lines: Partial<Record<TechKey, Line>> = {
-  rest: { kind: 'line', icon: Braces, accent: '#e28a7c' },
-  jwt: { kind: 'line', icon: KeyRound, accent: '#6fc2b4' },
-  sse: { kind: 'line', icon: Radio, accent: '#e28a7c' },
-  reactquery: { kind: 'line', icon: GitBranch, accent: '#6fc2b4' },
-  openrouter: { kind: 'line', icon: Network, accent: '#a99ae0' },
-  vscode: { kind: 'line', icon: Braces, accent: '#e28a7c' },
-  dsa: { kind: 'line', icon: GitBranch, accent: '#6fc2b4' },
-  algorithms: { kind: 'line', icon: Workflow, accent: '#e28a7c' },
-  oop: { kind: 'line', icon: Cpu, accent: '#a99ae0' },
-  dbms: { kind: 'line', icon: Database, accent: '#6fc2b4' },
-  os: { kind: 'line', icon: Terminal, accent: '#e28a7c' },
-  networks: { kind: 'line', icon: Network, accent: '#a99ae0' },
-  systemdesign: { kind: 'line', icon: Workflow, accent: '#6fc2b4' },
+  rest: { kind: 'line', icon: Braces, accent: '#c77af0' },
+  jwt: { kind: 'line', icon: KeyRound, accent: '#78c7b5' },
+  sse: { kind: 'line', icon: Radio, accent: '#c77af0' },
+  reactquery: { kind: 'line', icon: GitBranch, accent: '#78c7b5' },
+  openrouter: { kind: 'line', icon: Network, accent: '#a787eb' },
+  vscode: { kind: 'line', icon: Braces, accent: '#c77af0' },
+  dsa: { kind: 'line', icon: GitBranch, accent: '#78c7b5' },
+  algorithms: { kind: 'line', icon: Workflow, accent: '#c77af0' },
+  oop: { kind: 'line', icon: Cpu, accent: '#a787eb' },
+  dbms: { kind: 'line', icon: Database, accent: '#78c7b5' },
+  os: { kind: 'line', icon: Terminal, accent: '#c77af0' },
+  networks: { kind: 'line', icon: Network, accent: '#a787eb' },
+  systemdesign: { kind: 'line', icon: Workflow, accent: '#78c7b5' },
 }
 
 /** Java has no monochrome mark in the icon set; a cup silhouette reads
@@ -85,12 +85,12 @@ export const lines: Partial<Record<TechKey, Line>> = {
 export const glyphs: Partial<Record<TechKey, Glyph>> = {
   java: {
     kind: 'glyph',
-    accent: '#e08b4c',
+    accent: '#e0bb8a',
     path: 'M4 8h11v5a4.5 4.5 0 0 1-4.5 4.5h-2A4.5 4.5 0 0 1 4 13V8Zm11 1.5h1.8a2.7 2.7 0 0 1 0 5.4H15M6 5.5c0-.8.9-1.2.9-2S6 2 6 2M9.4 5.5c0-.8.9-1.2.9-2s-.9-1.5-.9-1.5',
   },
 }
 
-const FALLBACK = '#b3a6a2'
+const FALLBACK = '#a99ab7'
 
 /** The single hue associated with a technology, used for hover tints. */
 export function getTechAccent(key: TechKey): string {

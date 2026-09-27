@@ -50,7 +50,7 @@ export function Dsa({ className = '' }: { className?: string }) {
  {dsaTopics.map((topic, i) => (
  <li key={topic.label}>
  <motion.div
- className="group h-full bg-raised px-6 py-6 transition-colors duration-500 hover:bg-[#2b2320]"
+ className="group h-full bg-raised px-6 py-6 transition-colors duration-500 hover:bg-base"
  initial={reduce ? false : { opacity: 0, y: 14 }}
  whileInView={{ opacity: 1, y: 0 }}
  viewport={{ once: true, margin: '-8% 0px' }}

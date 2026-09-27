@@ -18,7 +18,7 @@ function Wordmark() {
  >
  <span className="relative grid size-10 place-items-center overflow-hidden rounded-full border border-line bg-raised">
  <span className="font-display text-[0.875rem] font-500 tracking-tight text-ink">MK</span>
- <span className="absolute inset-0 bg-[radial-gradient(circle_at_30%_25%,rgba(226,138,124,0.4),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+ <span className="absolute inset-0 bg-[radial-gradient(circle_at_30%_25%,rgba(199,122,240,0.3),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
  </span>
  <span className="font-display text-[1.0625rem] font-500 tracking-tight">Moni Kaur</span>
  </NavLink>
@@ -63,7 +63,7 @@ export function SiteHeader() {
  scrolled || open
  ? // A solid fill rather than backdrop-blur: a full-width blur
  // would re-sample everything behind it on every scroll frame.
- 'border-b border-line-soft bg-void/92'
+ 'border-b border-line-soft bg-void/90 shadow-[0_8px_24px_rgba(5,2,12,0.22)]'
  : 'border-b border-transparent bg-transparent'
  }`}
  >
@@ -98,7 +98,7 @@ export function SiteHeader() {
  href={socials[0].href}
  target="_blank"
  rel="noopener noreferrer"
- className="hidden size-10 place-items-center rounded-full border border-line text-ink-2 transition-colors duration-300 sm:grid"
+ className="hidden size-10 place-items-center rounded-full border border-line text-ink-2 transition-colors duration-300 hover:border-accent/50 hover:text-accent sm:grid"
  aria-label="GitHub profile"
  >
  <SocialIcon id="github" className="size-4" />
@@ -107,7 +107,7 @@ export function SiteHeader() {
  href={socials[1].href}
  target="_blank"
  rel="noopener noreferrer"
- className="hidden size-10 place-items-center rounded-full border border-line text-ink-2 transition-colors duration-300 sm:grid"
+ className="hidden size-10 place-items-center rounded-full border border-line text-ink-2 transition-colors duration-300 hover:border-accent/50 hover:text-accent sm:grid"
  aria-label="LinkedIn profile"
  >
  <SocialIcon id="linkedin" className="size-4" />
@@ -116,7 +116,7 @@ export function SiteHeader() {
  <a
  href={profile.resume.href}
  download
- className="group hidden items-center gap-2 rounded-full border border-line px-4 py-2.5 text-[0.875rem] font-medium text-ink transition-colors duration-300 hover:bg-white/[0.04] md:inline-flex"
+ className="group hidden items-center gap-2 rounded-full border border-line px-4 py-2.5 text-[0.875rem] font-medium text-ink transition-colors duration-300 hover:border-accent/50 hover:bg-white/[0.04] md:inline-flex"
  >
  Résumé
  <ArrowUpRight
@@ -151,7 +151,7 @@ export function SiteHeader() {
  >
  <button
  type="button"
- className="absolute inset-0 bg-void/88"
+ className="absolute inset-0 bg-black/60"
  onClick={() => setOpen(false)}
  aria-label="Close menu"
  tabIndex={-1}
@@ -192,7 +192,7 @@ export function SiteHeader() {
  <a
  href={profile.resume.href}
  download
- className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-void"
+ className="inline-flex items-center gap-2 rounded-full bg-accent-deep px-5 py-3 text-sm font-medium text-white"
  >
  Download Résumé
  </a>

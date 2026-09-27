@@ -38,7 +38,7 @@ export function Skills({ className = '' }: { className?: string }) {
  onClick={() => setActive(i)}
  className={`relative shrink-0 snap-start rounded-full border px-4 py-2.5 text-[0.8125rem] font-medium transition-colors duration-500 ${
  isActive
- ? 'border-line bg-white/[0.06] text-ink'
+ ? 'border-accent/25 bg-accent/10 text-ink'
  : 'border-line-soft text-ink-3 '
  }`}
  >
@@ -74,7 +74,7 @@ export function Skills({ className = '' }: { className?: string }) {
  {group.skills.map((skill) => (
  <li key={`${group.id}-${skill.key}-${skill.name}`} className="group relative">
  <div
- className="relative h-full overflow-hidden bg-raised px-6 py-7 transition-colors duration-500 group-hover:bg-[#2b2320]"
+ className="relative h-full overflow-hidden bg-raised px-6 py-7 transition-colors duration-500 group-hover:bg-base"
  style={{ ['--accent' as string]: getTechAccent(skill.key) }}
  >
  {/* brand-tinted wash on hover */}
@@ -88,7 +88,7 @@ export function Skills({ className = '' }: { className?: string }) {
  />
 
  <div className="relative flex items-start gap-4">
- <span className="grid size-11 shrink-0 place-items-center rounded-xl border border-line-soft bg-base text-ink-2 transition-[transform,color,border-color] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 group-hover:scale-105 group- group-hover:text-[var(--accent)]">
+ <span  className="grid size-11 shrink-0 place-items-center rounded-xl border border-line-soft bg-base text-ink-2 transition-[transform,color,border-color] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:text-[var(--accent)]">
  <TechIcon
  tech={skill.key}
  className="size-5 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-[-6deg] group-hover:scale-110"

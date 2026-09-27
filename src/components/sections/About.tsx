@@ -14,9 +14,8 @@ const focusAreas = [
 ]
 
 /**
- * The written introduction. There is deliberately no portrait here: the
- * homepage already carries it, and repeating the same photo in two sections
- * was one of the things that made the site read like a template.
+ * The written introduction stays focused on Moni's story; the homepage is
+ * where her illustrated avatar lives.
  */
 export function About({ className = '' }: { className?: string }) {
  return (
