@@ -7,7 +7,7 @@ import { Section } from '../ui/Section'
 const toneStyles: Record<Credential['tone'], string> = {
  elite: 'border-teal/40 text-teal bg-teal/10',
  silver: 'border-accent/40 text-accent bg-accent/10',
- completed: 'border-ink-4/50 text-ink-2 bg-white/[0.05]',
+ completed: 'border-ink-4/50 text-ink-2 bg-base',
  participation: 'border-violet/40 text-violet bg-violet/10',
 }
 
@@ -34,7 +34,7 @@ function CertificateCard({ cert, index }: { cert: Credential; index: number }) {
  <div className="relative flex aspect-[16/10] items-center justify-center overflow-hidden border-b border-line-soft bg-base">
  <div
  aria-hidden="true"
- className="absolute inset-0 bg-[radial-gradient(circle_at_50%_110%,rgba(226,138,124,0.16),transparent_64%)]"
+ className="absolute inset-0 bg-[radial-gradient(circle_at_50%_110%,rgba(199,122,240,0.14),transparent_64%)]"
  />
  <div
  aria-hidden="true"

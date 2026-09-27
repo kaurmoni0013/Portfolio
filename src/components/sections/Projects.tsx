@@ -36,7 +36,7 @@ function SelectedCard({ project }: { project: Project }) {
  <div className="relative flex h-28 items-center justify-center overflow-hidden border-b border-line-soft bg-base">
  <div
  aria-hidden="true"
- className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(226,138,124,0.14),transparent_62%)]"
+ className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(199,122,240,0.14),transparent_62%)]"
  />
  <span className="relative text-[0.8125rem] text-ink-4">{project.year}</span>
  </div>

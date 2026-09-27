@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 720" fill="none">
+  <defs>
+    <linearGradient id="scene" x1="56" x2="590" y1="16" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#291a39"/>
+      <stop offset=".56" stop-color="#1d142b"/>
+      <stop offset="1" stop-color="#302036"/>
+    </linearGradient>
+    <linearGradient id="top" x1="203" x2="463" y1="450" y2="724" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ba78c8"/>
+      <stop offset="1" stop-color="#8256a0"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="246" x2="452" y1="165" y2="492" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#39263F"/>
+      <stop offset="1" stop-color="#211A2D"/>
+    </linearGradient>
+    <linearGradient id="laptop" x1="143" x2="510" y1="570" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDFE"/>
+      <stop offset="1" stop-color="#E9DDEE"/>
+    </linearGradient>
+    <clipPath id="frame">
+      <rect width="640" height="720" rx="36"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <path fill="url(#scene)" d="M0 0h640v720H0z"/>
+    <circle cx="511" cy="150" r="87" fill="#49345c"/>
+    <circle cx="122" cy="528" r="115" fill="#583547" opacity=".46"/>
+    <path d="M64 145c30-27 60-27 90 0m397 334c27-24 53-24 80 0" stroke="#fff" stroke-linecap="round" stroke-width="3" opacity=".8"/>
+    <path d="m128 250 6 17 17 6-17 6-6 17-6-17-17-6 17-6 6-17Zm403 51 5 13 13 5-13 5-5 13-5-13-13-5 13-5 5-13Z" fill="#C79656" opacity=".82"/>
+    <circle cx="523" cy="402" r="5" fill="#A85F8A"/>
+    <circle cx="106" cy="346" r="4" fill="#A85F8A"/>
+    <ellipse cx="330" cy="695" fill="#100b19" rx="196" ry="27" opacity=".6"/>
+
+    <!-- Hair silhouette and soft waves -->
+    <path fill="url(#hair)" d="M208 287c-17-81 4-164 75-199 44-22 112-20 154 9 49 34 63 96 47 160l-7 49c24 27 33 76 17 119-12 33-34 50-54 50H229c-31 0-54-30-60-65-7-40 8-84 39-109Z"/>
+    <path d="M215 292c-19 50-14 105 8 152m218-151c23 53 23 99 1 153m-245-89c-5 29 0 55 12 76m262-62c2 29-4 51-15 68" stroke="#60436B" stroke-linecap="round" stroke-width="17" opacity=".7"/>
+
+    <!-- Neck, face and hair framing -->
+    <path fill="#D79778" d="M290 398h92v94c0 26-20 47-46 47s-46-21-46-47v-94Z"/>
+    <path fill="#E8B395" d="M254 270c0-84 32-132 93-132 70 0 104 51 104 137v69c0 73-47 123-103 123-56 0-94-52-94-121v-76Z"/>
+    <path fill="#F4C5A7" d="M270 324c8 80 45 125 89 125 23 0 44-12 60-33-16 38-48 62-83 62-56 0-94-52-94-121v-33h28Z" opacity=".7"/>
+    <path fill="#E8B395" d="M251 327c-19-17-36-3-31 23 4 22 17 37 34 37l-3-60Zm201 0c19-17 36-3 31 23-4 22-17 37-34 37l3-60Z"/>
+    <path fill="#39263F" d="M244 286c-4-83 18-143 78-168 48-20 113-7 143 38 24 36 30 84 21 138-15-12-27-35-31-60-33 27-93 42-154 37-16-1-31-4-45-9-2 14-6 24-12 34Z"/>
+    <path d="M248 282c7-25 9-46 8-67m34-73c18-17 38-26 62-29m90 33c20 19 31 44 36 73" stroke="#65446A" stroke-linecap="round" stroke-width="11" opacity=".72"/>
+    <path d="M278 328c11-9 24-9 35-1m61 0c11-8 24-8 35 1" stroke="#513849" stroke-linecap="round" stroke-width="5"/>
+    <ellipse cx="296" cy="343" fill="#352739" rx="4" ry="6"/>
+    <ellipse cx="391" cy="343" fill="#352739" rx="4" ry="6"/>
+    <path d="M339 345c-2 13-6 24-11 30 5 4 12 5 19 2" stroke="#C27F6D" stroke-linecap="round" stroke-width="4"/>
+    <path d="M315 394c13 12 31 14 46 0" stroke="#9D5260" stroke-linecap="round" stroke-width="5"/>
+    <path d="M283 366c8 5 18 5 26 1m73 0c8 4 18 4 26-1" stroke="#D98583" stroke-linecap="round" stroke-width="9" opacity=".45"/>
+
+    <!-- Simple earrings and a modern lilac outfit -->
+    <circle cx="229" cy="370" r="8" stroke="#C79656" stroke-width="4"/>
+    <circle cx="470" cy="370" r="8" stroke="#C79656" stroke-width="4"/>
+    <path fill="url(#top)" d="M290 466c-43 9-75 26-94 54-25 36-35 102-39 200h346c-4-98-14-164-39-200-19-28-51-45-94-54-9 27-25 42-40 42s-31-15-40-42Z"/>
+    <path d="M290 470c11 26 25 39 40 39s29-13 40-39m-112 67c26 20 51 29 72 29s46-9 72-29" stroke="#D7ACD7" stroke-linecap="round" stroke-width="5" opacity=".78"/>
+    <path d="M336 523h-12l-6 13 12 12 12-12-6-13Z" fill="#F3D9A8"/>
+    <circle cx="330" cy="536" r="3" fill="#A66C9D"/>
+
+    <!-- Laptop foreground -->
+    <path fill="url(#laptop)" d="M182 584c1-11 10-19 21-19h256c11 0 20 8 21 19l14 104H168l14-104Z"/>
+    <path fill="#b39ebd" d="M156 688h350l-14 20H170l-14-20Z"/>
+    <path d="M273 577h117" stroke="#b39ebd" stroke-linecap="round" stroke-width="5"/>
+    <circle cx="330" cy="596" r="4" fill="#a787eb"/>
+    <path d="M283 626h94m-94 18h65" stroke="#c1b2c9" stroke-linecap="round" stroke-width="5"/>
+    <path d="m394 640 10 10 18-22" stroke="#AD6E9A" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/>
+  </g>
+</svg>

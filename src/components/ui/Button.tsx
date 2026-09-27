@@ -33,9 +33,9 @@ const base =
  'group/btn relative inline-flex items-center justify-center gap-2.5 rounded-full text-[0.9375rem] font-medium whitespace-nowrap transition-[color,background-color,border-color,box-shadow,transform] duration-200 ease-out'
 
 const variants = {
- primary: 'bg-ink text-void px-6 py-3.5 hover:-translate-y-px hover:bg-white/90 active:translate-y-0',
- ghost: 'border border-line px-6 py-3.5 text-ink hover:bg-white/[0.04] hover:-translate-y-px active:translate-y-0',
- quiet: 'border border-line-soft px-5 py-2.5 text-ink-2 hover:-translate-y-px active:translate-y-0',
+ primary: 'bg-accent-deep text-white px-6 py-3.5 shadow-[0_8px_24px_rgba(145,68,191,0.22)] hover:-translate-y-px hover:bg-accent-deep/90 active:translate-y-0',
+ ghost: 'border border-line bg-white/[0.03] px-6 py-3.5 text-ink hover:border-accent/50 hover:bg-white/[0.06] hover:-translate-y-px active:translate-y-0',
+ quiet: 'border border-line-soft px-5 py-2.5 text-ink-2 hover:border-accent/40 hover:text-ink hover:-translate-y-px active:translate-y-0',
 } as const
 
 const isRemote = (href: string) => /^https?:/i.test(href)

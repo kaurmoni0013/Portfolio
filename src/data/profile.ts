@@ -1,13 +1,13 @@
 export const profile = {
   name: 'Moni Kaur',
   initials: 'MK',
-  role: 'Computer Science & Artificial Intelligence Undergraduate',
+  role: 'Frontend & Full-Stack Developer · CS & AI Undergraduate',
   location: 'Jaipur, Rajasthan, India',
   email: 'kaurmoni0013@gmail.com',
   tagline:
-    'Building full-stack applications and exploring modern backend systems.',
+    'Thoughtful code, joyful experiences, and a little bit of magic.',
   summary:
-    "I'm a B.Tech Computer Science & AI undergraduate, graduating in 2028. I work mostly in C++ and the MERN stack, and the part I enjoy most is the part of a web app that's hard to fake: concurrent writes, states that can't be reached illegally, authentication that fails closed, and cost control when a third-party API sits in the request path.",
+    "I'm a B.Tech Computer Science & AI undergraduate graduating in 2028, based in Jaipur. I build full-stack projects with a frontend-first eye for clear layouts and thoughtful details, using React, the MERN stack, and C++. I love making useful web experiences and learning how great products work behind the scenes.",
   resume: {
     label: 'Download Resume',
     href: 'Moni_Kaur_Resume.pdf',

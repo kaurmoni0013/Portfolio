@@ -1,17 +1,5 @@
 /* Fonts are self-hosted latin-only variable faces: no third-party request,
- no late stylesheet, and one file per family instead of one per weight.
-
- Fraunces is the only display face. It carries the optical-size axis, left
- unset on purpose so the browser derives opsz from the computed font-size —
- that is what gives a 100px heading hairline serifs while keeping a 14px
- subhead sturdy, out of a single file. */
-@font-face {
- font-family: 'Fraunces Variable';
- font-style: normal;
- font-display: swap;
- font-weight: 100 900;
- src: url('./assets/fonts/fraunces-latin-opsz-normal.woff2') format('woff2-variations');
-}
+ no late stylesheet, and one file per family instead of one per weight. */
 @font-face {
  font-family: 'Inter Variable';
  font-style: normal;
@@ -34,36 +22,32 @@
  * ------------------------------------------------------------------ */
 @theme {
  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
- --font-display: 'Fraunces Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+ --font-display: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', Consolas, monospace;
 
- /* Surfaces — a warm espresso-black. Lighter and warmer than a neutral
- near-black so panels read as raised paper rather than as holes. */
- --color-void: #15110f;
- --color-base: #1c1715;
- --color-raised: #241d1a;
- --color-line: #352c28;
- --color-line-soft: #2b2320;
+ /* Deep violet surfaces, with clear tonal steps between background and cards. */
+ --color-void: #0c0715;
+ --color-base: #130c20;
+ --color-raised: #1b1230;
+ --color-line: #39254e;
+ --color-line-soft: #281a3a;
 
- /* Ink — every step clears 4.5:1 on --color-raised, so even the dimmest
- body text passes WCAG AA. ink-5 is for non-text marks only. */
- --color-ink: #fbf6f3;
- --color-ink-2: #d3c7c2;
- --color-ink-3: #b3a6a2;
- --color-ink-4: #9a8c88;
- --color-ink-5: #5f524f;
+ /* Bright, readable type on the dark background. */
+ --color-ink: #f7f2fc;
+ --color-ink-2: #ded4e8;
+ --color-ink-3: #bcaecb;
+ --color-ink-4: #a99ab7;
+ --color-ink-5: #786987;
 
- /* Accent — a muted rose, used sparingly. Champagne is reserved for the
- signature flourish; teal stays a cool counterweight in tech tags so the
- two never compete. */
- --color-accent: #e28a7c;
- --color-accent-soft: #f0ac9e;
- --color-accent-deep: #c2665a;
- --color-champagne: #d9b87c;
- --color-teal: #6fc2b4;
- --color-violet: #a99ae0;
+ /* Violet is the signature accent, with restrained warm and cool details. */
+ --color-accent: #c77af0;
+ --color-accent-soft: #d99afa;
+ --color-accent-deep: #9144bf;
+ --color-champagne: #e0bb8a;
+ --color-teal: #78c7b5;
+ --color-violet: #a787eb;
 
- --radius-card: 1.25rem;
+ --radius-card: 1rem;
 
  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -99,6 +83,7 @@
  font-size: 112.5%;
  -webkit-text-size-adjust: 100%;
  scroll-padding-top: calc(var(--nav-h) + 1.5rem);
+ scroll-behavior: smooth;
  background-color: var(--color-void);
  }
 
@@ -121,10 +106,8 @@
  h3,
  h4 {
  font-family: var(--font-display);
- font-weight: 500;
- /* Serifs need far less negative tracking than a geometric sans does;
- over-tightening them collides the serifs together at display sizes. */
- letter-spacing: -0.015em;
+ font-weight: 600;
+ letter-spacing: -0.035em;
  line-height: 1.08;
  font-optical-sizing: auto;
  text-wrap: balance;
@@ -177,7 +160,7 @@
  @supports (scrollbar-width: thin) {
  html {
  scrollbar-width: thin;
- scrollbar-color: #3a302c transparent;
+ scrollbar-color: #6b4c82 transparent;
  }
  }
 }
@@ -249,7 +232,7 @@
 }
 
 @utility text-gradient {
- background: linear-gradient(96deg, #fdf9f7 10%, #f3d3cb 46%, #e28a7c 74%, #d9b87c 100%);
+ background: linear-gradient(96deg, #c987ef 0%, #a966df 52%, #8b70e8 100%);
  background-clip: text;
  -webkit-background-clip: text;
  color: transparent;
@@ -261,23 +244,21 @@
  background: linear-gradient(90deg, transparent, var(--color-line) 12%, var(--color-line) 88%, transparent);
 }
 
-/* Display sizes are set for a serif: looser tracking, and a touch smaller at
- the top end than the previous geometric sans, because serif letterforms
- carry more apparent size at the same point size. */
+/* Display sizes use a confident sans hierarchy with tighter tracking. */
 @utility display-xl {
   font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.014em;
-  font-size: clamp(2rem, 3.6vw, 2.95rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.055em;
+  font-size: clamp(2.65rem, 5.5vw, 4.5rem);
 }
 
 @utility display-lg {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 650;
   line-height: 1.14;
-  letter-spacing: -0.012em;
-  font-size: clamp(1.7rem, 2.9vw, 2.5rem);
+  letter-spacing: -0.04em;
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
 }
 
 @utility display-md {
@@ -309,14 +290,13 @@
  * Components / effects
  * ------------------------------------------------------------------ */
 @layer components {
- /* Panel: the single surface treatment reused across the site. Hairline
- border plus a barely-there warm sheen — never heavy glass. */
+ /* Panel: a quiet lift from the page background. */
  .panel {
  position: relative;
  border: 1px solid var(--color-line);
  border-radius: var(--radius-card);
  background:
- linear-gradient(180deg, rgb(255 240 235 / 0.045), rgb(255 240 235 / 0) 46%),
+ linear-gradient(145deg, rgb(255 255 255 / 0.035), transparent 48%),
  var(--color-raised);
  }
 
@@ -331,7 +311,7 @@
 
  @media (hover: hover) and (pointer: fine) {
  .panel-hover:hover {
- border-color: #4a3d38;
+ border-color: #65447d;
  transform: translateY(-4px);
  }
  }
@@ -392,6 +372,19 @@
  }
 }
 
+.wave {
+ display: inline-block;
+ animation: wave 2s ease-in-out 0.6s 2;
+ transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+ 0%, 60%, 100% { transform: rotate(0); }
+ 10%, 30% { transform: rotate(13deg); }
+ 20% { transform: rotate(-8deg); }
+ 40% { transform: rotate(-4deg); }
+}
+
 /* ------------------------------------------------------------------ *
  * Reduced motion
  *
@@ -409,5 +402,8 @@
  animation-iteration-count: 1 !important;
  transition-duration: 0.001ms !important;
  scroll-behavior: auto !important;
+ }
+ .wave {
+ animation: none !important;
  }
 }
