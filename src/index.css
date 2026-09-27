@@ -1,29 +1,12 @@
-/* Fonts are self-hosted latin-only variable faces: no third-party request,
- no late stylesheet, and one file per family instead of one per weight. */
-@font-face {
- font-family: 'Inter Variable';
- font-style: normal;
- font-display: swap;
- font-weight: 100 900;
- src: url('./assets/fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
-}
-@font-face {
- font-family: 'JetBrains Mono Variable';
- font-style: normal;
- font-display: swap;
- font-weight: 100 900;
- src: url('./assets/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations');
-}
-
 @import 'tailwindcss';
 
 /* ------------------------------------------------------------------ *
  * Design tokens
  * ------------------------------------------------------------------ */
 @theme {
- --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
- --font-display: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
- --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+ --font-sans: 'PT Mono', ui-monospace, monospace;
+ --font-display: 'PT Mono', ui-monospace, monospace;
+ --font-mono: 'PT Mono', ui-monospace, monospace;
 
  /* Deep violet surfaces, with clear tonal steps between background and cards. */
  --color-void: #0c0715;
@@ -94,7 +77,6 @@
  font-family: var(--font-sans);
  font-size: 1rem;
  line-height: 1.65;
- font-synthesis-weight: none;
  -webkit-font-smoothing: antialiased;
  -moz-osx-font-smoothing: grayscale;
  text-rendering: optimizeLegibility;
@@ -107,7 +89,7 @@
  h4 {
  font-family: var(--font-display);
  font-weight: 600;
- letter-spacing: -0.035em;
+ letter-spacing: 0;
  line-height: 1.08;
  font-optical-sizing: auto;
  text-wrap: balance;
@@ -249,15 +231,15 @@
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.12;
-  letter-spacing: -0.055em;
-  font-size: clamp(2.65rem, 5.5vw, 4.5rem);
+  letter-spacing: 0;
+  font-size: clamp(2rem, 4vw, 3.25rem);
 }
 
 @utility display-lg {
   font-family: var(--font-display);
   font-weight: 650;
   line-height: 1.14;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   font-size: clamp(1.9rem, 3.4vw, 2.8rem);
 }
 
@@ -265,7 +247,7 @@
   font-family: var(--font-display);
   font-weight: 500;
   line-height: 1.2;
-  letter-spacing: -0.008em;
+  letter-spacing: 0;
   font-size: clamp(1.3rem, 1.9vw, 1.7rem);
 }
 
@@ -276,7 +258,7 @@
   font-family: var(--font-display);
   font-weight: 500;
   line-height: 1.32;
-  letter-spacing: -0.004em;
+  letter-spacing: 0;
   font-size: clamp(1.1rem, 1.35vw, 1.3rem);
 }
 
