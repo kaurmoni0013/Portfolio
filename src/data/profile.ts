@@ -1,0 +1,37 @@
+export const profile = {
+  name: 'Moni Kaur',
+  initials: 'MK',
+  role: 'Computer Science & Artificial Intelligence Undergraduate',
+  location: 'Jaipur, Rajasthan, India',
+  email: 'kaurmoni0013@gmail.com',
+  tagline:
+    'Building full-stack applications and exploring modern backend systems.',
+  summary:
+    "I'm a B.Tech Computer Science & AI undergraduate, graduating in 2028. I work mostly in C++ and the MERN stack, and the part I enjoy most is the part of a web app that's hard to fake: concurrent writes, states that can't be reached illegally, authentication that fails closed, and cost control when a third-party API sits in the request path.",
+  resume: {
+    label: 'Download Resume',
+    href: 'Moni_Kaur_Resume.pdf',
+    size: 'PDF · 92 KB',
+  },
+} as const
+
+export const socials = [
+  { id: 'github', label: 'GitHub', handle: 'kaurmoni0013', href: 'https://github.com/kaurmoni0013' },
+  { id: 'linkedin', label: 'LinkedIn', handle: 'in/kaurmoni0013', href: 'https://www.linkedin.com/in/kaurmoni0013' },
+  { id: 'leetcode', label: 'LeetCode', handle: 'u/kaurmoni0013', href: 'https://leetcode.com/u/kaurmoni0013' },
+  { id: 'gfg', label: 'GeeksforGeeks', handle: 'user/kaurmoni0013', href: 'https://www.geeksforgeeks.org/user/kaurmoni0013' },
+  { id: 'email', label: 'Email', handle: 'kaurmoni0013@gmail.com', href: 'mailto:kaurmoni0013@gmail.com' },
+] as const
+
+export const navSections = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'dsa', label: 'DSA' },
+  { id: 'journey', label: 'Journey' },
+  { id: 'certificates', label: 'Certificates' },
+  { id: 'contact', label: 'Contact' },
+] as const
+
+export type NavSectionId = (typeof navSections)[number]['id']

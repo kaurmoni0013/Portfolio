@@ -1,0 +1,14 @@
+# Normalise line endings in the repository. Keeps diffs clean when the site is
+# developed on Windows and built on Linux, where CRLF/LF would otherwise show
+# up as whole-file changes.
+* text=auto eol=lf
+
+*.png binary
+*.webp binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
