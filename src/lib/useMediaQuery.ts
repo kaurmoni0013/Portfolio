@@ -19,8 +19,3 @@ export function useMediaQuery(query: string) {
 export function usePrefersReducedMotion() {
   return useMediaQuery('(prefers-reduced-motion: reduce)')
 }
-
-/** True only for precise pointers — gates the custom cursor. */
-export function useFinePointer() {
-  return useMediaQuery('(hover: hover) and (pointer: fine)')
-}

@@ -213,7 +213,6 @@ function RailQRShowcase() {
 function SelectedCard({ project }: { project: Project }) {
   const reduce = useReducedMotion()
   const size = IMAGE_SIZE[project.id] ?? RAILQR_SIZE
-  const live = project.links.some((l) => l.kind === 'live')
 
   return (
     <motion.article
@@ -222,7 +221,6 @@ function SelectedCard({ project }: { project: Project }) {
       viewport={{ once: true, margin: '-10% 0px' }}
       transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       className="group/card panel panel-hover relative flex flex-col overflow-hidden"
-      {...(live ? { 'data-cursor': 'project' } : {})}
     >
       {project.image ? (
         <div className="relative overflow-hidden border-b border-line-soft bg-base">

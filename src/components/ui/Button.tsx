@@ -1,6 +1,4 @@
-import { useRef, type ReactNode } from 'react'
-import { motion, useReducedMotion } from 'framer-motion'
-import { useFinePointer } from '../../lib/useMediaQuery'
+import type { ReactNode } from 'react'
 
 type Common = {
   children: ReactNode
@@ -31,20 +29,21 @@ type ButtonAsButton = Common & {
 type Props = ButtonAsLink | ButtonAsButton
 
 const base =
-  'group/btn relative inline-flex items-center justify-center gap-2.5 rounded-full text-[0.9375rem] font-medium whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]'
+  'group/btn relative inline-flex items-center justify-center gap-2.5 rounded-full text-[0.9375rem] font-medium whitespace-nowrap transition-[color,background-color,border-color,box-shadow,transform] duration-200 ease-out'
 
 const variants = {
-  primary: 'bg-ink text-void px-6 py-3.5 hover:bg-white shadow-[0_10px_30px_-12px_rgba(255,255,255,0.35)]',
-  ghost: 'border border-line px-6 py-3.5 text-ink hover:border-ink-3 hover:bg-white/[0.04]',
-  quiet: 'border border-line-soft px-5 py-2.5 text-ink-2 hover:text-ink hover:border-line',
+  primary: 'bg-ink text-void px-6 py-3.5 hover:bg-white hover:-translate-y-px active:translate-y-0 shadow-[0_10px_30px_-12px_rgba(255,255,255,0.35)]',
+  ghost: 'border border-line px-6 py-3.5 text-ink hover:border-ink-3 hover:bg-white/[0.04] hover:-translate-y-px active:translate-y-0',
+  quiet: 'border border-line-soft px-5 py-2.5 text-ink-2 hover:text-ink hover:border-line hover:-translate-y-px active:translate-y-0',
 } as const
 
 const isRemote = (href: string) => /^https?:/i.test(href)
 
 /**
- * Buttons with a restrained magnetic pull on precise pointers. The offset
- * is capped at a few pixels so the interaction reads as responsiveness
- * rather than as a toy.
+ * Plain anchors and buttons. Hover is a one-pixel lift and a colour change,
+ * both driven by CSS transitions — there is no pointer tracking here, because
+ * measuring the element on every `pointermove` is the kind of cost that shows
+ * up as lag on a laptop.
  */
 export function Button({
   children,
@@ -59,45 +58,23 @@ export function Button({
   ariaLabel,
   type = 'button',
 }: Props) {
-  const fine = useFinePointer()
-  const reduce = useReducedMotion()
-  const ref = useRef<HTMLElement>(null)
-
-  const magnetic = (e: React.PointerEvent) => {
-    if (!fine || reduce) return
-    const el = ref.current
-    if (!el) return
-    const r = el.getBoundingClientRect()
-    const dx = (e.clientX - (r.left + r.width / 2)) / r.width
-    const dy = (e.clientY - (r.top + r.height / 2)) / r.height
-    el.style.transform = `translate3d(${dx * 8}px, ${dy * 5}px, 0)`
-  }
-
-  const release = () => {
-    const el = ref.current
-    if (el) el.style.transform = 'translate3d(0,0,0)'
-  }
-
   const classes = `${base} ${variants[variant]} ${className}`
 
   const inner = (
     <>
       {icon ? (
-        <span className="shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:-translate-x-0.5">
+        <span className="shrink-0 transition-transform duration-200 ease-out group-hover/btn:-translate-x-0.5">
           {icon}
         </span>
       ) : null}
       <span>{children}</span>
       {iconEnd ? (
-        <span className="shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-x-0.5">
+        <span className="shrink-0 transition-transform duration-200 ease-out group-hover/btn:translate-x-0.5">
           {iconEnd}
         </span>
       ) : null}
     </>
   )
-
-  const spring = { type: 'spring' as const, stiffness: 260, damping: 22, mass: 0.4 }
-  const pointer = { onPointerMove: magnetic, onPointerLeave: release, onBlur: release }
 
   if (href !== undefined) {
     const remote = isRemote(href)
@@ -105,35 +82,27 @@ export function Button({
     const willDownload = download ?? !remote
 
     return (
-      <motion.a
-        ref={ref as React.Ref<HTMLAnchorElement>}
+      <a
         href={href}
         className={classes}
-        transition={spring}
         {...(openNew ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         {...(willDownload ? { download: '' } : {})}
         {...(onClick ? { onClick } : {})}
         {...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
-        data-cursor="link"
-        {...pointer}
       >
         {inner}
-      </motion.a>
+      </a>
     )
   }
 
   return (
-    <motion.button
-      ref={ref as React.Ref<HTMLButtonElement>}
+    <button
       type={type}
       onClick={onClick}
       className={classes}
-      transition={spring}
       {...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
-      data-cursor="link"
-      {...pointer}
     >
       {inner}
-    </motion.button>
+    </button>
   )
 }

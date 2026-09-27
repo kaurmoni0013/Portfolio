@@ -1,4 +1,4 @@
-﻿import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { atAGlance } from '../../data/journey'
 import { profile, socials } from '../../data/profile'
 import { Reveal } from '../ui/Reveal'
@@ -116,7 +116,6 @@ export function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="tap link-wipe font-mono text-[0.6875rem] tracking-[0.16em] text-ink-3 uppercase transition-colors duration-400 hover:text-ink"
-                  data-cursor="link"
                 >
                   {s.label}
                   <ArrowUpRight className="ml-1 inline size-3 align-[-1px]" strokeWidth={1.8} />

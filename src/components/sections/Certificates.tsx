@@ -1,4 +1,4 @@
-﻿import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, FileText } from 'lucide-react'
 import { certificates, type Credential } from '../../data/certificates'
 import { Reveal } from '../ui/Reveal'
@@ -26,7 +26,6 @@ function CertificateCard({ cert, index }: { cert: Credential; index: number }) {
         href={cert.file}
         target="_blank"
         rel="noopener noreferrer"
-        data-cursor="link"
         className="block h-full focus-visible:outline-offset-4"
         aria-label={`View certificate: ${cert.issuer} — ${cert.title}`}
       >
@@ -58,7 +57,7 @@ function CertificateCard({ cert, index }: { cert: Credential; index: number }) {
 
             {cert.credential ? (
               <span
-                className={`absolute top-3.5 right-3.5 rounded-full border px-2.5 py-1 font-mono text-[0.5625rem] tracking-[0.16em] uppercase backdrop-blur-sm ${toneStyles[cert.tone]}`}
+                className={`absolute top-3.5 right-3.5 rounded-full border px-2.5 py-1 font-mono text-[0.5625rem] tracking-[0.16em] uppercase ${toneStyles[cert.tone]}`}
               >
                 {cert.credential}
               </span>

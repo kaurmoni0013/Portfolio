@@ -37,7 +37,6 @@ export function Skills() {
                 aria-selected={isActive}
                 aria-controls={`panel-${g.id}`}
                 onClick={() => setActive(i)}
-                data-cursor="link"
                 className={`relative shrink-0 snap-start rounded-full border px-4 py-2.5 text-[0.8125rem] font-medium transition-colors duration-500 ${
                   isActive
                     ? 'border-line bg-white/[0.06] text-ink'

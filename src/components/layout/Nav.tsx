@@ -21,7 +21,6 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
       }}
       className="group flex items-center gap-3"
       aria-label={`${profile.name} — back to top`}
-      data-cursor="link"
     >
       <span className="relative grid size-9 place-items-center overflow-hidden rounded-xl border border-line bg-raised">
         <span className="font-display text-[0.8125rem] font-700 tracking-tight text-ink">MK</span>
@@ -36,7 +35,7 @@ function Wordmark({ onClick }: { onClick?: () => void }) {
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
-  const [progress, setProgress] = useState(0)
+  const progressRef = useRef<HTMLDivElement>(null)
   const [open, setOpen] = useState(false)
   const active = useScrollSpy(sectionIds)
   const reduce = useReducedMotion()
@@ -50,7 +49,11 @@ export function Nav() {
       const y = window.scrollY
       setScrolled(y > 24)
       const max = document.documentElement.scrollHeight - window.innerHeight
-      setProgress(max > 0 ? Math.min(1, y / max) : 0)
+      // Written straight to the node. Going through state here would re-render
+      // the whole nav on every scroll frame just to move a one-pixel bar.
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`
+      }
     }
     const onScroll = () => {
       if (raf) return
@@ -94,9 +97,11 @@ export function Nav() {
         className="fixed inset-x-0 top-0 z-50"
       >
         <div
-          className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`transition-colors duration-300 ${
             scrolled || open
-              ? 'border-b border-line-soft bg-void/72 backdrop-blur-xl backdrop-saturate-150'
+              ? // A solid fill rather than backdrop-blur: a full-width blur
+                // would re-sample everything behind it on every scroll frame.
+                'border-b border-line-soft bg-void/92'
               : 'border-b border-transparent bg-transparent'
           }`}
         >
@@ -119,7 +124,6 @@ export function Nav() {
                         className={`relative block rounded-full px-3.5 py-2 text-[0.8125rem] font-medium transition-colors duration-400 ${
                           isActive ? 'text-ink' : 'text-ink-3 hover:text-ink'
                         }`}
-                        data-cursor="link"
                       >
                         {isActive ? (
                           <motion.span
@@ -143,7 +147,6 @@ export function Nav() {
                 rel="noopener noreferrer"
                 className="hidden size-9 place-items-center rounded-full border border-line text-ink-2 transition-colors duration-400 hover:border-ink-3 hover:text-ink sm:grid"
                 aria-label="GitHub profile"
-                data-cursor="link"
               >
                 <SocialIcon id="github" className="size-4" />
               </a>
@@ -153,7 +156,6 @@ export function Nav() {
                 rel="noopener noreferrer"
                 className="hidden size-9 place-items-center rounded-full border border-line text-ink-2 transition-colors duration-400 hover:border-ink-3 hover:text-ink sm:grid"
                 aria-label="LinkedIn profile"
-                data-cursor="link"
               >
                 <SocialIcon id="linkedin" className="size-4" />
               </a>
@@ -162,7 +164,6 @@ export function Nav() {
                 href={`${profile.resume.href}`}
                 download
                 className="group hidden items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-[0.8125rem] font-medium text-void transition-colors duration-500 hover:bg-white md:inline-flex"
-                data-cursor="link"
               >
                 Résumé
                 <ArrowUpRight
@@ -178,7 +179,6 @@ export function Nav() {
                 aria-expanded={open}
                 aria-controls="mobile-menu"
                 aria-label={open ? 'Close menu' : 'Open menu'}
-                data-cursor="link"
               >
                 {open ? <X className="size-4.5" strokeWidth={1.7} /> : <Menu className="size-4.5" strokeWidth={1.7} />}
               </button>
@@ -187,9 +187,10 @@ export function Nav() {
 
           {/* reading progress */}
           <div
+            ref={progressRef}
             aria-hidden="true"
             className="h-px origin-left bg-gradient-to-r from-accent via-violet to-teal"
-            style={{ transform: `scaleX(${progress})` }}
+            style={{ transform: 'scaleX(0)' }}
           />
         </div>
       </motion.header>
@@ -206,7 +207,7 @@ export function Nav() {
           >
             <button
               type="button"
-              className="absolute inset-0 bg-void/80 backdrop-blur-md"
+              className="absolute inset-0 bg-void/88"
               onClick={() => setOpen(false)}
               aria-label="Close menu"
               tabIndex={-1}
@@ -222,7 +223,7 @@ export function Nav() {
               animate={{ y: 0, opacity: 1 }}
               exit={reduce ? { opacity: 0 } : { y: -12, opacity: 0 }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-x-0 top-[var(--nav-h)] border-b border-line-soft bg-base/95 px-[var(--gutter)] pt-6 pb-10 backdrop-blur-xl"
+              className="absolute inset-x-0 top-[var(--nav-h)] border-b border-line-soft bg-base px-[var(--gutter)] pt-6 pb-10"
             >
               <ul className="divide-y divide-[var(--color-line-soft)]">
                 {navSections.map((s, i) => (
@@ -234,7 +235,6 @@ export function Nav() {
                         go(s.id)
                       }}
                       className="flex items-center justify-between py-3.5"
-                      data-cursor="link"
                     >
                       <span
                         className={`font-display text-xl font-600 tracking-tight ${

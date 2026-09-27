@@ -11,21 +11,21 @@ type RevealProps = {
 }
 
 /**
- * The single scroll-reveal primitive used site-wide. Motion is transform +
- * opacity only, and collapses to a plain fade when the visitor has asked
- * for reduced motion.
+ * The single scroll-reveal primitive used site-wide: a short lift and fade on
+ * first entry, then it stops. Transform and opacity only — both are
+ * compositor-friendly, so a reveal never triggers a layout or paint pass.
+ * Collapses to a plain fade under reduced motion.
  */
-export function Reveal({ children, className, delay = 0, y = 22, as = 'div', once = true }: RevealProps) {
+export function Reveal({ children, className, delay = 0, y = 20, as = 'div', once = true }: RevealProps) {
   const reduce = useReducedMotion()
   const Comp = motion[as]
 
   const variants: Variants = {
-    hidden: { opacity: 0, y: reduce ? 0 : y, filter: reduce ? 'none' : 'blur(6px)' },
+    hidden: { opacity: 0, y: reduce ? 0 : y },
     show: {
       opacity: 1,
       y: 0,
-      filter: 'blur(0px)',
-      transition: { duration: reduce ? 0.2 : 0.85, delay: reduce ? 0 : delay, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: reduce ? 0.15 : 0.5, delay: reduce ? 0 : delay, ease: [0.16, 1, 0.3, 1] },
     },
   }
 

@@ -16,7 +16,6 @@ export function ProjectLinks({ links, size = 'md' }: { links: ProjectLink[]; siz
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            data-cursor="link"
             className={`group inline-flex items-center gap-2 rounded-full border font-medium transition-colors duration-500 ${
               isLive
                 ? 'border-transparent bg-ink text-void hover:bg-white'

@@ -1,22 +1,11 @@
-import { useEffect } from 'react'
-import { onPointerMove } from '../../lib/pointer'
-
 /**
- * The page atmosphere: a fine grid, two slow-drifting colour fields, a
- * mouse-following light and a film-grain overlay. All of it is painted with
- * transforms and gradients so it stays on the compositor, and it all sits
- * behind the content with pointer events disabled.
+ * The page atmosphere. Deliberately still: a near-black base, two fixed
+ * colour fields, a fine grid, a vignette and a little film grain. Nothing
+ * here animates, so it costs the compositor nothing and never competes with
+ * the content. All layers are static and sit behind everything with pointer
+ * events disabled.
  */
 export function Backdrop() {
-  useEffect(
-    () =>
-      onPointerMove(({ x, y }) => {
-        document.documentElement.style.setProperty('--pointer-x', `${x}px`)
-        document.documentElement.style.setProperty('--pointer-y', `${y}px`)
-      }),
-    [],
-  )
-
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       <div className="absolute inset-0 bg-void" />
@@ -33,27 +22,12 @@ export function Backdrop() {
         }}
       />
 
-      {/* colour fields — blue dominant, teal as a counterweight */}
-      <div className="animate-drift absolute -top-[22rem] -left-[14rem] size-[46rem] rounded-full bg-[radial-gradient(circle,rgba(91,140,255,0.20),transparent_66%)] blur-[26px]" />
-      <div
-        className="animate-drift absolute -top-[10rem] right-[-16rem] size-[40rem] rounded-full bg-[radial-gradient(circle,rgba(47,212,180,0.11),transparent_68%)] blur-[30px]"
-        style={{ animationDelay: '-9s' }}
-      />
-      <div
-        className="animate-drift absolute top-[52%] left-[38%] size-[52rem] rounded-full bg-[radial-gradient(circle,rgba(127,116,240,0.075),transparent_70%)] blur-[36px]"
-        style={{ animationDelay: '-17s' }}
-      />
-
-      {/* mouse-following light */}
-      <div
-        className="absolute -left-[22rem] -top-[22rem] size-[44rem] rounded-full opacity-70 mix-blend-screen"
-        style={{
-          background:
-            'radial-gradient(circle, rgba(120,160,255,0.10) 0%, rgba(120,160,255,0.04) 38%, transparent 66%)',
-          transform: 'translate3d(calc(var(--pointer-x) - 50%), calc(var(--pointer-y) - 50%), 0)',
-          transition: 'transform 220ms cubic-bezier(0.16,1,0.3,1)',
-        }}
-      />
+      {/* Fixed colour fields — blue dominant, teal as a counterweight.
+          The radial gradients already fall off to transparent, so they need no
+          CSS blur; dropping it removes a very large blurred surface that the
+          browser would otherwise re-rasterise while the page scrolls. */}
+      <div className="absolute -top-[-22rem] -left-[-14rem] size-[46rem] rounded-full bg-[radial-gradient(circle,rgba(91,140,255,0.16),transparent_66%)]" />
+      <div className="absolute -top-[-10rem] right-[-16rem] size-[40rem] rounded-full bg-[radial-gradient(circle,rgba(47,212,180,0.08),transparent_68%)]" />
 
       {/* vignette */}
       <div
@@ -64,9 +38,10 @@ export function Backdrop() {
         }}
       />
 
-      {/* film grain */}
+      {/* film grain — plain alpha rather than a blend mode, which would force
+          the whole fixed stack to re-composite on every frame */}
       <div
-        className="absolute inset-0 opacity-[0.15] mix-blend-overlay"
+        className="absolute inset-0 opacity-[0.035]"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",

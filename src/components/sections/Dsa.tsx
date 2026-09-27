@@ -100,7 +100,6 @@ export function Dsa() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    data-cursor="link"
                     className="group inline-flex items-center gap-2 text-[0.8125rem] text-ink-2 transition-colors duration-400 hover:text-ink"
                   >
                     <span className="link-wipe">{link.label}</span>

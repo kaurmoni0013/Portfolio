@@ -29,7 +29,6 @@ export function Footer() {
                       e.preventDefault()
                       scrollToId(s.id)
                     }}
-                    data-cursor="link"
                     className="tap link-wipe font-mono text-[0.625rem] tracking-[0.18em] text-ink-3 uppercase transition-colors duration-400 hover:text-ink"
                   >
                     {s.label}
@@ -52,7 +51,6 @@ export function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-cursor="link"
                   className="tap font-mono text-[0.625rem] tracking-[0.16em] text-ink-3 uppercase transition-colors duration-400 hover:text-ink"
                 >
                   {s.label}
@@ -64,7 +62,6 @@ export function Footer() {
           <button
             type="button"
             onClick={() => scrollToId('home')}
-            data-cursor="link"
             className="tap group inline-flex items-center gap-2 self-start font-mono text-[0.625rem] tracking-[0.18em] text-ink-3 uppercase transition-colors duration-400 hover:text-ink sm:self-auto"
           >
             Back to top

@@ -1,4 +1,4 @@
-﻿/* Fonts are self-hosted latin-only variable faces: no third-party request,
+/* Fonts are self-hosted latin-only variable faces: no third-party request,
    no late stylesheet, and one file per family instead of one per weight. */
 @font-face {
   font-family: 'Inter Variable';
@@ -97,14 +97,6 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: clip;
-  }
-
-  /* The custom cursor replaces the native one on precise pointers only. */
-  @media (hover: hover) and (pointer: fine) {
-    body[data-custom-cursor='on'],
-    body[data-custom-cursor='on'] * {
-      cursor: none !important;
-    }
   }
 
   h1,
@@ -255,15 +247,20 @@
       var(--color-raised);
   }
 
+  /* A card lifts four pixels on a precise pointer and does nothing on touch,
+     where there is no hover and a transform would only cost a repaint. */
   .panel-hover {
     transition:
-      border-color 0.5s var(--ease-out-expo),
-      transform 0.5s var(--ease-out-expo),
-      background-color 0.5s var(--ease-out-expo);
+      border-color 0.25s var(--ease-out-expo),
+      transform 0.25s var(--ease-out-expo),
+      background-color 0.25s var(--ease-out-expo);
   }
 
-  .panel-hover:hover {
-    border-color: #2b3342;
+  @media (hover: hover) and (pointer: fine) {
+    .panel-hover:hover {
+      border-color: #2b3342;
+      transform: translateY(-4px);
+    }
   }
 
   /* Mono label used for metadata, indices, tags. */
@@ -305,7 +302,7 @@
     background: currentColor;
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 0.45s var(--ease-out-expo);
+    transition: transform 0.25s var(--ease-out-expo);
   }
   .link-wipe:hover::after,
   .link-wipe:focus-visible::after {
@@ -332,95 +329,10 @@
 }
 
 /* ------------------------------------------------------------------ *
- *  Keyframes — transform/opacity only
- * ------------------------------------------------------------------ */
-@keyframes mk-marquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-@keyframes mk-drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(2%, -3%, 0) scale(1.08);
-  }
-}
-
-@keyframes mk-spin-slow {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes mk-spin-reverse {
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-@keyframes mk-pulse-dot {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.35);
-  }
-}
-
-@keyframes mk-caret {
-  0%,
-  45% {
-    opacity: 1;
-  }
-  55%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes mk-sweep {
-  0% {
-    transform: translate3d(-120%, 0, 0);
-  }
-  100% {
-    transform: translate3d(220%, 0, 0);
-  }
-}
-
-.animate-marquee {
-  animation: mk-marquee var(--mk-marquee-duration, 46s) linear infinite;
-}
-.animate-drift {
-  animation: mk-drift 26s ease-in-out infinite;
-}
-.animate-spin-slow {
-  animation: mk-spin-slow 44s linear infinite;
-}
-.animate-spin-reverse {
-  animation: mk-spin-reverse 44s linear infinite;
-}
-.animate-pulse-dot {
-  animation: mk-pulse-dot 2.4s ease-in-out infinite;
-}
-.animate-caret {
-  animation: mk-caret 1.05s steps(1, end) infinite;
-}
-.animate-sweep {
-  animation: mk-sweep 2.6s var(--ease-out-expo) infinite;
-}
-
-/* ------------------------------------------------------------------ *
  *  Reduced motion
+ *
+ *  The site has no continuous motion left, so this is mostly a guarantee:
+ *  any transition or animation that does appear is cut to a cross-fade.
  * ------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
   html {

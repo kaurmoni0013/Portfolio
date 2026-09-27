@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from 'framer-motion'
 import { Check } from 'lucide-react'
 
 const STEPS = [
@@ -29,14 +28,10 @@ const STEPS = [
 ]
 
 /**
- * The MediQueue appointment lifecycle. Each step is filled in sequence as
- * the block enters the viewport, so the rule reads left to right the way the
- * service layer enforces it. `CANCELLED` sits off the main line because it
- * branches from Scheduled and Waiting.
+ * The MediQueue appointment lifecycle, drawn as a plain diagram. Every state
+ * and rule is legible without JavaScript and nothing moves once rendered.
  */
 export function StateMachine() {
-  const reduce = useReducedMotion()
-
   return (
     <div className="relative">
       <div className="grid gap-0 sm:grid-cols-2 lg:grid-cols-4">
@@ -46,44 +41,18 @@ export function StateMachine() {
             {i < STEPS.length - 1 ? (
               <span
                 aria-hidden="true"
-                className="absolute top-7 left-[0.9375rem] hidden h-px w-[calc(100%-0.5rem)] origin-left bg-line lg:block"
-              >
-                <motion.span
-                  className="block h-px w-full origin-left bg-gradient-to-r from-accent/70 to-teal/50"
-                  initial={reduce ? { scaleX: 1 } : { scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true, margin: '-15% 0px' }}
-                  transition={{ duration: 0.6, delay: 0.35 + i * 0.22, ease: [0.16, 1, 0.3, 1] }}
-                />
-              </span>
+                className="absolute top-7 left-[0.9375rem] hidden h-px w-[calc(100%-0.5rem)] bg-line lg:block"
+              />
             ) : null}
 
-            <div className="relative shrink-0">
-              <motion.span
-                className="grid size-8 place-items-center rounded-full border border-line bg-raised font-mono text-[0.625rem] text-ink-3"
-                initial={reduce ? false : { opacity: 0.4, scale: 0.85 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: '-15% 0px' }}
-                transition={{ duration: 0.5, delay: i * 0.16, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <motion.span
-                  className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(91,140,255,0.35),transparent_70%)]"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 + i * 0.16 }}
-                />
-                {i + 1}
-              </motion.span>
-            </div>
-
-            <motion.div
-              className="min-w-0 pb-2 lg:pr-6"
-              initial={reduce ? false : { opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15% 0px' }}
-              transition={{ duration: 0.6, delay: 0.1 + i * 0.16, ease: [0.16, 1, 0.3, 1] }}
+            <span
+              aria-hidden="true"
+              className="relative grid size-8 shrink-0 place-items-center rounded-full border border-line bg-raised font-mono text-[0.625rem] text-ink-3"
             >
+              {i + 1}
+            </span>
+
+            <div className="min-w-0 pb-2 lg:pr-6">
               <div className="flex flex-wrap items-center gap-2">
                 <h4 className="font-mono text-[0.75rem] font-500 tracking-[0.06em] text-ink uppercase">
                   {step.label}
@@ -93,7 +62,7 @@ export function StateMachine() {
                 </span>
               </div>
               <p className="mt-2 text-[0.8125rem] leading-relaxed text-ink-3">{step.note}</p>
-            </motion.div>
+            </div>
           </div>
         ))}
       </div>
@@ -101,7 +70,8 @@ export function StateMachine() {
       <div className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-line-soft pt-5">
         <span className="inline-flex items-center gap-2 font-mono text-[0.625rem] tracking-[0.14em] text-ink-4 uppercase">
           <span className="size-1.5 rounded-full bg-ink-4" aria-hidden="true" />
-          Branch: Cancelled — requires a reason, patient from Scheduled, staff from Scheduled or Waiting
+          Branch: Cancelled — requires a reason, patient from Scheduled, staff from Scheduled or
+          Waiting
         </span>
         <span className="inline-flex items-center gap-2 font-mono text-[0.625rem] tracking-[0.14em] text-ink-4 uppercase">
           <Check className="size-3 text-teal" strokeWidth={2} aria-hidden="true" />

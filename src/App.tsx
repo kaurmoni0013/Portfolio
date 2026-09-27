@@ -1,23 +1,17 @@
-import { useCallback, useState } from 'react'
 import { Backdrop } from './components/layout/Backdrop'
-import { CustomCursor } from './components/layout/CustomCursor'
 import { Footer } from './components/layout/Footer'
 import { Nav } from './components/layout/Nav'
-import { Preloader } from './components/layout/Preloader'
 import { About } from './components/sections/About'
 import { Certificates } from './components/sections/Certificates'
 import { Contact } from './components/sections/Contact'
 import { Dsa } from './components/sections/Dsa'
 import { Hero } from './components/sections/Hero'
 import { Journey } from './components/sections/Journey'
-import { MarqueeStrip } from './components/sections/MarqueeStrip'
+import { StackBand } from './components/sections/StackBand'
 import { Projects } from './components/sections/Projects'
 import { Skills } from './components/sections/Skills'
 
 export default function App() {
-  const [ready, setReady] = useState(false)
-  const onDone = useCallback(() => setReady(true), [])
-
   return (
     <>
       <a
@@ -28,15 +22,12 @@ export default function App() {
       </a>
 
       <Backdrop />
-      <CustomCursor />
-
-      <Preloader onDone={onDone} />
 
       <Nav />
 
-      <main id="main" style={{ opacity: ready ? 1 : undefined }} className="transition-opacity duration-700">
+      <main id="main">
         <Hero />
-        <MarqueeStrip />
+        <StackBand />
         <About />
         <Skills />
         <Projects />

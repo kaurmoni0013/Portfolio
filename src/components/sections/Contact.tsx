@@ -78,7 +78,6 @@ export function Contact() {
                 <a
                   href={link.href}
                   {...(link.download ? { download: '' } : { target: '_blank', rel: 'noopener noreferrer' })}
-                  data-cursor="link"
                   className="group flex items-center gap-5 border-b border-line-soft py-6 transition-colors duration-500 hover:bg-white/[0.02] sm:px-3"
                 >
                   <span className="text-ink-4 transition-colors duration-500 group-hover:text-accent">

@@ -1,15 +1,13 @@
-import { motion, useReducedMotion } from 'framer-motion'
 import { coursework, education, journey } from '../../data/journey'
 import { Reveal } from '../ui/Reveal'
 import { Section } from '../ui/Section'
 
 /**
- * The development journey as a single vertical spine. The line draws itself
- * as the block scrolls into view, and each node lights up in turn.
+ * The development journey as a single vertical spine. The line and its nodes
+ * are drawn as plain static marks, so the timeline reads the same with or
+ * without JavaScript.
  */
 export function Journey() {
-  const reduce = useReducedMotion()
-
   return (
     <Section
       id="journey"
@@ -27,31 +25,19 @@ export function Journey() {
             <span
               aria-hidden="true"
               className="absolute top-2 bottom-2 left-[0.3125rem] w-px bg-line-soft sm:left-[0.4375rem]"
-            >
-              <motion.span
-                className="block w-px origin-top bg-gradient-to-b from-accent via-violet to-teal"
-                initial={reduce ? { scaleY: 1 } : { scaleY: 0 }}
-                whileInView={{ scaleY: 1 }}
-                viewport={{ once: true, margin: '-10% 0px' }}
-                transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-              />
-            </span>
+            />
 
             <ol className="space-y-10">
               {journey.map((item, i) => (
                 <li key={item.id} className="relative">
-                  <motion.span
+                  <span
                     aria-hidden="true"
                     className="absolute top-1.5 -left-8 grid size-2.5 place-items-center rounded-full border border-line bg-base sm:-left-10"
-                    initial={reduce ? false : { scale: 0.4, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    viewport={{ once: true, margin: '-12% 0px' }}
-                    transition={{ duration: 0.5, delay: 0.2 + i * 0.09, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <span className="size-1 rounded-full bg-accent" />
-                  </motion.span>
+                  </span>
 
-                  <Reveal delay={i * 0.05}>
+                  <Reveal delay={i * 0.04}>
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
                       <span className="font-mono text-[0.625rem] tracking-[0.2em] text-accent-soft uppercase">
                         {item.period}
