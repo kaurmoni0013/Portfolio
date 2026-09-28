@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { ArrowUpRight, FileText, Folder, Home, Mail, Menu, User, X } from 'lucide-react'
+import { FileText, Folder, Home, Mail, Menu, User, X } from 'lucide-react'
 import { profile, routes, socials } from '../../data/profile'
 import { useLockBody } from '../../lib/useLockBody'
 import { useFocusTrap } from '../../lib/useFocusTrap'
@@ -127,18 +127,6 @@ export function SiteHeader() {
  <SocialIcon id="linkedin" className="size-4" />
  </a>
 
- <a
- href={profile.resume.href}
- download
- className="group hidden items-center gap-2 rounded-full border border-line px-4 py-2.5 text-[0.875rem] font-medium text-ink transition-colors duration-300 hover:border-accent/50 hover:bg-white/[0.04] md:inline-flex"
- >
- Résumé
- <ArrowUpRight
- className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
- strokeWidth={2}
- />
- </a>
-
  <button
  type="button"
  onClick={() => setOpen((v) => !v)}
@@ -206,13 +194,6 @@ export function SiteHeader() {
  </ul>
 
  <div className="mt-8 flex flex-wrap items-center gap-2.5">
- <a
- href={profile.resume.href}
- download
- className="inline-flex items-center gap-2 rounded-full bg-accent-deep px-5 py-3 text-sm font-medium text-white"
- >
- Download Résumé
- </a>
  <a
  href={socials[0].href}
  target="_blank"
