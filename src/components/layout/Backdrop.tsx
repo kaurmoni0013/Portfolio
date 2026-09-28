@@ -1,71 +1,120 @@
+import { useEffect, useRef } from 'react'
+
+interface Star {
+  x: number
+  y: number
+  radius: number
+  color: string
+  alpha: number
+  twinkleSpeed: number
+  vx: number
+  vy: number
+}
+
 /**
- * Space backdrop: deep void base, twinkling multi-layered stars,
- * and glowing purple nebula clouds.
+ * Animated Canvas Starfield Backdrop — 160+ twinkling & gently moving stars,
+ * creating an authentic space universe theme across the portfolio.
  */
 export function Backdrop() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    let animationFrameId: number
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+
+    const numStars = 160
+    const stars: Star[] = []
+
+    const starColors = [
+      '#ffffff',
+      '#f7f2fc',
+      '#c77af0',
+      '#d99afa',
+      '#e6cffa',
+    ]
+
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5 + 0.5,
+        color: starColors[Math.floor(Math.random() * starColors.length)],
+        alpha: Math.random() * 0.8 + 0.2,
+        twinkleSpeed: (Math.random() * 0.02 + 0.005) * (Math.random() < 0.5 ? 1 : -1),
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: (Math.random() - 0.5) * 0.15,
+      })
+    }
+
+    const render = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      for (const star of stars) {
+        // Move star gently
+        star.x += star.vx
+        star.y += star.vy
+
+        // Wrap around screen
+        if (star.x < 0) star.x = canvas.width
+        if (star.x > canvas.width) star.x = 0
+        if (star.y < 0) star.y = canvas.height
+        if (star.y > canvas.height) star.y = 0
+
+        // Twinkle effect
+        star.alpha += star.twinkleSpeed
+        if (star.alpha > 0.95 || star.alpha < 0.15) {
+          star.twinkleSpeed = -star.twinkleSpeed
+        }
+
+        ctx.save()
+        ctx.globalAlpha = Math.max(0.15, Math.min(0.95, star.alpha))
+        ctx.beginPath()
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2)
+        ctx.fillStyle = star.color
+        ctx.shadowBlur = star.radius > 1.2 ? 6 : 2
+        ctx.shadowColor = star.color
+        ctx.fill()
+        ctx.restore()
+      }
+
+      animationFrameId = requestAnimationFrame(render)
+    }
+
+    render()
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      cancelAnimationFrame(animationFrameId)
+    }
+  }, [])
+
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      {/* Deep space void base */}
+      {/* Deep space base void */}
       <div className="absolute inset-0 bg-void" />
 
-      {/* Layer 1 — Small twinkling stars */}
-      <div
-        className="absolute inset-0 star-layer-1"
-        style={{
-          backgroundImage: [
-            'radial-gradient(1px 1px at 4% 9%, rgba(255,255,255,0.85) 99%, transparent)',
-            'radial-gradient(1px 1px at 12% 19%, rgba(230,207,250,0.75) 99%, transparent)',
-            'radial-gradient(1px 1px at 22% 35%, rgba(255,255,255,0.65) 99%, transparent)',
-            'radial-gradient(1px 1px at 35% 12%, rgba(230,207,250,0.80) 99%, transparent)',
-            'radial-gradient(1px 1px at 48% 62%, rgba(255,255,255,0.70) 99%, transparent)',
-            'radial-gradient(1px 1px at 59% 25%, rgba(230,207,250,0.85) 99%, transparent)',
-            'radial-gradient(1px 1px at 68% 82%, rgba(255,255,255,0.60) 99%, transparent)',
-            'radial-gradient(1px 1px at 78% 18%, rgba(230,207,250,0.90) 99%, transparent)',
-            'radial-gradient(1px 1px at 88% 52%, rgba(255,255,255,0.75) 99%, transparent)',
-            'radial-gradient(1px 1px at 95% 28%, rgba(230,207,250,0.85) 99%, transparent)',
-          ].join(', '),
-        }}
-      />
-
-      {/* Layer 2 — Medium stars */}
-      <div
-        className="absolute inset-0 star-layer-2 opacity-80"
-        style={{
-          backgroundImage: [
-            'radial-gradient(1.5px 1.5px at 8% 45%, rgba(255,255,255,0.9) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 18% 75%, rgba(199,122,240,0.85) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 29% 22%, rgba(255,255,255,0.8) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 41% 88%, rgba(199,122,240,0.9) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 52% 44%, rgba(255,255,255,0.75) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 63% 15%, rgba(199,122,240,0.85) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 74% 65%, rgba(255,255,255,0.9) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 84% 38%, rgba(199,122,240,0.8) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 92% 85%, rgba(255,255,255,0.85) 99%, transparent)',
-          ].join(', '),
-        }}
-      />
-
-      {/* Layer 3 — Bright glowing accent stars */}
-      <div
-        className="absolute inset-0 star-layer-3 opacity-90"
-        style={{
-          backgroundImage: [
-            'radial-gradient(2px 2px at 15% 25%, rgba(217,154,250,0.95) 99%, transparent)',
-            'radial-gradient(2px 2px at 33% 68%, rgba(255,255,255,0.9) 99%, transparent)',
-            'radial-gradient(2px 2px at 57% 10%, rgba(217,154,250,0.95) 99%, transparent)',
-            'radial-gradient(2px 2px at 76% 42%, rgba(255,255,255,0.9) 99%, transparent)',
-            'radial-gradient(2px 2px at 89% 72%, rgba(217,154,250,0.85) 99%, transparent)',
-          ].join(', '),
-        }}
-      />
+      {/* Animated 2D Starfield Canvas */}
+      <canvas ref={canvasRef} className="absolute inset-0 size-full block" />
 
       {/* Space Nebula Glows */}
-      <div className="absolute -top-72 left-[20%] size-[60rem] rounded-full bg-[radial-gradient(circle,rgba(145,68,191,0.24),transparent_65%)]" />
-      <div className="absolute top-[30%] -right-80 size-[56rem] rounded-full bg-[radial-gradient(circle,rgba(95,46,135,0.20),transparent_68%)]" />
-      <div className="absolute bottom-[10%] -left-60 size-[48rem] rounded-full bg-[radial-gradient(circle,rgba(73,47,113,0.18),transparent_70%)]" />
+      <div className="absolute -top-72 left-[20%] size-[60rem] rounded-full bg-[radial-gradient(circle,rgba(145,68,191,0.22),transparent_65%)] pointer-events-none" />
+      <div className="absolute top-[30%] -right-80 size-[56rem] rounded-full bg-[radial-gradient(circle,rgba(95,46,135,0.18),transparent_68%)] pointer-events-none" />
+      <div className="absolute bottom-[10%] -left-60 size-[48rem] rounded-full bg-[radial-gradient(circle,rgba(73,47,113,0.16),transparent_70%)] pointer-events-none" />
 
-      {/* Ambient Vignette */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,7,21,0.12),transparent_40%,rgba(12,7,21,0.55))]" />
+      {/* Ambient Space Vignette */}
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,7,21,0.12),transparent_40%,rgba(12,7,21,0.55))] pointer-events-none" />
     </div>
   )
 }
