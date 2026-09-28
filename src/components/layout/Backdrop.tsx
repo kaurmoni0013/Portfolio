@@ -1,70 +1,71 @@
 /**
- * Space-inspired backdrop: deep void base, many scattered stars of varying
- * sizes and opacities, and soft violet nebula glows.
+ * Space backdrop: deep void base, twinkling multi-layered stars,
+ * and glowing purple nebula clouds.
  */
 export function Backdrop() {
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      {/* Deep space base */}
+      {/* Deep space void base */}
       <div className="absolute inset-0 bg-void" />
 
-      {/* Stars — small 1px */}
+      {/* Layer 1 — Small twinkling stars */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 star-layer-1"
         style={{
           backgroundImage: [
-            'radial-gradient(1px 1px at 5% 8%, rgba(230,207,250,0.75) 99%, transparent)',
-            'radial-gradient(1px 1px at 11% 18%, rgba(230,207,250,0.65) 99%, transparent)',
-            'radial-gradient(1px 1px at 17% 32%, rgba(230,207,250,0.55) 99%, transparent)',
-            'radial-gradient(1px 1px at 24% 6%, rgba(230,207,250,0.60) 99%, transparent)',
-            'radial-gradient(1px 1px at 28% 43%, rgba(230,207,250,0.50) 99%, transparent)',
-            'radial-gradient(1px 1px at 33% 72%, rgba(230,207,250,0.45) 99%, transparent)',
-            'radial-gradient(1px 1px at 38% 14%, rgba(230,207,250,0.70) 99%, transparent)',
-            'radial-gradient(1px 1px at 44% 57%, rgba(230,207,250,0.40) 99%, transparent)',
-            'radial-gradient(1px 1px at 49% 29%, rgba(230,207,250,0.65) 99%, transparent)',
-            'radial-gradient(1px 1px at 53% 88%, rgba(230,207,250,0.50) 99%, transparent)',
-            'radial-gradient(1px 1px at 58% 77%, rgba(230,207,250,0.42) 99%, transparent)',
-            'radial-gradient(1px 1px at 63% 41%, rgba(230,207,250,0.60) 99%, transparent)',
-            'radial-gradient(1px 1px at 67% 12%, rgba(230,207,250,0.55) 99%, transparent)',
-            'radial-gradient(1px 1px at 71% 65%, rgba(230,207,250,0.48) 99%, transparent)',
-            'radial-gradient(1px 1px at 77% 21%, rgba(230,207,250,0.58) 99%, transparent)',
-            'radial-gradient(1px 1px at 82% 48%, rgba(230,207,250,0.45) 99%, transparent)',
-            'radial-gradient(1px 1px at 86% 82%, rgba(230,207,250,0.52) 99%, transparent)',
-            'radial-gradient(1px 1px at 89% 58%, rgba(230,207,250,0.48) 99%, transparent)',
-            'radial-gradient(1px 1px at 93% 34%, rgba(230,207,250,0.62) 99%, transparent)',
-            'radial-gradient(1px 1px at 97% 16%, rgba(230,207,250,0.58) 99%, transparent)',
-            'radial-gradient(1px 1px at 19% 83%, rgba(230,207,250,0.50) 99%, transparent)',
-            'radial-gradient(1px 1px at 42% 91%, rgba(230,207,250,0.44) 99%, transparent)',
-            'radial-gradient(1px 1px at 74% 95%, rgba(230,207,250,0.38) 99%, transparent)',
-            'radial-gradient(1px 1px at 8%  55%, rgba(230,207,250,0.42) 99%, transparent)',
-            'radial-gradient(1px 1px at 91% 74%, rgba(230,207,250,0.46) 99%, transparent)',
+            'radial-gradient(1px 1px at 4% 9%, rgba(255,255,255,0.85) 99%, transparent)',
+            'radial-gradient(1px 1px at 12% 19%, rgba(230,207,250,0.75) 99%, transparent)',
+            'radial-gradient(1px 1px at 22% 35%, rgba(255,255,255,0.65) 99%, transparent)',
+            'radial-gradient(1px 1px at 35% 12%, rgba(230,207,250,0.80) 99%, transparent)',
+            'radial-gradient(1px 1px at 48% 62%, rgba(255,255,255,0.70) 99%, transparent)',
+            'radial-gradient(1px 1px at 59% 25%, rgba(230,207,250,0.85) 99%, transparent)',
+            'radial-gradient(1px 1px at 68% 82%, rgba(255,255,255,0.60) 99%, transparent)',
+            'radial-gradient(1px 1px at 78% 18%, rgba(230,207,250,0.90) 99%, transparent)',
+            'radial-gradient(1px 1px at 88% 52%, rgba(255,255,255,0.75) 99%, transparent)',
+            'radial-gradient(1px 1px at 95% 28%, rgba(230,207,250,0.85) 99%, transparent)',
           ].join(', '),
         }}
       />
 
-      {/* Stars — slightly brighter/larger 1.5px accent */}
+      {/* Layer 2 — Medium stars */}
       <div
-        className="absolute inset-0 opacity-70"
+        className="absolute inset-0 star-layer-2 opacity-80"
         style={{
           backgroundImage: [
-            'radial-gradient(1.5px 1.5px at 15% 25%, rgba(199,122,240,0.80) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 36% 60%, rgba(199,122,240,0.65) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 60% 10%, rgba(199,122,240,0.72) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 80% 35%, rgba(199,122,240,0.60) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 45% 80%, rgba(199,122,240,0.55) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 90% 90%, rgba(199,122,240,0.50) 99%, transparent)',
-            'radial-gradient(1.5px 1.5px at 3%  70%, rgba(199,122,240,0.60) 99%, transparent)',
+            'radial-gradient(1.5px 1.5px at 8% 45%, rgba(255,255,255,0.9) 99%, transparent)',
+            'radial-gradient(1.5px 1.5px at 18% 75%, rgba(199,122,240,0.85) 99%, transparent)',
+            'radial-gradient(1.5px 1.5px at 29% 22%, rgba(255,255,255,0.8) 99%, transparent)',
+            'radial-gradient(1.5px 1.5px at 41% 88%, rgba(199,122,240,0.9) 99%, transparent)',
+            'radial-gradient(1.5px 1.5px at 52% 44%, rgba(255,255,255,0.75) 99%, transparent)',
+            'radial-gradient(1.5px 1.5px at 63% 15%, rgba(199,122,240,0.85) 99%, transparent)',
+            'radial-gradient(1.5px 1.5px at 74% 65%, rgba(255,255,255,0.9) 99%, transparent)',
+            'radial-gradient(1.5px 1.5px at 84% 38%, rgba(199,122,240,0.8) 99%, transparent)',
+            'radial-gradient(1.5px 1.5px at 92% 85%, rgba(255,255,255,0.85) 99%, transparent)',
           ].join(', '),
         }}
       />
 
-      {/* Nebula glows */}
-      <div className="absolute -top-72 left-[22%] size-[56rem] rounded-full bg-[radial-gradient(circle,rgba(95,46,135,0.22),transparent_65%)]" />
-      <div className="absolute top-[25%] -right-80 size-[52rem] rounded-full bg-[radial-gradient(circle,rgba(73,47,113,0.18),transparent_68%)]" />
-      <div className="absolute bottom-0 left-[10%] size-[36rem] rounded-full bg-[radial-gradient(circle,rgba(60,30,100,0.14),transparent_70%)]" />
+      {/* Layer 3 — Bright glowing accent stars */}
+      <div
+        className="absolute inset-0 star-layer-3 opacity-90"
+        style={{
+          backgroundImage: [
+            'radial-gradient(2px 2px at 15% 25%, rgba(217,154,250,0.95) 99%, transparent)',
+            'radial-gradient(2px 2px at 33% 68%, rgba(255,255,255,0.9) 99%, transparent)',
+            'radial-gradient(2px 2px at 57% 10%, rgba(217,154,250,0.95) 99%, transparent)',
+            'radial-gradient(2px 2px at 76% 42%, rgba(255,255,255,0.9) 99%, transparent)',
+            'radial-gradient(2px 2px at 89% 72%, rgba(217,154,250,0.85) 99%, transparent)',
+          ].join(', '),
+        }}
+      />
 
-      {/* Subtle vignette */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,7,21,0.10),transparent_40%,rgba(12,7,21,0.50))]" />
+      {/* Space Nebula Glows */}
+      <div className="absolute -top-72 left-[20%] size-[60rem] rounded-full bg-[radial-gradient(circle,rgba(145,68,191,0.24),transparent_65%)]" />
+      <div className="absolute top-[30%] -right-80 size-[56rem] rounded-full bg-[radial-gradient(circle,rgba(95,46,135,0.20),transparent_68%)]" />
+      <div className="absolute bottom-[10%] -left-60 size-[48rem] rounded-full bg-[radial-gradient(circle,rgba(73,47,113,0.18),transparent_70%)]" />
+
+      {/* Ambient Vignette */}
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,7,21,0.12),transparent_40%,rgba(12,7,21,0.55))]" />
     </div>
   )
 }

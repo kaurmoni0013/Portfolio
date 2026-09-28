@@ -367,6 +367,23 @@
  40% { transform: rotate(-4deg); }
 }
 
+@keyframes starTwinkle {
+ 0%, 100% { opacity: 0.35; transform: scale(0.95); }
+ 50% { opacity: 1; transform: scale(1.1); }
+}
+
+.star-layer-1 {
+ animation: starTwinkle 3s ease-in-out infinite alternate;
+}
+
+.star-layer-2 {
+ animation: starTwinkle 4.5s ease-in-out infinite alternate 1.5s;
+}
+
+.star-layer-3 {
+ animation: starTwinkle 6s ease-in-out infinite alternate 2.5s;
+}
+
 /* ------------------------------------------------------------------ *
  * Reduced motion
  *

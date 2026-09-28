@@ -15,10 +15,10 @@ export default function Home() {
           <Reveal>
             <div className="mx-auto max-w-4xl text-center">
               <h2 className="display-lg text-ink font-bold tracking-tight uppercase sm:text-4xl md:text-5xl">
-                LET ME INTRODUCE MYSELF
+                LET ME <span className="text-accent">INTRODUCE</span> MYSELF
               </h2>
 
-              <div className="mt-10 space-y-6 text-left text-[1.0625rem] leading-relaxed text-ink-2 md:text-[1.125rem] md:leading-loose bg-raised/40 p-8 md:p-12 rounded-3xl border border-line-soft">
+              <div className="mt-10 space-y-6 text-left text-[1.0625rem] leading-relaxed text-ink-2 md:text-[1.125rem] md:leading-loose bg-raised/40 p-8 md:p-12 rounded-3xl border border-line-soft backdrop-blur-sm">
                 <p>
                   I&rsquo;m Moni Kaur, a Computer Science &amp; Artificial Intelligence undergraduate
                   focused on Software Engineering and Full-Stack Development.
@@ -54,6 +54,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ---------------------- SIGN OFF ---------------------- */}
+      <section className="py-20 md:py-24 border-t border-line-soft/60">
+        <div className="shell">
+          <Reveal>
+            <div className="pt-4">
+              <h2 className="display-md text-ink max-w-2xl">{profile.tagline}</h2>
+              <p className="body-lg mt-5 max-w-xl text-ink-3">
+                If you&rsquo;re hiring, mentoring, or just want to compare notes on full-stack or backend work,
+                I&rsquo;d genuinely like to hear from you.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
+                <Button href={`mailto:${profile.email}`} variant="primary">
+                  Get in touch
+                </Button>
+                <Button href="/contact" variant="ghost">
+                  Contact details
+                </Button>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ------------------- FIND ME ON ------------------- */}
       <section className="py-20 md:py-28 border-t border-line-soft/60">
         <div className="shell">
@@ -83,29 +106,6 @@ export default function Home() {
                     </li>
                   ))}
               </ul>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ---------------------- SIGN OFF ---------------------- */}
-      <section className="py-20 md:py-24">
-        <div className="shell">
-          <Reveal>
-            <div className="border-t border-line-soft pt-12">
-              <h2 className="display-md text-ink max-w-2xl">{profile.tagline}</h2>
-              <p className="body-lg mt-5 max-w-xl text-ink-3">
-                If you&rsquo;re hiring, mentoring, or just want to compare notes on full-stack or backend work,
-                I&rsquo;d genuinely like to hear from you.
-              </p>
-              <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
-                <Button href={`mailto:${profile.email}`} variant="primary">
-                  Get in touch
-                </Button>
-                <Button href="/contact" variant="ghost">
-                  Contact details
-                </Button>
-              </div>
             </div>
           </Reveal>
         </div>
