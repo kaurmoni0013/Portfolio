@@ -28,10 +28,10 @@ export const socials = [
  * `nav: false` keeps a page out of the header (it is still reachable).
  */
 export const routes = [
-  { to: '/', label: 'Home', nav: true },
-  { to: '/projects', label: 'Projects', nav: true },
-  { to: '/about', label: 'About', nav: true },
-  { to: '/contact', label: 'Contact', nav: true },
+  { to: '/', label: 'Home', icon: 'home', nav: true },
+  { to: '/about', label: 'About', icon: 'user', nav: true },
+  { to: '/projects', label: 'Projects', icon: 'folder', nav: true },
+  { to: '/contact', label: 'Contact', icon: 'mail', nav: true },
 ] as const
 
 export type RoutePath = (typeof routes)[number]['to']

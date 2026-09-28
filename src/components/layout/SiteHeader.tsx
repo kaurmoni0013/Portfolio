@@ -1,13 +1,25 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowUpRight, Folder, Home, Mail, Menu, User, X } from 'lucide-react'
 import { profile, routes, socials } from '../../data/profile'
 import { useLockBody } from '../../lib/useLockBody'
 import { useFocusTrap } from '../../lib/useFocusTrap'
 import { SocialIcon } from '../ui/SocialIcon'
 
 const navRoutes = routes.filter((r) => r.nav)
+
+const navIcons = {
+  home: Home,
+  user: User,
+  folder: Folder,
+  mail: Mail,
+} as const
+
+function NavIcon({ icon, className }: { icon: (typeof navRoutes)[number]['icon']; className?: string }) {
+  const Icon = navIcons[icon]
+  return <Icon className={className} strokeWidth={1.8} aria-hidden="true" />
+}
 
 function Wordmark() {
  return (
@@ -26,7 +38,7 @@ function Wordmark() {
 }
 
 function navClass(isActive: boolean) {
- return `relative block rounded-full px-4 py-2 text-[0.9375rem] transition-colors duration-300 ${
+ return `relative flex items-center gap-1.5 rounded-full px-4 py-2 text-[0.9375rem] transition-colors duration-300 ${
  isActive ? 'text-ink' : 'text-ink-3 '
  }`
 }
@@ -84,6 +96,7 @@ export function SiteHeader() {
  transition={{ type: 'spring', stiffness: 380, damping: 32 }}
  />
  ) : null}
+ <NavIcon icon={r.icon} className="size-4" />
  {r.label}
  </>
  )}
@@ -172,18 +185,21 @@ export function SiteHeader() {
  <ul className="divide-y divide-[var(--color-line-soft)]">
  {navRoutes.map((r) => (
  <li key={r.to}>
- <NavLink
- to={r.to}
- end={r.to === '/'}
- onClick={() => setOpen(false)}
- className={({ isActive }) =>
- `flex items-center justify-between py-4 font-display text-2xl font-400 ${
- isActive ? 'text-ink' : 'text-ink-2'
- }`
- }
- >
- {r.label}
- </NavLink>
+<NavLink
+  to={r.to}
+  end={r.to === '/'}
+  onClick={() => setOpen(false)}
+  className={({ isActive }) =>
+  `flex items-center justify-between py-4 font-display text-2xl font-400 ${
+  isActive ? 'text-ink' : 'text-ink-2'
+  }`
+  }
+  >
+  <span className="flex items-center gap-3">
+  <NavIcon icon={r.icon} className="size-5 text-ink-4" />
+  {r.label}
+  </span>
+  </NavLink>
  </li>
  ))}
  </ul>
