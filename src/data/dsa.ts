@@ -1,8 +1,8 @@
 export const dsaPath = [
-  { id: 'cpp', label: 'C++', note: 'The language I reach for first' },
-  { id: 'dsa', label: 'Data Structures', note: 'Picking the right container' },
-  { id: 'algo', label: 'Algorithms', note: 'Turning structure into a method' },
-  { id: 'solve', label: 'Problem Solving', note: 'Read, reduce, then write it' },
+  { id: 'cpp', label: 'C++', note: 'Primary language for problem solving and DSA practice' },
+  { id: 'dsa', label: 'Data Structures', note: 'Choosing the right structure for the problem' },
+  { id: 'algo', label: 'Algorithms', note: 'Turning structure into an efficient method' },
+  { id: 'solve', label: 'Problem Solving', note: 'Understand, reduce, then implement' },
 ] as const
 
 export const dsaTopics = [
@@ -19,7 +19,7 @@ export const dsaTopics = [
 export const dsaFacts = [
   { value: '63', label: 'C++ solutions in dsa-cpp' },
   { value: '8', label: 'topics covered, arrays to graphs' },
-  { value: 'Daily', label: 'the practice rhythm I keep' },
+  { value: 'Daily', label: 'consistent practice rhythm' },
 ] as const
 
 export const dsaLinks = [

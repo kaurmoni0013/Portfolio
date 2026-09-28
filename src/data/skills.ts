@@ -51,30 +51,19 @@ export const skillGroups: SkillGroup[] = [
   {
     id: 'languages',
     label: 'Languages',
-    caption: 'The languages I actually write in',
-    skills: [
-      { key: 'cplusplus', name: 'C++', note: 'Primary language for DSA practice and coursework.' },
+    caption: 'Core languages I write daily',
+skills: [
+      { key: 'cplusplus', name: 'C++', note: 'Primary language for DSA practice, problem solving, and coursework.' },
       { key: 'java', name: 'Java', note: 'OOP fundamentals, collections and exception handling.' },
       { key: 'javascript', name: 'JavaScript', note: 'ES modules, async patterns, and the DOM.' },
-      { key: 'sql', name: 'SQL', note: 'Joins, indexing and relational query planning.' },
-    ],
-  },
-  {
-    id: 'frontend',
-    label: 'Frontend',
-    caption: 'Interfaces I can ship end to end',
-    skills: [
-      { key: 'html', name: 'HTML', note: 'Semantic structure and accessible markup.' },
-      { key: 'css', name: 'CSS', note: 'Layout, animation, responsive and dark-first design.' },
-      { key: 'javascript', name: 'JavaScript', note: 'The runtime underneath my React work.' },
-      { key: 'react', name: 'React', note: 'Component design, hooks and route-level guards.' },
-      { key: 'reactquery', name: 'React Query', note: 'Server state, caching and live polling.' },
+      { key: 'typescript', name: 'TypeScript', note: 'Static typing for scalable React/Node codebases.' },
+      { key: 'sql', name: 'SQL', note: 'Joins, indexing, and relational query planning.' },
     ],
   },
   {
     id: 'backend',
     label: 'Backend',
-    caption: 'Where the rules actually live',
+    caption: 'Server-side logic, APIs, and data layers',
     skills: [
       { key: 'node', name: 'Node.js', note: 'Async runtimes, process lifecycle, graceful shutdown.' },
       { key: 'express', name: 'Express.js', note: 'Middleware, route-scoped validation, centralised errors.' },
@@ -84,39 +73,49 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    id: 'data',
-    label: 'Data & Infrastructure',
-    caption: 'Storage, coordination and delivery',
+    id: 'databases',
+    label: 'Databases',
+    caption: 'Storage, coordination, and data modeling',
     skills: [
       { key: 'mongodb', name: 'MongoDB', note: 'Schema design, compound and partial unique indexes.' },
-      { key: 'redis', name: 'Redis', note: 'Rate limits, token quotas, atomic reservations, locks.' },
+      { key: 'redis', name: 'Redis', note: 'Rate limits, token quotas, atomic reservations — used in projects.' },
       { key: 'docker', name: 'Docker', note: 'Compose stacks and single-origin production images.' },
     ],
   },
   {
-    id: 'tooling',
-    label: 'Tooling',
-    caption: 'Day-to-day',
+    id: 'frontend',
+    label: 'Frontend',
+    caption: 'Client-side skills to ship complete applications',
+    skills: [
+      { key: 'react', name: 'React', note: 'Component design, hooks, and route-level guards.' },
+      { key: 'html', name: 'HTML', note: 'Semantic structure and accessible markup.' },
+      { key: 'css', name: 'CSS', note: 'Layout, responsive, and dark-first design.' },
+      { key: 'javascript', name: 'JavaScript', note: 'The runtime underneath my React work.' },
+    ],
+  },
+  {
+    id: 'tools',
+    label: 'Tools & Environment',
+    caption: 'Daily workflow and deployment',
     skills: [
       { key: 'git', name: 'Git', note: 'Branching, clean history, reviewable diffs.' },
       { key: 'github', name: 'GitHub', note: 'Actions pipelines that run real test suites.' },
       { key: 'linux', name: 'Linux', note: 'Shell comfort, permissions, processes, deployment.' },
-      { key: 'postman', name: 'Postman', note: 'Exploring and documenting API behaviour.' },
-      { key: 'vscode', name: 'VS Code', note: 'Where most of the code gets written.' },
     ],
   },
   {
     id: 'concepts',
     label: 'CS Foundations',
-    caption: 'Coursework and self-study',
+    caption: 'Coursework and self-study — theoretical foundations',
     skills: [
-      { key: 'dsa', name: 'Data Structures', note: 'Arrays, linked lists, stacks and graphs.' },
+      { key: 'dsa', name: 'Data Structures & Algorithms', note: 'Core DSA practice in C++.' },
       { key: 'algorithms', name: 'Algorithms', note: 'Sorting, searching, recursion, dynamic programming.' },
       { key: 'oop', name: 'OOP', note: 'Encapsulation, inheritance, polymorphism, interfaces.' },
       { key: 'dbms', name: 'DBMS', note: 'Normalisation, transactions, ACID, indexing.' },
       { key: 'os', name: 'Operating Systems', note: 'Processes, scheduling, memory, concurrency.' },
       { key: 'networks', name: 'Computer Networks', note: 'TCP/IP, HTTP, request lifecycle, DNS.' },
-      { key: 'systemdesign', name: 'System Design', note: 'State machines, indexes, consistency, rate limits.' },
+      { key: 'systemdesign', name: 'System Design Fundamentals', note: 'Caching, rate limiting, consistent hashing, messaging.' },
+      { key: 'algorithms', name: 'Algorithms', note: 'Sorting, searching, recursion, dynamic programming.' },
     ],
   },
 ]
@@ -126,7 +125,8 @@ export const skillNames: Record<string, string> = Object.fromEntries(
   skillGroups.flatMap((g) => g.skills).map((s) => [s.key, s.name]),
 )
 
-export const marqueeItems = [  'C++',
+export const marqueeItems = [
+  'C++',
   'Java',
   'JavaScript',
   'React',
@@ -139,7 +139,4 @@ export const marqueeItems = [  'C++',
   'Git',
   'Docker',
   'Linux',
-  'Postman',
-  'OpenRouter',
-  'Server-Sent Events',
 ]

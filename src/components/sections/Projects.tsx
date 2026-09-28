@@ -79,15 +79,14 @@ export function Projects() {
  ))}
  </div>
 
- <div className="mt-24 md:mt-32">
- <Reveal>
- <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-line-soft pt-8">
- <h2 className="display-md text-ink">Smaller builds</h2> <p className="max-w-md text-[0.9375rem] leading-relaxed text-ink-3">
- Short projects, mostly from my first year of web development. They are small on
- purpose — that is where the fundamentals got built.
- </p>
- </div>
- </Reveal>
+<div className="mt-24 md:mt-32">
+  <Reveal>
+  <div className="flex flex-wrap items-baseline justify-between gap-4 border-t border-line-soft pt-8">
+  <h2 className="display-md text-ink">Other Projects</h2> <p className="max-w-md text-[0.9375rem] leading-relaxed text-ink-3">
+  Earlier projects from my first year of web development — small on purpose, where the fundamentals got built.
+  </p>
+  </div>
+  </Reveal>
 
  <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
  {selectedProjects.map((p) => (

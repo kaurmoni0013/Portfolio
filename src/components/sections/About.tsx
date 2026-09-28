@@ -1,93 +1,65 @@
-import { ArrowUpRight } from 'lucide-react'
-import { atAGlance } from '../../data/journey'
-import { socials } from '../../data/profile'
 import { Reveal } from '../ui/Reveal'
 import { Section } from '../ui/Section'
-
-const focusAreas = [
- 'Full-stack development',
- 'C++ and DSA',
- 'Backend systems',
- 'Database design',
- 'System design concepts',
- 'DevOps and cloud',
-]
+import { atAGlance } from '../../data/journey'
 
 /**
- * The written introduction stays focused on Moni's story; the homepage is
- * where her illustrated avatar lives.
+ * Concise introduction. The page header leads with the summary;
+ * this section adds the brief facts. No portrait — the homepage
+ * already carries it.
  */
 export function About({ className = '' }: { className?: string }) {
- return (
- <Section
- id="about"
- eyebrow="About"
- title={
- <>
- A CS/AI undergraduate who actually ships the backend too.
- </>
- }
- className={`py-20 md:py-24 ${className}`}
- >
- <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
- <div className="lg:col-span-7">
- {/* The page header already leads with profile.summary, so this body
- starts with the longer paragraph rather than repeating it. */}
- <Reveal>
- <p className="max-w-xl text-[1.0625rem] leading-relaxed text-ink-2">
- Two full-stack products so far — a clinic appointment system and an AI conversation
- workspace — both with real auth, real persistence, and CI that runs an end-to-end suite
- on every push. I&rsquo;m currently working on system design, testing depth and
- deployment.
- </p>
- </Reveal>
+  return (
+    <Section
+      id="about"
+      eyebrow="About"
+      title="A CS & AI undergraduate who actually ships the backend too."
+      className={`py-16 md:py-20 ${className}`}
+    >
+      <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-7">
+          <Reveal>
+            <p className="max-w-xl text-[1.0625rem] leading-relaxed text-ink-2">
+              I'm a Computer Science & Artificial Intelligence undergraduate
+              graduating in 2028. I build full-stack applications with a backend-first approach, and I care
+              most about the parts of a product that can't be faked: concurrent
+              writes, authentication that fails closed, and cost control when a third-party
+              API sits in the request path.
+            </p>
+          </Reveal>
 
- <Reveal delay={0.12}>
- <p className="eyebrow mt-12">What I focus on</p>
- <ul className="mt-5 flex flex-wrap gap-2.5">
- {focusAreas.map((f) => (
- <li
- key={f}
- className="rounded-full border border-line-soft px-3.5 py-1.5 text-[0.875rem] text-ink-3"
- >
- {f}
- </li>
- ))}
- </ul>
- </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-ink-2">
+              I also regularly practice DSA in C++ to strengthen problem-solving
+              and algorithmic thinking. I am currently expanding my knowledge of
+              system design, backend architecture, and DevOps/cloud concepts.
+            </p>
+          </Reveal>
 
- <Reveal delay={0.16}>
- <div className="mt-11 flex flex-wrap gap-x-7 gap-y-3">
- {socials.map((s) => (
- <a
- key={s.id}
- href={s.href}
- target="_blank"
- rel="noopener noreferrer"
- className="tap link-wipe inline-flex items-center gap-1.5 text-[0.9375rem] text-ink-3 transition-colors duration-300 "
- >
- {s.label}
- <ArrowUpRight className="size-3.5" strokeWidth={1.8} />
- </a>
- ))}
- </div>
- </Reveal>
- </div>
+          <Reveal delay={0.12}>
+            <ul className="mt-8 flex flex-wrap gap-2.5">
+              {['Backend Development', 'System Design', 'C++ / DSA'].map((f) => (
+                <li
+                  key={f}
+                  className="rounded-full border border-line-soft px-3.5 py-1.5 text-[0.875rem] text-ink-3"
+                >
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
 
- <Reveal className="lg:col-span-5" delay={0.1}>
- <div className="panel p-7">
- <p className="eyebrow">At a glance</p>
- <dl className="mt-5">
- {atAGlance.map((row) => (
- <div key={row.label} className="border-b border-line-soft py-4 first:border-t">
- <dt className="text-[0.8125rem] text-ink-4">{row.label}</dt>
- <dd className="mt-1.5 text-[0.9375rem] leading-relaxed text-ink">{row.value}</dd>
- </div>
- ))}
- </dl>
- </div>
- </Reveal>
- </div>
- </Section>
- )
+        <Reveal className="lg:col-span-5" delay={0.05}>
+          <dl className="grid gap-px overflow-hidden rounded-xl border border-line bg-base">
+            {atAGlance.map((row) => (
+              <div key={row.label} className="flex justify-between border-b border-line-soft py-3 first:border-t">
+                <dt className="text-[0.8125rem] text-ink-3">{row.label}</dt>
+                <dd className="text-[0.875rem] font-medium text-ink">{row.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
+      </div>
+    </Section>
+  )
 }

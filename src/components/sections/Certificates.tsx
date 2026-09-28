@@ -1,119 +1,57 @@
-import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowUpRight, FileText } from 'lucide-react'
-import { certificates, type Credential } from '../../data/certificates'
 import { Reveal } from '../ui/Reveal'
 import { Section } from '../ui/Section'
+import { certificates } from '../../data/certificates'
 
-const toneStyles: Record<Credential['tone'], string> = {
- elite: 'border-teal/40 text-teal bg-teal/10',
- silver: 'border-accent/40 text-accent bg-accent/10',
- completed: 'border-ink-4/50 text-ink-2 bg-base',
- participation: 'border-violet/40 text-violet bg-violet/10',
-}
-
-function CertificateCard({ cert, index }: { cert: Credential; index: number }) {
- const reduce = useReducedMotion()
-
- return (
- <motion.li
- initial={reduce ? false : { opacity: 0, y: 24 }}
- whileInView={{ opacity: 1, y: 0 }}
- viewport={{ once: true, margin: '-8% 0px' }}
- transition={{ duration: 0.7, delay: (index % 3) * 0.07, ease: [0.16, 1, 0.3, 1] }}
- className="group/cert"
- >
- <a
- href={cert.file}
- target="_blank"
- rel="noopener noreferrer"
- className="block h-full focus-visible:outline-offset-4"
- aria-label={`View certificate: ${cert.issuer} — ${cert.title}`}
- >
- <div className="panel panel-hover relative flex h-full flex-col overflow-hidden transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cert:-translate-y-1.5">
- {/* plate */}
- <div className="relative flex aspect-[16/10] items-center justify-center overflow-hidden border-b border-line-soft bg-base">
- <div
- aria-hidden="true"
- className="absolute inset-0 bg-[radial-gradient(circle_at_50%_110%,rgba(199,122,240,0.14),transparent_64%)]"
- />
- <div
- aria-hidden="true"
- className="absolute inset-4 rounded-lg border border-line-soft/70 sm:inset-5"
- />
-
- {cert.logo ? (
- <img
- src={cert.logo}
- alt=""
- width={160}
- height={160}
- loading="lazy"
- decoding="async"
- className="relative size-14 object-contain opacity-55 grayscale transition-[opacity,filter,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cert:scale-110 group-hover/cert:opacity-90 group-hover/cert:grayscale-0 sm:size-16"
- />
- ) : (
- <FileText className="relative size-7 text-ink-4" strokeWidth={1.3} aria-hidden="true" />
- )}
-
- {cert.credential ? (
- <span
- className={`absolute top-3.5 right-3.5 rounded-full border px-2.5 py-1 font-mono text-[0.6875rem] tracking-[0.06em] ${toneStyles[cert.tone]}`}
- >
- {cert.credential}
- </span>
- ) : null}
-
- <span className="absolute bottom-3.5 left-4 font-mono text-[0.6875rem] text-ink-4">
- {cert.fileLabel}
- </span>
- </div>
-
- {/* meta */}
- <div className="flex flex-1 flex-col p-5">
- <span className="text-[0.8125rem] text-ink-4">
- {cert.issuer}
- </span>
- <h3 className="display-sm mt-2 leading-snug font-600 text-ink">
- {cert.title}
- </h3>
- <p className="mt-1.5 text-[0.8125rem] text-ink-4">{cert.period}</p>
-
- <span className="mt-5 inline-flex items-center gap-1.5 self-start text-[0.8125rem] text-ink-3 transition-colors duration-500 ">
- View certificate
- <ArrowUpRight
- className="size-3 transition-transform duration-500 group-hover/cert:-translate-y-0.5 group-hover/cert:translate-x-0.5"
- strokeWidth={2}
- />
- </span>
- </div>
- </div>
- </a>
- </motion.li>
- )
-}
-
+/**
+ * Quiet certificate grid. Clean cards with a small lift on hover.
+ * No colored badges, no radial gradients, no animated effects.
+ */
 export function Certificates({ className = '' }: { className?: string }) {
- return (
- <Section
- id="certificates"
- eyebrow="Certificates"
- title="Verified learning, not badges."
- lede="Four NPTEL courses and three hackathon certificates. Every card opens the original PDF."
- className={`py-20 md:py-24 ${className}`}
- >
- <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
- {certificates.map((cert, i) => (
- <CertificateCard key={cert.id} cert={cert} index={i} />
- ))}
- </ul>
+  return (
+    <Section
+      id="certificates"
+      eyebrow="Certificates"
+      title="Verified learning, not badges."
+      lede="NPTEL courses and hackathon certificates. Every card opens the original PDF."
+      className={`py-16 md:py-20 ${className}`}
+    >
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {certificates.map((cert, i) => (
+          <li key={cert.id}>
+            <Reveal delay={i * 0.04}>
+              <a
+                href={cert.file}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full rounded-xl border border-line bg-raised p-5 transition-colors duration-150 hover:border-ink-3"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-lg border border-line-soft bg-base text-ink-3">
+                    <span className="font-semibold text-[0.75rem]">{cert.issuer.slice(0, 3)}</span>
+                  </div>
+                  <div>
+                    <h3 className="display-sm text-ink">{cert.title}</h3>
+                    <p className="mt-1 text-[0.8125rem] text-ink-3">{cert.period}</p>
+                    {cert.credential ? (
+                      <span className="mt-2 inline-block rounded-full border border-line-soft px-2.5 py-0.5 text-[0.75rem] text-ink-3">
+                        {cert.credential}
+                      </span>
+                    ) : null}
+                  </div>
+                </div>
+              </a>
+            </Reveal>
+          </li>
+        ))}
+      </ul>
 
- <Reveal>
- <p className="mt-10 max-w-2xl text-[0.875rem] leading-relaxed text-ink-3">
- NPTEL grades are shown exactly as issued: Programming in Modern C++ (Elite), Programming in
- Java and Fundamentals of Object Oriented Programming (Silver), and Data Structures and
- Algorithms Design (completed).
- </p>
- </Reveal>
- </Section>
- )
+      <Reveal delay={0.1}>
+        <p className="mt-8 max-w-2xl text-[0.8125rem] leading-relaxed text-ink-4">
+          NPTEL grades are shown exactly as issued: Programming in Modern C++ (Elite), Programming in
+          Java and Fundamentals of Object Oriented Programming (Silver), and Data Structures and
+          Algorithms Design (completed).
+        </p>
+      </Reveal>
+    </Section>
+  )
 }

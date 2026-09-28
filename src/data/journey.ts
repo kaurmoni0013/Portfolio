@@ -75,6 +75,27 @@ export const atAGlance = [
   { label: 'Institution', value: 'Arya College of Engineering & IT, Jaipur' },
   { label: 'Graduation', value: '2028 (expected)' },
   { label: 'Current CGPA', value: '9.4 / 10' },
-  { label: 'Focus', value: 'MERN full-stack · Backend · C++ DSA' },
-  { label: 'Looking for', value: 'Software Engineer / Full-Stack internship' },
+  { label: 'Focus', value: 'Backend Development · System Design · C++ / DSA' },
+  { label: 'Looking for', value: 'Software Engineering / Backend internship' },
+] as const
+
+export const currentlyExploring = [
+  {
+    id: 'system-design',
+    title: 'System Design',
+    description:
+      'Deepening my understanding of scalable backend architecture, caching, messaging, distributed systems fundamentals, and design trade-offs.',
+  },
+  {
+    id: 'devops-cloud',
+    title: 'DevOps / Cloud',
+    description:
+      'Currently expanding my knowledge of Docker, CI/CD, GitHub Actions, and cloud/DevOps workflows.',
+  },
+  {
+    id: 'advanced-backend',
+    title: 'Advanced Backend Engineering',
+    description:
+      'Continuing to learn about performance, scalability, caching, concurrency, and production-oriented backend architecture.',
+  },
 ] as const
