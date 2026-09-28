@@ -52,11 +52,10 @@ export const skillGroups: SkillGroup[] = [
     id: 'languages',
     label: 'Languages',
     caption: 'Core languages I write daily',
-skills: [
+    skills: [
       { key: 'cplusplus', name: 'C++', note: 'Primary language for DSA practice, problem solving, and coursework.' },
       { key: 'java', name: 'Java', note: 'OOP fundamentals, collections and exception handling.' },
-      { key: 'javascript', name: 'JavaScript', note: 'ES modules, async patterns, and the DOM.' },
-      { key: 'typescript', name: 'TypeScript', note: 'Static typing for scalable React/Node codebases.' },
+      { key: 'javascript', name: 'JavaScript', note: 'ES modules, async patterns, and DOM manipulation.' },
       { key: 'sql', name: 'SQL', note: 'Joins, indexing, and relational query planning.' },
     ],
   },
@@ -65,6 +64,7 @@ skills: [
     label: 'Full-Stack Development',
     caption: 'Complete applications — frontend through database, built and shipped',
     skills: [
+      { key: 'javascript', name: 'JavaScript', note: 'Core language powering full-stack web applications.' },
       { key: 'react', name: 'React', note: 'Component design, hooks, custom queries, and route-level guards.' },
       { key: 'html', name: 'HTML', note: 'Semantic structure and accessible markup.' },
       { key: 'css', name: 'CSS', note: 'Layout, responsive design, and dark-first styling.' },
@@ -73,18 +73,8 @@ skills: [
       { key: 'mongodb', name: 'MongoDB', note: 'Schema design, compound and partial unique indexes.' },
       { key: 'rest', name: 'REST APIs', note: 'Resource design, status codes, machine-readable errors.' },
       { key: 'jwt', name: 'Authentication', note: 'JWT cookies, bcrypt hashing, session revocation, RBAC.' },
-    ],
-  },
-  {
-    id: 'backend',
-    label: 'Backend Engineering',
-    caption: 'Server-side depth — reliability, coordination, and data integrity',
-    skills: [
-      { key: 'node', name: 'Node.js', note: 'Async runtimes, process lifecycle, graceful shutdown.' },
-      { key: 'express', name: 'Express.js', note: 'Middleware, route-scoped validation, centralised errors.' },
-      { key: 'sse', name: 'Server-Sent Events', note: 'Streaming model output with abort and retry handling.' },
       { key: 'redis', name: 'Redis', note: 'Rate limits, token quotas, atomic reservations — used in Orbit AI.' },
-      { key: 'mongodb', name: 'MongoDB', note: 'Schema design, compound and partial unique indexes.' },
+      { key: 'sse', name: 'Server-Sent Events', note: 'Streaming model output with abort and retry handling.' },
     ],
   },
   {
@@ -92,6 +82,7 @@ skills: [
     label: 'Tools & Environment',
     caption: 'Daily workflow and deployment',
     skills: [
+      { key: 'vscode', name: 'VS Code', note: 'Primary IDE for web development and C++.' },
       { key: 'git', name: 'Git', note: 'Branching, clean history, reviewable diffs.' },
       { key: 'github', name: 'GitHub', note: 'Actions pipelines that run real test suites.' },
       { key: 'linux', name: 'Linux', note: 'Shell comfort, permissions, processes, deployment.' },

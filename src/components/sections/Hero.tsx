@@ -70,8 +70,21 @@ export function Hero() {
             variants={{ hidden: {}, show: { transition: { staggerChildren: reduce ? 0 : 0.08 } } }}
           >
             {/* Greeting */}
-            <motion.p variants={rise(0)} className="font-display text-[1.5rem] font-400 tracking-tight text-ink-2 md:text-[1.875rem]">
-              Hi There! <span className="wave" aria-hidden="true">👋🏻</span>
+            <motion.p variants={rise(0)} className="font-display text-[1.75rem] font-500 tracking-tight text-ink-2 md:text-[2.25rem]">
+              Hi There!{' '}
+              <motion.span
+                className="inline-block origin-[70%_70%]"
+                animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
+                transition={{
+                  duration: 2.2,
+                  repeat: Infinity,
+                  repeatType: 'loop',
+                  ease: 'easeInOut',
+                }}
+                aria-hidden="true"
+              >
+                👋🏻
+              </motion.span>
             </motion.p>
 
             {/* Name */}
