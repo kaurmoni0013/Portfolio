@@ -117,6 +117,21 @@ export const selectedProjects: Project[] = [
     ],
   },
   {
+    id: 'love-calculator',
+    name: 'Love Calculator',
+    kicker: 'HTML · CSS · JavaScript',
+    year: '2025',
+    summary:
+      'A small playful app with an animated result reveal and a progress bar — my first pass at making browser animation feel deliberate rather than decorative.',
+    image: 'projects/love-calculator.webp',
+    imageAlt: 'Love calculator result screen',
+    tech: ['html', 'css', 'javascript'],
+    links: [
+      { label: 'Live', href: 'https://kaurmoni0013.github.io/Love-Calculator/', kind: 'live' },
+      { label: 'GitHub', href: 'https://github.com/kaurmoni0013/Love-Calculator', kind: 'repo' },
+    ],
+  },
+  {
     id: 'random-quote',
     name: 'Random Quote',
     kicker: 'Quote generator with API integration',
