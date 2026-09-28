@@ -1,7 +1,4 @@
 import { Hero } from '../components/sections/Hero'
-import { About } from '../components/sections/About'
-import { Projects } from '../components/sections/Projects'
-import { Resume } from '../components/sections/Resume'
 import { profile, socials } from '../data/profile'
 import { Reveal } from '../components/ui/Reveal'
 import { Button } from '../components/ui/Button'
@@ -12,14 +9,50 @@ export default function Home() {
     <>
       <Hero />
 
-      {/* ------------------- ABOUT ------------------- */}
-      <About className="border-t border-line-soft/60" />
+      {/* ------------------- INTRODUCTION ------------------- */}
+      <section className="border-t border-line-soft/60 py-24 md:py-32">
+        <div className="shell">
+          <Reveal>
+            <div className="mx-auto max-w-4xl text-center">
+              <h2 className="display-lg font-bold tracking-tight text-ink uppercase sm:text-4xl md:text-5xl">
+                LET ME <span className="text-accent">INTRODUCE</span> MYSELF
+              </h2>
 
-      {/* ------------------- PROJECTS ------------------- */}
-      <Projects />
-
-      {/* ------------------- RESUME ------------------- */}
-      <Resume className="border-t border-line-soft/60" />
+              <div className="mt-10 space-y-6 rounded-3xl border border-line-soft bg-raised/40 p-8 text-left text-[1.0625rem] leading-relaxed text-ink-2 backdrop-blur-sm md:p-12 md:text-[1.125rem] md:leading-loose">
+                <p>
+                  I&rsquo;m Moni Kaur, a Computer Science &amp; Artificial Intelligence undergraduate
+                  focused on Software Engineering and Full-Stack Development.
+                </p>
+                <p>
+                  I primarily work with{' '}
+                  <span className="font-medium text-accent">C++, JavaScript, React.js, Node.js, Express.js, and MongoDB</span>,
+                  and I have hands-on experience building real-world applications with REST APIs, JWT
+                  authentication, role-based access control, database design, Redis, and AI API integration.
+                </p>
+                <p>
+                  I have a strong foundation in DSA, OOP, DBMS, Operating Systems, and Computer Networks,
+                  with 150+ DSA problems practiced in C++. I also have working knowledge of Java, MySQL,
+                  Linux, Git/GitHub, Docker, and system-design concepts.
+                </p>
+                <p>
+                  What I enjoy most is taking an idea from{' '}
+                  <span className="font-semibold text-ink">problem → architecture → implementation → deployment</span>.
+                  My projects have given me practical experience with backend logic, authentication,
+                  concurrency, security, APIs, and building interfaces that real users can interact with.
+                </p>
+                <p>
+                  Currently, I&rsquo;m strengthening my skills in backend engineering, system design,
+                  cloud, and DevOps while continuing to build production-oriented projects.
+                </p>
+                <p className="font-medium text-ink">
+                  I&rsquo;m looking for opportunities where I can contribute as a Software Engineer,
+                  learn from experienced teams, and take ownership of building reliable software.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       {/* ---------------------- SIGN OFF ---------------------- */}
       <section className="border-t border-line-soft/60 py-20 md:py-24">

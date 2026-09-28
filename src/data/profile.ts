@@ -31,6 +31,7 @@ export const routes = [
   { to: '/', label: 'Home', icon: 'home', nav: true },
   { to: '/about', label: 'About', icon: 'user', nav: true },
   { to: '/projects', label: 'Projects', icon: 'folder', nav: true },
+  { to: '/resume', label: 'Resume', icon: 'file', nav: true },
   { to: '/contact', label: 'Contact', icon: 'mail', nav: true },
 ] as const
 

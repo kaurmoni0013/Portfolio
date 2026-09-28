@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { ArrowUpRight, Folder, Home, Mail, Menu, User, X } from 'lucide-react'
+import { ArrowUpRight, FileText, Folder, Home, Mail, Menu, User, X } from 'lucide-react'
 import { profile, routes, socials } from '../../data/profile'
 import { useLockBody } from '../../lib/useLockBody'
 import { useFocusTrap } from '../../lib/useFocusTrap'
@@ -13,6 +13,7 @@ const navIcons = {
   home: Home,
   user: User,
   folder: Folder,
+  file: FileText,
   mail: Mail,
 } as const
 

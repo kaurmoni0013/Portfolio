@@ -8,6 +8,7 @@ import ProjectsPage from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
 import AboutPage from './pages/About'
 import ContactPage from './pages/Contact'
+import ResumePage from './pages/Resume'
 import NotFound from './pages/NotFound'
 
 /**
@@ -54,6 +55,7 @@ export default function App() {
   <Route path="/projects/:id" element={<ProjectDetail />} />
   <Route path="/about" element={<AboutPage />} />
  <Route path="/contact" element={<ContactPage />} />
+  <Route path="/resume" element={<ResumePage />} />
  <Route path="*" element={<NotFound />} />
  </Routes>
  </main>
