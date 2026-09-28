@@ -66,15 +66,15 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: reduce ? 0 : 0.18, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="overflow-hidden rounded-xl border border-line bg-raised">
+            <div className="overflow-hidden rounded-full border border-line bg-raised aspect-square">
               <img
                 src="moni_avtar.png"
                 alt={`${profile.name}, Computer Science & Artificial Intelligence undergraduate in Jaipur`}
-                width={900}
-                height={853}
+                width={500}
+                height={500}
                 fetchPriority="high"
                 decoding="async"
-                className="aspect-[4/5] w-full object-cover object-top"
+                className="w-full h-full object-cover"
               />
             </div>
           </motion.figure>
