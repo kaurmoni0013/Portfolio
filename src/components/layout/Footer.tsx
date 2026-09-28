@@ -2,14 +2,13 @@ import { ArrowUp } from 'lucide-react'
 import { profile, socials } from '../../data/profile'
 
 export function Footer() {
-  const year = new Date().getFullYear()
-
   return (
     <footer className="border-t border-line-soft bg-void/40">
       <div className="shell py-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[0.875rem] text-ink-4">
-            © {year} {profile.name}
+          <p className="text-[0.875rem] text-ink-3">
+            Designed and Developed with <span className="text-red-400">❤️</span> by{' '}
+            <span className="font-semibold text-ink">{profile.name}</span>
           </p>
 
           <ul className="flex flex-wrap items-center gap-5">
