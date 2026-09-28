@@ -1,57 +1,79 @@
+import { ArrowUpRight } from 'lucide-react'
 import { Reveal } from '../ui/Reveal'
-import { Section } from '../ui/Section'
-import { certificates } from '../../data/certificates'
+import { certificates, nptelTone } from '../../data/certificates'
 
-/**
- * Quiet certificate grid. Clean cards with a small lift on hover.
- * No colored badges, no radial gradients, no animated effects.
+const badgeText = (tone: string, credential?: string) =>
+  credential ?? (tone === 'participation' ? 'Participation' : nptelTone[tone as keyof typeof nptelTone] ?? 'Completed')
+
+/** Standardized certificate card. The image container ratio, card height,
+ *  padding, title and metadata positions, badge and CTA are identical on every
+ *  card; only the badge text differs.
  */
 export function Certificates({ className = '' }: { className?: string }) {
   return (
-    <Section
-      id="certificates"
-      eyebrow="Certificates"
-      title="Verified learning, not badges."
-      lede="NPTEL courses and hackathon certificates. Every card opens the original PDF."
-      className={`py-16 md:py-20 ${className}`}
-    >
-      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <section id="certificates" className={`relative scroll-mt-24 border-t border-line-soft/60 py-20 md:py-28 ${className}`}>
+      <div className="shell">
+        <Reveal>
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="display-lg font-bold tracking-tight text-ink uppercase sm:text-3xl md:text-4xl">
+              Verified <span className="text-accent">Certificates</span>
+            </h2>
+            <p className="mt-4 text-[1.0625rem] text-ink-3">
+              NPTEL courses and hackathon certificates, with the grade as issued. Every card opens the original PDF.
+            </p>
+          </div>
+        </Reveal>
+
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
         {certificates.map((cert, i) => (
-          <li key={cert.id}>
-            <Reveal delay={i * 0.04}>
+          <li key={cert.id} className="flex items-stretch">
+            <Reveal delay={i * 0.04} className="h-full w-full">
               <a
                 href={cert.file}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block h-full rounded-xl border border-line bg-raised p-5 transition-colors duration-150 hover:border-ink-3"
+                className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-raised transition-colors duration-200 hover:border-accent/60"
               >
-                <div className="flex items-start gap-4">
-                  <div className="flex size-12 shrink-0 items-center justify-center rounded-lg border border-line-soft bg-base text-ink-3">
-                    <span className="font-semibold text-[0.75rem]">{cert.issuer.slice(0, 3)}</span>
-                  </div>
-                  <div>
-                    <h3 className="display-sm text-ink">{cert.title}</h3>
-                    <p className="mt-1 text-[0.8125rem] text-ink-3">{cert.period}</p>
-                    {cert.credential ? (
-                      <span className="mt-2 inline-block rounded-full border border-line-soft px-2.5 py-0.5 text-[0.75rem] text-ink-3">
-                        {cert.credential}
-                      </span>
-                    ) : null}
-                  </div>
+                {/* Consistent image preview — fixed height, contain, no stretch */}
+                <div className="flex h-32 w-full items-center justify-center border-b border-line-soft bg-base p-4">
+                  {cert.logo ? (
+                    <img
+                      src={cert.logo}
+                      alt=""
+                      width={240}
+                      height={180}
+                      loading="lazy"
+                      decoding="async"
+                      className="max-h-full w-full object-contain"
+                    />
+                  ) : (
+                    <span className="text-[0.8125rem] text-ink-4">{cert.issuer}</span>
+                  )}
+                </div>
+
+                <div className="flex flex-1 flex-col p-4">
+                  <h3 className="display-sm text-ink">{cert.title}</h3>
+                  <p className="mt-1 text-[0.75rem] text-ink-3">{cert.period}</p>
+
+                  {/* Same badge component on every card; text may differ */}
+                  <span className="mt-3 inline-flex w-fit items-center rounded-full border border-line-soft bg-base px-2.5 py-0.5 text-[0.75rem] font-medium text-ink-2">
+                    {badgeText(cert.tone, cert.credential)}
+                  </span>
+
+                  {/* Visible, explicit CTA */}
+                  <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-[0.875rem] font-medium text-accent-soft">
+                    View Certificate
+                    <ArrowUpRight
+                      className="size-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </span>
                 </div>
               </a>
             </Reveal>
           </li>
         ))}
       </ul>
-
-      <Reveal delay={0.1}>
-        <p className="mt-8 max-w-2xl text-[0.8125rem] leading-relaxed text-ink-4">
-          NPTEL grades are shown exactly as issued: Programming in Modern C++ (Elite), Programming in
-          Java and Fundamentals of Object Oriented Programming (Silver), and Data Structures and
-          Algorithms Design (completed).
-        </p>
-      </Reveal>
-    </Section>
+      </div>
+    </section>
   )
 }

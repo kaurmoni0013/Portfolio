@@ -5,10 +5,10 @@ export default function ProjectsPage() {
  return (
  <>
 <PageHeader
-  eyebrow="Projects"
-  title="Things I built, and the hard parts."
-  lede="Two products I could defend in a code review, plus earlier projects that built my foundation. Every link is a real repository or deployment."
-/>
+        eyebrow="Projects"
+        title="Things I've built and the engineering behind them."
+        lede="A selection of full-stack applications and projects that helped me build stronger foundations in backend development, system design, and problem solving."
+      />
  <Projects />
  </>
  )

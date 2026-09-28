@@ -24,9 +24,9 @@ export function TechChip({ tech, label, size = 'sm', className = '' }: Props) {
  className={`group/chip inline-flex items-center gap-2.5 rounded-full border border-line-soft bg-white/[0.02] py-1.5 pr-4 pl-1.5 transition-colors duration-500 hover:bg-white/[0.05] ${className}`}
  style={{ ['--chip-accent' as string]: accent }}
  >
- <span
- className={`${s.wrap} grid place-items-center text-ink-2 transition-[color,transform,background-color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/chip:-translate-y-px group-hover/chip:scale-110 group-hover/chip:text-[var(--chip-accent)]`}
- >
+<span
+  className={`${s.wrap} grid place-items-center bg-white/[0.04] text-[var(--chip-accent)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/chip:-translate-y-px group-hover/chip:scale-110`}
+  >
  <TechIcon tech={tech} className={s.icon} title={label} />
  </span>
  <span className="text-[0.8125rem] font-medium text-ink-2 transition-colors duration-500 ">

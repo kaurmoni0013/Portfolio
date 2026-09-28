@@ -12,6 +12,10 @@ export type Project = {
   kicker: string
   year: string
   summary: string
+  /** One short description, written in points, for the compact public listing. */
+  points?: string[]
+  /** 2–4 engineering focus tags shown on the compact public listing. */
+  focus?: string[]
   image?: string
   imageAlt?: string
   tech: TechKey[]
@@ -30,9 +34,16 @@ export const featuredProjects: Project[] = [
     image: 'projects/mediqueue.webp',
     imageAlt: 'MediQueue clinic dashboard interface',
     tech: ['react', 'node', 'express', 'mongodb', 'jwt', 'reactquery', 'vite'],
+    points: [
+      'Appointment booking with a live queue and wait-time estimates',
+      'Four role-specific portals where every rule is enforced server-side',
+      'Slots that two patients can never hold at the same time',
+      'Sign-out that revokes every token the user ever held',
+    ],
+    focus: ['Race-safe booking', 'Server-enforced RBAC', 'JWT revocation', 'End-to-end API tests'],
     links: [
-      { label: 'Live demo', href: 'https://mediqueue-1cu4.onrender.com', kind: 'live' },
-      { label: 'Source', href: 'https://github.com/kaurmoni0013/MediQueue', kind: 'repo' },
+      { label: 'Live Demo', href: 'https://mediqueue-1cu4.onrender.com', kind: 'live' },
+      { label: 'GitHub', href: 'https://github.com/kaurmoni0013/MediQueue', kind: 'repo' },
     ],
     highlights: [
       'Race-safe booking — slots are re-verified at booking time and protected by a partial unique index on (doctor, date, startTime) scoped to active statuses, so two patients can never hold the same slot even under simultaneous requests.',
@@ -53,9 +64,15 @@ export const featuredProjects: Project[] = [
     image: 'projects/orbit-ai.webp',
     imageAlt: 'Orbit AI conversation workspace interface',
     tech: ['react', 'node', 'express', 'mongodb', 'redis', 'openrouter', 'sse', 'docker'],
+    points: [
+      'Persistent conversations with bounded, rolling context',
+      'Streaming responses that fail safely and never double-charge quota',
+      'Coordinate via Redis, write messages and usage atomically in MongoDB',
+    ],
+    focus: ['SSE streaming', 'Atomic quota reservations', 'Idempotent retries', 'Redis locks'],
     links: [
-      { label: 'Live demo', href: 'https://orbit-ai-k1m5.onrender.com', kind: 'live' },
-      { label: 'Source', href: 'https://github.com/kaurmoni0013/Orbit-AI', kind: 'repo' },
+      { label: 'Live Demo', href: 'https://orbit-ai-k1m5.onrender.com', kind: 'live' },
+      { label: 'GitHub', href: 'https://github.com/kaurmoni0013/Orbit-AI', kind: 'repo' },
     ],
     highlights: [
       'Streaming that fails safely — Server-Sent Events with first-byte and idle timeouts, bounded retries on transient provider errors, and provider requests aborted when the client disconnects.',
@@ -81,7 +98,7 @@ export const selectedProjects: Project[] = [
     tech: ['html', 'css', 'javascript'],
     links: [
       { label: 'Live', href: 'https://kaurmoni0013.github.io/Solar-System/', kind: 'live' },
-      { label: 'Source', href: 'https://github.com/kaurmoni0013/Solar-System', kind: 'repo' },
+      { label: 'GitHub', href: 'https://github.com/kaurmoni0013/Solar-System', kind: 'repo' },
     ],
   },
   {
@@ -96,22 +113,7 @@ export const selectedProjects: Project[] = [
     tech: ['html', 'css', 'javascript'],
     links: [
       { label: 'Live', href: 'https://kaurmoni0013.github.io/tic-tac-toe-javascript/', kind: 'live' },
-      { label: 'Source', href: 'https://github.com/kaurmoni0013/tic-tac-toe-javascript', kind: 'repo' },
-    ],
-  },
-  {
-    id: 'love-calculator',
-    name: 'Love Calculator',
-    kicker: 'HTML · CSS · JavaScript',
-    year: '2025',
-    summary:
-      'A small playful app with an animated result reveal and a progress bar — my first pass at making browser animation feel deliberate rather than decorative.',
-    image: 'projects/love-calculator.webp',
-    imageAlt: 'Love calculator result screen',
-    tech: ['html', 'css', 'javascript'],
-    links: [
-      { label: 'Live', href: 'https://kaurmoni0013.github.io/Love-Calculator/', kind: 'live' },
-      { label: 'Source', href: 'https://github.com/kaurmoni0013/Love-Calculator', kind: 'repo' },
+      { label: 'GitHub', href: 'https://github.com/kaurmoni0013/tic-tac-toe-javascript', kind: 'repo' },
     ],
   },
   {
@@ -126,7 +128,7 @@ export const selectedProjects: Project[] = [
     tech: ['html', 'css', 'javascript'],
     links: [
       { label: 'Live', href: 'https://kaurmoni0013.github.io/Random-Quote-Generator/', kind: 'live' },
-      { label: 'Source', href: 'https://github.com/kaurmoni0013/Random-Quote-Generator', kind: 'repo' },
+      { label: 'GitHub', href: 'https://github.com/kaurmoni0013/Random-Quote-Generator', kind: 'repo' },
     ],
   },
   {
@@ -137,16 +139,6 @@ export const selectedProjects: Project[] = [
     summary:
       'The classic snake game written in C++, with collision handling, speed progression and a high score persisted to disk between sessions.',
     tech: ['cplusplus'],
-    links: [{ label: 'Source', href: 'https://github.com/kaurmoni0013/snake-game-cpp', kind: 'repo' }],
-  },
-  {
-    id: 'dsa-notes',
-    name: 'DSA Notes',
-    kicker: 'C++ problem write-ups',
-    year: 'Ongoing',
-    summary:
-      'My C++ practice repository — solutions and notes organised by topic, written so I can re-read the reasoning later instead of only recognising the answer.',
-    tech: ['cplusplus', 'dsa', 'algorithms'],
-    links: [{ label: 'Source', href: 'https://github.com/kaurmoni0013/dsa-cpp', kind: 'repo' }],
+    links: [{ label: 'GitHub', href: 'https://github.com/kaurmoni0013/snake-game-cpp', kind: 'repo' }],
   },
 ]

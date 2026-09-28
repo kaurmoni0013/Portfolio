@@ -5,6 +5,7 @@ import { Footer } from './components/layout/Footer'
 import { SiteHeader } from './components/layout/SiteHeader'
 import Home from './pages/Home'
 import ProjectsPage from './pages/Projects'
+import ProjectDetail from './pages/ProjectDetail'
 import AboutPage from './pages/About'
 import ContactPage from './pages/Contact'
 import NotFound from './pages/NotFound'
@@ -49,8 +50,9 @@ export default function App() {
  <ScrollToTop />
  <Routes>
  <Route path="/" element={<Home />} />
- <Route path="/projects" element={<ProjectsPage />} />
- <Route path="/about" element={<AboutPage />} />
+<Route path="/projects" element={<ProjectsPage />} />
+  <Route path="/projects/:id" element={<ProjectDetail />} />
+  <Route path="/about" element={<AboutPage />} />
  <Route path="/contact" element={<ContactPage />} />
  <Route path="*" element={<NotFound />} />
  </Routes>

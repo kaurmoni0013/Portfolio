@@ -1,32 +1,27 @@
 import { About } from '../components/sections/About'
+import { TechnicalSkillset } from '../components/sections/TechnicalSkillset'
+import { CurrentlyLearning } from '../components/sections/CurrentlyLearning'
 import { Certificates } from '../components/sections/Certificates'
-import { Journey } from '../components/sections/Journey'
-import { BackendSystemDesign } from '../components/sections/BackendSystemDesign'
-import { Button } from '../components/ui/Button'
-import { PageHeader } from '../components/ui/PageHeader'
-import { profile } from '../data/profile'
+import { Reveal } from '../components/ui/Reveal'
 
 export default function AboutPage() {
   return (
     <>
-      <PageHeader
-        eyebrow="About me"
-        title="The short version, and the long version."
-        lede={profile.summary}
-      >
-        <div className="flex flex-wrap gap-3">
-          <Button href={profile.resume.href} variant="ghost" download>
-            Download résumé
-          </Button>
-          <Button href="/contact" variant="quiet">
-            Get in touch
-          </Button>
+      <header className="pt-[calc(var(--nav-h)+clamp(2.5rem,7vw,5.5rem))] pb-14 md:pb-20">
+        <div className="shell">
+          <Reveal>
+            <div className="mx-auto max-w-4xl text-center">
+              <h1 className="display-lg font-bold tracking-tight text-ink uppercase sm:text-4xl md:text-5xl">
+                Know Who <span className="text-accent">I&rsquo;M</span>
+              </h1>
+            </div>
+          </Reveal>
         </div>
-      </PageHeader>
+      </header>
 
       <About />
-      <BackendSystemDesign />
-      <Journey />
+      <TechnicalSkillset />
+      <CurrentlyLearning />
       <Certificates />
     </>
   )

@@ -70,10 +70,14 @@
  background-color: var(--color-void);
  }
 
- body {
- margin: 0;
- background-color: var(--color-void);
- color: var(--color-ink);
+  body {
+  margin: 0;
+  /* Transparent on purpose. The root element already paints --color-void, and
+     an opaque body background is painted *after* negative z-index children —
+     which is exactly the fixed starfield backdrop. Leaving it transparent lets
+     the canvas starfield show through. */
+  background-color: transparent;
+  color: var(--color-ink);
  font-family: var(--font-sans);
  font-size: 1rem;
  line-height: 1.65;

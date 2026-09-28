@@ -58,13 +58,15 @@ export default function Home() {
       <section className="py-20 md:py-24 border-t border-line-soft/60">
         <div className="shell">
           <Reveal>
-            <div className="pt-4">
-              <h2 className="display-md text-ink max-w-2xl">{profile.tagline}</h2>
-              <p className="body-lg mt-5 max-w-xl text-ink-3">
-                If you&rsquo;re hiring, mentoring, or just want to compare notes on full-stack or backend work,
-                I&rsquo;d genuinely like to hear from you.
-              </p>
-              <div className="mt-10 flex flex-wrap items-center justify-start gap-4">
+            <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+              <div className="lg:col-span-7">
+                <h2 className="display-md text-ink">{profile.tagline}</h2>
+                <p className="body-lg mt-5 max-w-xl text-ink-3">
+                  If you&rsquo;re hiring, mentoring, or just want to compare notes on full-stack or backend work,
+                  I&rsquo;d genuinely like to hear from you.
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-4 lg:col-span-5 lg:justify-end">
                 <Button href={`mailto:${profile.email}`} variant="primary">
                   Get in touch
                 </Button>

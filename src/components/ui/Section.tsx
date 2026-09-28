@@ -2,14 +2,16 @@ import type { ReactNode } from 'react'
 import { Reveal } from './Reveal'
 
 type SectionProps = {
- id?: string
- eyebrow: string
- title: ReactNode
- lede?: ReactNode
- className?: string
- children: ReactNode
- /** Renders the heading block full width instead of capped at 3 columns. */
- bare?: boolean
+  id?: string
+  eyebrow: string
+  title: ReactNode
+  lede?: ReactNode
+  className?: string
+  children: ReactNode
+  /** Renders the heading block full width instead of capped at 3 columns. */
+  bare?: boolean
+  /** Overrides the default `display-md` heading size. */
+  headingClassName?: string
 }
 
 /**
@@ -18,16 +20,16 @@ type SectionProps = {
  * ("01", "02") — decorative, and part of the console-like look the redesign
  * is replacing, so it is gone rather than restyled.
  */
-export function Section({ id, eyebrow, title, lede, className = '', children, bare = false }: SectionProps) {
- return (
- <section id={id} className={`relative scroll-mt-24 ${className}`}>
- <div className="shell">
- <Reveal>
- <header className={bare ? '' : 'max-w-3xl'}>
- <p className="eyebrow text-accent-soft">{eyebrow}</p>
- <h2 className="display-md mt-3 text-ink">{title}</h2> {lede ? <p className="body-lg mt-5 max-w-2xl">{lede}</p> : null}
- </header>
- </Reveal>
+export function Section({ id, eyebrow, title, lede, className = '', children, bare = false, headingClassName = 'display-md' }: SectionProps) {
+  return (
+  <section id={id} className={`relative scroll-mt-24 ${className}`}>
+  <div className="shell">
+  <Reveal>
+  <header className={bare ? '' : 'max-w-3xl'}>
+  <p className="eyebrow text-accent-soft">{eyebrow}</p>
+  <h2 className={`mt-3 text-ink ${headingClassName}`}>{title}</h2> {lede ? <p className="body-lg mt-5 max-w-2xl">{lede}</p> : null}
+  </header>
+  </Reveal>
 
  <div className="mt-12 md:mt-14">{children}</div>
  </div>

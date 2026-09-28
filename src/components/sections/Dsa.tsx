@@ -1,10 +1,11 @@
+import { ArrowUpRight } from 'lucide-react'
 import { Reveal } from '../ui/Reveal'
 import { Section } from '../ui/Section'
-import { dsaPath, dsaTopics } from '../../data/dsa'
+import { dsaTopics } from '../../data/dsa'
 
 /**
- * Problem Solving. Clean list of topics and the practice path.
- * No decorative arrows, no monospace counters, no animated cards.
+ * Problem Solving. One dedicated block: concise topic list and a single
+ * repository CTA. No fabricated counts, no repeated keyword cards.
  */
 export function Dsa({ className = '' }: { className?: string }) {
   return (
@@ -16,46 +17,28 @@ export function Dsa({ className = '' }: { className?: string }) {
       className={`py-16 md:py-20 ${className}`}
     >
       <Reveal>
-        <ol className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-          {dsaPath.map((step) => (
-            <li key={step.id} className="rounded-xl border border-line bg-raised px-5 py-5">
-              <h3 className="display-sm mt-2 text-ink">{step.label}</h3>
-              <p className="mt-1.5 text-[0.8125rem] leading-relaxed text-ink-3">{step.note}</p>
+        <ul className="flex flex-wrap gap-2">
+          {dsaTopics.map((topic) => (
+            <li key={topic} className="rounded-full border border-line bg-raised px-4 py-1.5 text-[0.875rem] text-ink-2">
+              {topic}
             </li>
           ))}
-        </ol>
+        </ul>
       </Reveal>
 
-      <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-14">
-        <div className="lg:col-span-8">
-          <Reveal>
-            <ul className="grid gap-2 sm:grid-cols-2">
-              {dsaTopics.map((topic) => (
-                <li key={topic.label} className="rounded-xl border border-line bg-raised px-5 py-5">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h4 className="display-sm text-ink">{topic.label}</h4>
-                    <span className="text-[0.75rem] text-ink-4">{topic.files} files</span>
-                  </div>
-                  <p className="mt-2 text-[0.8125rem] leading-relaxed text-ink-3">{topic.blurb}</p>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
+      <Reveal delay={0.05}>
+        <div className="mt-10">
+          <a
+            href="https://github.com/kaurmoni0013/dsa-cpp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-6 py-3 text-[0.9375rem] font-medium text-ink transition-colors duration-200 hover:border-accent/50 hover:bg-white/[0.06]"
+          >
+            View dsa-cpp repository
+            <ArrowUpRight className="size-4" />
+          </a>
         </div>
-
-        <div className="lg:col-span-4">
-          <Reveal delay={0.05}>
-            <a
-              href="https://github.com/kaurmoni0013/dsa-cpp"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[0.875rem] text-ink-3 transition-colors duration-150 hover:text-ink"
-            >
-              View dsa-cpp repository
-            </a>
-          </Reveal>
-        </div>
-      </div>
+      </Reveal>
     </Section>
   )
 }

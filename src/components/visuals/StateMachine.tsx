@@ -53,10 +53,10 @@ export function StateMachine() {
  </span>
 
  <div className="min-w-0 pb-2 lg:pr-6">
- <div className="flex flex-wrap items-center gap-2">
- <h3 className="display-sm font-600 text-ink">
- {step.label}
- </h3>
+<div className="flex flex-wrap items-center gap-2">
+  <span className="display-sm font-600 text-ink">
+  {step.label}
+  </span>
  <span className="rounded-full border border-line-soft px-2 py-0.5 text-[0.75rem] text-ink-3">
  {step.actor}
  </span>
