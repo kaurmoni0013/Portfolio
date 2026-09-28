@@ -27,7 +27,7 @@ export function Hero() {
             </motion.p>
 
             <motion.h1 variants={rise(1)} className="display-xl mt-5 text-ink">
-              {profile.name}
+              {profile.name} <span className="wave" aria-hidden="true">👋</span>
             </motion.h1>
 
             <motion.p variants={rise(2)} className="body-lg mt-6 max-w-xl text-ink-2">
