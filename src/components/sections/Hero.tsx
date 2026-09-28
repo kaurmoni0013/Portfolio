@@ -83,13 +83,13 @@ export function Hero() {
                 }}
                 aria-hidden="true"
               >
-                👋🏻
+                👋
               </motion.span>
             </motion.p>
 
             {/* Name */}
             <motion.h1 variants={rise(1)} className="display-xl mt-4 text-ink uppercase tracking-tight">
-              I&rsquo;m {profile.name}
+              I&rsquo;m <span className="text-accent">{profile.name}</span>
             </motion.h1>
 
             {/* Cycling roles */}
