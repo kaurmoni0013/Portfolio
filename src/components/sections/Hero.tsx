@@ -70,7 +70,7 @@ export function Hero() {
             variants={{ hidden: {}, show: { transition: { staggerChildren: reduce ? 0 : 0.08 } } }}
           >
             {/* Greeting */}
-            <motion.p variants={rise(0)} className="eyebrow">
+            <motion.p variants={rise(0)} className="font-display text-[1.5rem] font-400 tracking-tight text-ink-2 md:text-[1.875rem]">
               Hi There! <span className="wave" aria-hidden="true">👋🏻</span>
             </motion.p>
 

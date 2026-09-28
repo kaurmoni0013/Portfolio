@@ -1,10 +1,6 @@
-import { Link } from 'react-router-dom'
-import { ArrowUpRight } from 'lucide-react'
 import { Hero } from '../components/sections/Hero'
 import { Skills } from '../components/sections/Skills'
 import { CurrentlyExploring } from '../components/sections/CurrentlyExploring'
-import { ProjectShowcase } from '../components/sections/ProjectShowcase'
-import { featuredProjects } from '../data/projects'
 import { profile } from '../data/profile'
 import { Reveal } from '../components/ui/Reveal'
 import { Button } from '../components/ui/Button'
@@ -14,32 +10,46 @@ export default function Home() {
     <>
       <Hero />
 
-      {/* ----------------- selected work ----------------- */}
+      {/* ------------------- INTRODUCTION ------------------- */}
       <section className="py-20 md:py-28">
         <div className="shell">
           <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <div>
-                <p className="eyebrow">Selected work</p>
-                <h2 className="display-md mt-3 max-w-xl text-ink">
-                  Two full-stack products, and what made them hard.
-                </h2>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="eyebrow">Let me introduce myself</p>
+
+              <div className="mt-8 space-y-5 text-left text-[1.0rem] leading-relaxed text-ink-2 md:text-[1.0625rem]">
+                <p>
+                  I&rsquo;m Moni Kaur, a Computer Science &amp; Artificial Intelligence undergraduate
+                  focused on Software Engineering and Full-Stack Development.
+                </p>
+                <p>
+                  I primarily work with{' '}
+                  <span className="text-accent-soft">C++, JavaScript, React.js, Node.js, Express.js, and MongoDB</span>,
+                  and I have hands-on experience building real-world applications with REST APIs, JWT
+                  authentication, role-based access control, database design, Redis, and AI API integration.
+                </p>
+                <p>
+                  I have a strong foundation in DSA, OOP, DBMS, Operating Systems, and Computer Networks,
+                  with 150+ DSA problems practiced in C++. I also have working knowledge of Java, MySQL,
+                  Linux, Git/GitHub, Docker, and system-design concepts.
+                </p>
+                <p>
+                  What I enjoy most is taking an idea from{' '}
+                  <span className="text-ink">problem → architecture → implementation → deployment</span>.
+                  My projects have given me practical experience with backend logic, authentication,
+                  concurrency, security, APIs, and building interfaces that real users can interact with.
+                </p>
+                <p>
+                  Currently, I&rsquo;m strengthening my skills in backend engineering, system design,
+                  cloud, and DevOps while continuing to build production-oriented projects.
+                </p>
+                <p>
+                  I&rsquo;m looking for opportunities where I can contribute as a Software Engineer,
+                  learn from experienced teams, and take ownership of building reliable software.
+                </p>
               </div>
-              <Link
-                to="/projects"
-                className="tap link-wipe inline-flex items-center gap-1.5 text-[0.9375rem] text-ink-3 transition-colors duration-150"
-              >
-                All projects
-                <ArrowUpRight className="size-3.5" strokeWidth={2} />
-              </Link>
             </div>
           </Reveal>
-
-          <div className="mt-14 space-y-24 md:space-y-32">
-            {featuredProjects.slice(0, 2).map((project, i) => (
-              <ProjectShowcase key={project.id} project={project} index={i} />
-            ))}
-          </div>
         </div>
       </section>
 
