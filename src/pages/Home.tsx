@@ -54,8 +54,8 @@ export default function Home() {
             <div className="border-t border-line-soft pt-12">
               <h2 className="display-md text-ink">{profile.tagline}</h2>
               <p className="body-lg mt-5 max-w-xl">
-                If you&rsquo;re hiring, mentoring, or just want to compare notes on backend or DSA
-                work, I&rsquo;d genuinely like to hear from you.
+                If you&rsquo;re hiring, mentoring, or just want to compare notes on full-stack or backend work,
+                I&rsquo;d genuinely like to hear from you.
               </p>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
                 <Button href={`mailto:${profile.email}`} variant="primary">

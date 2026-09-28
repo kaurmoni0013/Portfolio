@@ -14,8 +14,8 @@ export function Footer() {
  {profile.name}
  </p>
  <p className="mt-3 max-w-md text-[0.9375rem] leading-relaxed text-ink-3">
- Computer Science &amp; AI undergraduate, 2028. Building full-stack applications and
- exploring modern backend systems.
+ Full-Stack Developer focused on backend engineering, C++/DSA, and scalable system design.
+ B.Tech Computer Science &amp; AI, graduating 2028.
  </p>
  </div>
 

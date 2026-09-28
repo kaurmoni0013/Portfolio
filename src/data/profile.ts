@@ -5,9 +5,9 @@ export const profile = {
   location: 'Jaipur, Rajasthan, India',
   email: 'kaurmoni0013@gmail.com',
   tagline:
-    'Backend-focused developer building full-stack applications and exploring scalable backend systems, system design, and problem solving with C++.',
+    'Full-Stack Developer focused on backend engineering, C++/DSA, and scalable system design.',
   summary:
-    "I'm a Computer Science & Artificial Intelligence undergraduate graduating in 2028. I build full-stack applications with a backend-first approach, and I care most about the parts of a product that can't be faked: concurrent writes, authentication that fails closed, and cost control when a third-party API sits in the request path.",
+    "I'm a Computer Science & Artificial Intelligence undergraduate at Arya College of Engineering & IT, Jaipur, graduating in 2028. I build complete web applications using the MERN stack — frontend, backend, database, authentication, and APIs — and my stronger interest is in what happens on the server: how requests are validated, how data is structured, and how systems hold up under real use. Alongside web development, I practice DSA regularly in C++ to strengthen algorithmic thinking and problem-solving patterns. I'm currently deepening my understanding of system design, scalable backend architecture, and DevOps/cloud concepts. I prefer building things that work correctly over things that look impressive, and I find the backend side of a product consistently more interesting to reason about.",
   resume: {
     label: 'Download Resume',
     href: 'Moni_Kaur_Resume.pdf',

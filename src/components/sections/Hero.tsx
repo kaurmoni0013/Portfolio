@@ -31,7 +31,7 @@ export function Hero() {
             </motion.h1>
 
             <motion.p variants={rise(2)} className="body-lg mt-6 max-w-xl text-ink-2">
-              Backend-focused developer building full-stack applications and exploring scalable backend systems, system design, and problem solving with C++.
+              Full-Stack Developer building practical MERN applications, strengthening problem-solving with C++, and exploring scalable backend architecture.
             </motion.p>
 
             <motion.div variants={rise(3)} className="mt-9 flex flex-wrap items-center gap-3">

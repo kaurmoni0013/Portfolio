@@ -12,32 +12,33 @@ export function About({ className = '' }: { className?: string }) {
     <Section
       id="about"
       eyebrow="About"
-      title="A CS & AI undergraduate who actually ships the backend too."
+      title="Full-stack developer with a backend focus."
       className={`py-16 md:py-20 ${className}`}
     >
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">
           <Reveal>
             <p className="max-w-xl text-[1.0625rem] leading-relaxed text-ink-2">
-              I'm a Computer Science & Artificial Intelligence undergraduate
-              graduating in 2028. I build full-stack applications with a backend-first approach, and I care
-              most about the parts of a product that can't be faked: concurrent
-              writes, authentication that fails closed, and cost control when a third-party
-              API sits in the request path.
+              I'm a Computer Science & Artificial Intelligence undergraduate at Arya College of
+              Engineering & IT, Jaipur, graduating in 2028. I build complete web applications using
+              the MERN stack — frontend, backend, database, authentication, and APIs — and my
+              stronger interest is in what happens on the server side: how data is structured, how
+              requests are validated, and how systems hold up under real use.
             </p>
           </Reveal>
 
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-ink-2">
-              I also regularly practice DSA in C++ to strengthen problem-solving
-              and algorithmic thinking. I am currently expanding my knowledge of
-              system design, backend architecture, and DevOps/cloud concepts.
+              I practice DSA regularly in C++ to build algorithmic thinking and problem-solving
+              patterns. I'm currently deepening my understanding of system design, scalable backend
+              architecture, and DevOps/cloud concepts — the parts of engineering that sit between
+              making something work and making it hold up.
             </p>
           </Reveal>
 
           <Reveal delay={0.12}>
             <ul className="mt-8 flex flex-wrap gap-2.5">
-              {['Backend Development', 'System Design', 'C++ / DSA'].map((f) => (
+              {['Full-Stack Development', 'Backend Engineering', 'C++ / DSA', 'System Design'].map((f) => (
                 <li
                   key={f}
                   className="rounded-full border border-line-soft px-3.5 py-1.5 text-[0.875rem] text-ink-3"

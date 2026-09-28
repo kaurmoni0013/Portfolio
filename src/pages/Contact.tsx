@@ -7,7 +7,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Let's Connect"
-        lede="I'm interested in software engineering opportunities, backend development, and projects where I can keep learning and building."
+        lede="Open to software engineering and full-stack/backend-focused internship opportunities, and always interested in building and learning through real-world projects."
       />
       <Contact />
     </>

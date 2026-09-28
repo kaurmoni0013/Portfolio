@@ -75,7 +75,7 @@ export const atAGlance = [
   { label: 'Institution', value: 'Arya College of Engineering & IT, Jaipur' },
   { label: 'Graduation', value: '2028 (expected)' },
   { label: 'Current CGPA', value: '9.4 / 10' },
-  { label: 'Focus', value: 'Backend Development · System Design · C++ / DSA' },
+  { label: 'Focus', value: 'Full-Stack Development · Backend Engineering · C++ / DSA' },
   { label: 'Looking for', value: 'Software Engineering / Backend internship' },
 ] as const
 
