@@ -133,12 +133,12 @@ export function Hero() {
           >
             <div className="overflow-hidden rounded-full border border-line bg-raised aspect-square">
               <img
-                src="moni_avtar.png"
+                src={`${import.meta.env.BASE_URL}moni_avtar.webp`}
                 alt={`${profile.name}, Computer Science & Artificial Intelligence undergraduate in Jaipur`}
-                width={500}
-                height={500}
+                width={1254}
+                height={1254}
                 fetchPriority="high"
-                decoding="async"
+                decoding="sync"
                 className="w-full h-full object-cover"
               />
             </div>

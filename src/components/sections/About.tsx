@@ -22,11 +22,12 @@ export function About({ className = '' }: { className?: string }) {
           <Reveal className="lg:col-span-5">
             <figure className="mx-auto aspect-square max-w-sm overflow-hidden rounded-full border border-line bg-raised">
               <img
-                src="moni_avtar.png"
+                src={`${import.meta.env.BASE_URL}moni_avtar.webp`}
                 alt={`${profile.name}, Computer Science & Artificial Intelligence undergraduate in Jaipur`}
-                width={500}
-                height={500}
-                decoding="async"
+                width={1254}
+                height={1254}
+                fetchPriority="high"
+                decoding="sync"
                 className="h-full w-full object-cover"
               />
             </figure>
