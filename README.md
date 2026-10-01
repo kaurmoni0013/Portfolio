@@ -6,6 +6,10 @@
 
 <b><i>HUMAN DEVELOPER · CLASS OF 2028 · JAIPUR</i></b>
 
+<br/>
+
+<img src="https://raw.githubusercontent.com/kaurmoni0013/Portfolio/main/public/moni_avtar.webp" alt="Monika" width="210" style="border-radius:50%;border:3px solid #22d3ee;"/>
+
 <hr style="height:3px;border:none;border-radius:4px;background:linear-gradient(90deg,#22d3ee,#e879f9,#ff7eb3,#ffd166)"/>
 
 <br/>
