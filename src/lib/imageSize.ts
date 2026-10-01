@@ -3,7 +3,7 @@
 export const IMAGE_SIZE: Record<string, { w: number; h: number }> = {
   mediqueue: { w: 935, h: 766 },
   'orbit-ai': { w: 1400, h: 707 },
-  'solar-system': { w: 900, h: 749 },
+  'solar-system': { w: 887, h: 704 },
   'tic-tac-toe': { w: 800, h: 732 },
   'love-calculator': { w: 571, h: 799 },
   'random-quote': { w: 800, h: 779 },
