@@ -26,7 +26,7 @@
 
   <p>
     <a href="#-about-me"><b>⚡ About</b></a> &nbsp;&nbsp;•&nbsp;&nbsp;
-    <a href="#-tech-stack--skills"><b>🛠️ Tech Stack</b></a> &nbsp;&nbsp;•&nbsp;&nbsp;
+    <a href="#-tools--technologies"><b>🛠️ Tech Stack</b></a> &nbsp;&nbsp;•&nbsp;&nbsp;
     <a href="#-featured-projects"><b>🚀 Projects</b></a> &nbsp;&nbsp;•&nbsp;&nbsp;
     <a href="#-systems-im-exploring"><b>🏗️ Systems</b></a> &nbsp;&nbsp;•&nbsp;&nbsp;
     <a href="#-problem-solving"><b>🧩 DSA</b></a> &nbsp;&nbsp;•&nbsp;&nbsp;
@@ -68,67 +68,73 @@
 
 <br/>
 
-### 🛠️ Tech Stack &amp; Skills
+### 🛠️ Tools &amp; Technologies
 
 <div align="center">
+
+  <img src="https://raw.githubusercontent.com/kaurmoni0013/Portfolio/main/assets/tech-stack-animated.svg" alt="Animated Tech Stack & Skills" width="100%" />
+
+  <br/><br/>
 
   <h4>💻 Programming Languages</h4>
   <p>
     <a href="https://skillicons.dev">
-      <img src="https://skillicons.dev/icons?i=cpp,java,js,py,mysql,html,css&theme=dark" alt="Languages" />
+      <img src="https://skillicons.dev/icons?i=cpp,java,js,mysql&theme=dark" alt="Languages" />
     </a>
   </p>
 
   <br/>
 
-  <h4>⚡ Backend &amp; Architecture</h4>
+  <h4>🎨 Frontend</h4>
   <p>
     <a href="https://skillicons.dev">
-      <img src="https://skillicons.dev/icons?i=nodejs,express,mongodb,redis,react,tailwind&theme=dark" alt="Backend & Frameworks" />
+      <img src="https://skillicons.dev/icons?i=react,html,css,vite&theme=dark" alt="Frontend" />
     </a>
   </p>
 
   <br/>
 
-  <h4>🔧 Tools &amp; DevOps</h4>
+  <h4>⚡ Backend &amp; APIs</h4>
   <p>
     <a href="https://skillicons.dev">
-      <img src="https://skillicons.dev/icons?i=docker,git,github,linux,vscode,postman&theme=dark" alt="Tools & Technologies" />
+      <img src="https://skillicons.dev/icons?i=nodejs,express,postman&theme=dark" alt="Backend" />
     </a>
+  </p>
+  <p><code>Node.js</code> &nbsp;•&nbsp; <code>Express.js</code> &nbsp;•&nbsp; <code>REST APIs</code> &nbsp;•&nbsp; <code>JWT</code> &nbsp;•&nbsp; <code>Zod</code> &nbsp;•&nbsp; <code>SSE</code></p>
+
+  <br/>
+
+  <h4>🗄️ Database &amp; In-Memory</h4>
+  <p>
+    <a href="https://skillicons.dev">
+      <img src="https://skillicons.dev/icons?i=mongodb,mysql,redis&theme=dark" alt="Databases" />
+    </a>
+  </p>
+
+  <br/>
+
+  <h4>🔧 DevOps &amp; Cloud</h4>
+  <p>
+    <a href="https://skillicons.dev">
+      <img src="https://skillicons.dev/icons?i=linux,git,github,docker,githubactions,jenkins&theme=dark" alt="DevOps" />
+    </a>
+  </p>
+
+  <br/>
+
+  <h4>🏗️ Backend &amp; System Design</h4>
+  <p>
+    <code>DSA</code> &nbsp;•&nbsp; <code>OOP</code> &nbsp;•&nbsp; <code>Caching</code> &nbsp;•&nbsp; <code>Rate Limiting</code> &nbsp;•&nbsp; <code>Bloom Filters</code> &nbsp;•&nbsp; <code>Consistent Hashing</code> &nbsp;•&nbsp; <code>Apache Kafka</code>
+  </p>
+
+  <br/>
+
+  <h4>🤖 AI &amp; APIs</h4>
+  <p>
+    <code>OpenRouter</code> &nbsp;•&nbsp; <code>Gemini API</code> &nbsp;•&nbsp; <code>Server-Sent Events (SSE)</code>
   </p>
 
 </div>
-
-<br/>
-
----
-
-<br/>
-
-### ⚙️ Engineering Focus
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h4>⚡ Backend Engineering</h4>
-      <p>Building deterministic RESTful APIs, modular service layers, and asynchronous request pipelines in Node.js and Express with structured error mapping.</p>
-    </td>
-    <td width="50%" valign="top">
-      <h4>🔒 Authentication &amp; Security</h4>
-      <p>Implementing server-enforced RBAC, token versioning for instant JWT revocation, bcrypt password hashing, and rate-limiting guards.</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <h4>🗄️ Database Architecture</h4>
-      <p>Schema design in MongoDB and SQL; partial unique indexing for race-safe booking, compound indexes, and ACID transactional writes.</p>
-    </td>
-    <td width="50%" valign="top">
-      <h4>⚡ Caching &amp; Performance</h4>
-      <p>Leveraging Redis for in-memory caching, atomic token quota reservations, short-lived concurrency locks, and reducing query latency.</p>
-    </td>
-  </tr>
-</table>
 
 <br/>
 
