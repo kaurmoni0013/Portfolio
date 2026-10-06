@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 170" width="100%" height="100%">
+  <defs>
+    <linearGradient id="stat-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c14" />
+      <stop offset="50%" stop-color="#0b121e" />
+      <stop offset="100%" stop-color="#05080e" />
+    </linearGradient>
+
+    <linearGradient id="cyan-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+
+    <linearGradient id="purple-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+
+    <linearGradient id="amber-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#eab308" />
+    </linearGradient>
+
+    <pattern id="stat-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#1e293b" stroke-width="0.5" stroke-opacity="0.3" />
+    </pattern>
+  </defs>
+
+  <style>
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', 'SF Mono', Consolas, monospace; }
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif; }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .live-indicator { animation: pulse-dot 2.5s infinite ease-in-out; }
+  </style>
+
+  <!-- Container -->
+  <rect width="900" height="170" rx="10" fill="url(#stat-bg)" stroke="#1e293b" stroke-width="1.2" />
+  <rect width="900" height="170" rx="10" fill="url(#stat-grid)" />
+
+  <!-- Top Title Bar -->
+  <line x1="0" y1="36" x2="900" y2="36" stroke="#1e293b" stroke-width="1" />
+  <circle cx="24" cy="18" r="3.5" fill="#22d3ee" class="live-indicator" />
+  <text x="36" y="22" fill="#38bdf8" class="font-mono" font-size="10.5" font-weight="700" letter-spacing="1">GITHUB ACTIVITY &amp; PRODUCTION METRICS</text>
+  <text x="876" y="22" text-anchor="end" fill="#64748b" class="font-mono" font-size="10">USER: @kaurmoni0013</text>
+
+  <!-- Left: Metric Cards (3 Columns) -->
+  <!-- Col 1: Repositories -->
+  <g transform="translate(30, 56)">
+    <rect width="180" height="90" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+    <text x="18" y="26" fill="#64748b" class="font-mono" font-size="9" font-weight="700">TOTAL REPOSITORIES</text>
+    <text x="18" y="58" fill="#f8fafc" class="font-sans" font-size="26" font-weight="800">14+</text>
+    <text x="18" y="76" fill="#22d3ee" class="font-mono" font-size="8.5">Active &amp; Maintained</text>
+  </g>
+
+  <!-- Col 2: Stars Earned -->
+  <g transform="translate(230, 56)">
+    <rect width="180" height="90" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+    <text x="18" y="26" fill="#64748b" class="font-mono" font-size="9" font-weight="700">COMMUNITY STARS</text>
+    <text x="18" y="58" fill="#f8fafc" class="font-sans" font-size="26" font-weight="800">39+</text>
+    <text x="18" y="76" fill="#eab308" class="font-mono" font-size="8.5">⭐ Across Projects</text>
+  </g>
+
+  <!-- Col 3: Language Distribution & Focus -->
+  <g transform="translate(430, 56)">
+    <rect width="440" height="90" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+    <text x="20" y="24" fill="#64748b" class="font-mono" font-size="9" font-weight="700">CORE CODEBASE LANGUAGE BREAKDOWN</text>
+    
+    <!-- Multi-segment progress bar -->
+    <g transform="translate(20, 36)">
+      <!-- C++ -->
+      <rect x="0" y="0" width="180" height="8" rx="4" fill="url(#cyan-bar)" />
+      <!-- JS / TS -->
+      <rect x="185" y="0" width="140" height="8" rx="4" fill="url(#purple-bar)" />
+      <!-- HTML / CSS / Others -->
+      <rect x="330" y="0" width="70" height="8" rx="4" fill="url(#amber-bar)" />
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(20, 68)">
+      <circle cx="4" cy="4" r="3" fill="#22d3ee" />
+      <text x="12" y="7" fill="#cbd5e1" class="font-mono" font-size="9.5">C++ / Algorithms (45%)</text>
+
+      <circle cx="160" cy="4" r="3" fill="#a855f7" />
+      <text x="168" y="7" fill="#cbd5e1" class="font-mono" font-size="9.5">JavaScript / Node (35%)</text>
+
+      <circle cx="320" cy="4" r="3" fill="#f59e0b" />
+      <text x="328" y="7" fill="#cbd5e1" class="font-mono" font-size="9.5">HTML / CSS / SQL (20%)</text>
+    </g>
+  </g>
+</svg>
