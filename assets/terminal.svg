@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 210" width="100%" height="100%">
+  <defs>
+    <linearGradient id="term-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a10" />
+      <stop offset="100%" stop-color="#05070b" />
+    </linearGradient>
+
+    <linearGradient id="term-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0e1726" />
+      <stop offset="100%" stop-color="#09101a" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, Consolas, monospace; }
+
+    @keyframes cursor-blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    .cursor {
+      animation: cursor-blink 1.05s infinite;
+    }
+  </style>
+
+  <!-- Terminal Window Body -->
+  <rect width="900" height="210" rx="10" fill="url(#term-bg)" stroke="#1e293b" stroke-width="1.2" />
+
+  <!-- Terminal Top Header Bar -->
+  <rect width="900" height="34" rx="10" fill="url(#term-bar)" />
+  <rect y="24" width="900" height="10" fill="url(#term-bar)" />
+  <line x1="0" y1="34" x2="900" y2="34" stroke="#1e293b" stroke-width="1" />
+
+  <!-- Window Action Dots -->
+  <circle cx="20" cy="17" r="5" fill="#ef4444" fill-opacity="0.8" />
+  <circle cx="36" cy="17" r="5" fill="#eab308" fill-opacity="0.8" />
+  <circle cx="52" cy="17" r="5" fill="#22c55e" fill-opacity="0.8" />
+
+  <!-- Window Title -->
+  <text x="450" y="21" text-anchor="middle" fill="#64748b" class="font-mono" font-size="11" font-weight="600">
+    moni@engine-node: ~ (zsh) — 80x24
+  </text>
+
+  <!-- Terminal Output Lines -->
+  <g transform="translate(24, 60)">
+    <!-- Line 1: whoami -->
+    <text x="0" y="0" fill="#22d3ee" class="font-mono" font-size="12" font-weight="700">➜</text>
+    <text x="16" y="0" fill="#38bdf8" class="font-mono" font-size="12">~</text>
+    <text x="32" y="0" fill="#f8fafc" class="font-mono" font-size="12" font-weight="600">whoami</text>
+    <text x="32" y="18" fill="#94a3b8" class="font-mono" font-size="11.5">moni-kaur <tspan fill="#64748b">// Full-Stack Developer • Backend &amp; System Design</tspan></text>
+
+    <!-- Line 2: focus -->
+    <text x="0" y="44" fill="#22d3ee" class="font-mono" font-size="12" font-weight="700">➜</text>
+    <text x="16" y="44" fill="#38bdf8" class="font-mono" font-size="12">~</text>
+    <text x="32" y="44" fill="#f8fafc" class="font-mono" font-size="12" font-weight="600">cat config/focus.json</text>
+    <text x="32" y="62" fill="#cbd5e1" class="font-mono" font-size="11.5">{ <tspan fill="#38bdf8">"core"</tspan>: <tspan fill="#2dd4bf">"REST APIs, Schemas, Security"</tspan>, <tspan fill="#38bdf8">"dsa"</tspan>: <tspan fill="#2dd4bf">"C++ (150+ Solved)"</tspan>, <tspan fill="#38bdf8">"next"</tspan>: <tspan fill="#2dd4bf">"Distributed Systems &amp; Kafka"</tspan> }</text>
+
+    <!-- Line 3: execute / build -->
+    <text x="0" y="88" fill="#22d3ee" class="font-mono" font-size="12" font-weight="700">➜</text>
+    <text x="16" y="88" fill="#38bdf8" class="font-mono" font-size="12">~</text>
+    <text x="32" y="88" fill="#f8fafc" class="font-mono" font-size="12" font-weight="600">./deploy --mode=production</text>
+    
+    <text x="32" y="106" fill="#34d399" class="font-mono" font-size="11.5">[READY]</text>
+    <text x="88" y="106" fill="#94a3b8" class="font-mono" font-size="11.5">Invariants verified. Test suites passing. Building scalable real-world systems.</text>
+    <rect x="730" y="95" width="8" height="14" fill="#22d3ee" class="cursor" />
+  </g>
+</svg>

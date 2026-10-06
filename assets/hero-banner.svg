@@ -1,0 +1,284 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="100%" height="100%">
+  <defs>
+    <!-- Dark gradient background -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c14" />
+      <stop offset="50%" stop-color="#0b111c" />
+      <stop offset="100%" stop-color="#06090e" />
+    </linearGradient>
+
+    <!-- Accent Cyan Gradient -->
+    <linearGradient id="cyan-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="50%" stop-color="#22d3ee" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+
+    <linearGradient id="text-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="70%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    <linearGradient id="badge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(34, 211, 238, 0.12)" />
+      <stop offset="100%" stop-color="rgba(14, 165, 233, 0.04)" />
+    </linearGradient>
+
+    <!-- Tech Grid Pattern -->
+    <pattern id="tech-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1e293b" stroke-width="0.75" stroke-opacity="0.35" />
+      <circle cx="0" cy="0" r="1" fill="#22d3ee" fill-opacity="0.25" />
+    </pattern>
+
+    <!-- Radial Glow Behind Nodes -->
+    <radialGradient id="ambient-glow" cx="80%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#0ea5e9" stop-opacity="0.03" />
+      <stop offset="100%" stop-color="#080c14" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Filter for Glow Effect -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="soft-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', 'SF Mono', Consolas, monospace; }
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Helvetica, Arial, sans-serif; }
+    
+    /* Animations */
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.8); }
+    }
+
+    @keyframes packet-flow-1 {
+      0% { stroke-dashoffset: 240; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes packet-flow-2 {
+      0% { stroke-dashoffset: 180; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes packet-flow-3 {
+      0% { stroke-dashoffset: 200; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes node-pulse {
+      0%, 100% { fill-opacity: 0.15; stroke-opacity: 0.4; }
+      50% { fill-opacity: 0.35; stroke-opacity: 0.9; }
+    }
+
+    @keyframes scan-line {
+      0% { transform: translateY(0px); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.6; }
+      100% { transform: translateY(340px); opacity: 0; }
+    }
+
+    .live-dot {
+      transform-origin: 45px 32px;
+      animation: pulse-dot 2.2s infinite ease-in-out;
+    }
+
+    .flow-line-1 {
+      stroke-dasharray: 8 16;
+      animation: packet-flow-1 4s linear infinite;
+    }
+
+    .flow-line-2 {
+      stroke-dasharray: 6 14;
+      animation: packet-flow-2 3.2s linear infinite;
+    }
+
+    .flow-line-3 {
+      stroke-dasharray: 8 18;
+      animation: packet-flow-3 3.8s linear infinite;
+    }
+
+    .node-active-1 { animation: node-pulse 3s infinite ease-in-out; }
+    .node-active-2 { animation: node-pulse 3s infinite ease-in-out 1s; }
+    .node-active-3 { animation: node-pulse 3s infinite ease-in-out 2s; }
+    
+    .scanner {
+      animation: scan-line 8s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- Container Box -->
+  <rect width="900" height="340" rx="14" fill="url(#bg-grad)" stroke="#1e293b" stroke-width="1.2" />
+  
+  <!-- Ambient glow in right quadrant -->
+  <rect width="900" height="340" rx="14" fill="url(#ambient-glow)" />
+
+  <!-- Grid overlay -->
+  <rect width="900" height="340" rx="14" fill="url(#tech-grid)" />
+
+  <!-- Scanning laser line -->
+  <line x1="0" y1="0" x2="900" y2="0" stroke="url(#cyan-glow)" stroke-width="1" stroke-opacity="0.3" class="scanner" />
+
+  <!-- Top Status / Telemetry Bar -->
+  <line x1="0" y1="52" x2="900" y2="52" stroke="#1e293b" stroke-width="1" stroke-opacity="0.7" />
+  
+  <g class="live-dot">
+    <circle cx="45" cy="32" r="4.5" fill="#22d3ee" filter="url(#glow)" />
+    <circle cx="45" cy="32" r="2.5" fill="#ffffff" />
+  </g>
+  <text x="60" y="36" fill="#22d3ee" class="font-mono" font-size="11" font-weight="600" letter-spacing="1.5">SYS_CORE // ONLINE</text>
+  <text x="210" y="36" fill="#475569" class="font-mono" font-size="11">|</text>
+  <text x="226" y="36" fill="#64748b" class="font-mono" font-size="11" letter-spacing="0.5">LATENCY: <tspan fill="#38bdf8">&lt; 14ms</tspan></text>
+  <text x="340" y="36" fill="#475569" class="font-mono" font-size="11">|</text>
+  <text x="356" y="36" fill="#64748b" class="font-mono" font-size="11" letter-spacing="0.5">ARCH: <tspan fill="#94a3b8">DISTRIBUTED_MERN</tspan></text>
+
+  <text x="855" y="36" text-anchor="end" fill="#64748b" class="font-mono" font-size="11" letter-spacing="0.8">LOC: 26.9124° N, 75.7873° E [JAIPUR]</text>
+
+  <!-- Left Content: Hero Title & Role -->
+  <g transform="translate(45, 80)">
+    <!-- Subtitle Eyebrow -->
+    <rect x="0" y="5" width="162" height="22" rx="4" fill="url(#badge-grad)" stroke="#0ea5e9" stroke-opacity="0.4" stroke-width="1" />
+    <text x="10" y="20" fill="#38bdf8" class="font-mono" font-size="10.5" font-weight="600" letter-spacing="1.2">FULL-STACK DEVELOPER</text>
+
+    <!-- Name Header -->
+    <text x="0" y="72" fill="url(#text-grad)" class="font-sans" font-size="46" font-weight="800" letter-spacing="-1">
+      MONI KAUR
+    </text>
+    
+    <!-- Accent Line under name -->
+    <rect x="0" y="86" width="70" height="3" rx="1.5" fill="url(#cyan-glow)" filter="url(#glow)" />
+    <rect x="76" y="87" width="12" height="1.5" rx="0.75" fill="#38bdf8" fill-opacity="0.4" />
+    <rect x="92" y="87" width="5" height="1.5" rx="0.75" fill="#38bdf8" fill-opacity="0.2" />
+
+    <!-- Core Pillars / Specialties -->
+    <g transform="translate(0, 114)">
+      <text x="0" y="0" fill="#e2e8f0" class="font-mono" font-size="13" font-weight="600" letter-spacing="0.5">
+        Backend Engineering <tspan fill="#0ea5e9">•</tspan> System Design <tspan fill="#0ea5e9">•</tspan> DSA in C++
+      </text>
+    </g>
+
+    <!-- Description -->
+    <g transform="translate(0, 140)">
+      <text x="0" y="0" fill="#94a3b8" class="font-sans" font-size="13.5" font-weight="400">
+        Building real-world applications with a strong focus on backend
+      </text>
+      <text x="0" y="22" fill="#94a3b8" class="font-sans" font-size="13.5" font-weight="400">
+        architecture, scalable APIs, databases, security, and system design.
+      </text>
+    </g>
+
+    <!-- Tech Badges -->
+    <g transform="translate(0, 190)">
+      <!-- Badge 1 -->
+      <rect x="0" y="0" width="88" height="24" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <circle cx="10" cy="12" r="3" fill="#22d3ee" />
+      <text x="20" y="16" fill="#cbd5e1" class="font-mono" font-size="10.5">REST APIs</text>
+
+      <!-- Badge 2 -->
+      <rect x="96" y="0" width="102" height="24" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <circle cx="106" cy="12" r="3" fill="#0ea5e9" />
+      <text x="116" y="16" fill="#cbd5e1" class="font-mono" font-size="10.5">Redis / SSE</text>
+
+      <!-- Badge 3 -->
+      <rect x="206" y="0" width="94" height="24" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <circle cx="216" cy="12" r="3" fill="#14b8a6" />
+      <text x="226" y="16" fill="#cbd5e1" class="font-mono" font-size="10.5">RBAC / Auth</text>
+
+      <!-- Badge 4 -->
+      <rect x="308" y="0" width="112" height="24" rx="5" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <circle cx="318" cy="12" r="3" fill="#38bdf8" />
+      <text x="328" y="16" fill="#cbd5e1" class="font-mono" font-size="10.5">150+ C++ DSA</text>
+    </g>
+  </g>
+
+  <!-- Right Visual: Interactive Software Architecture & Data Flow Circuit -->
+  <g transform="translate(530, 85)">
+    <!-- Node Connection Cables (Background) -->
+    <!-- Path 1: Client -> API Gateway -->
+    <path d="M 50 45 L 140 45" fill="none" stroke="#1e293b" stroke-width="2" />
+    <path d="M 50 45 L 140 45" fill="none" stroke="#00f2fe" stroke-width="2" class="flow-line-1" />
+
+    <!-- Path 2: API Gateway -> Cache / Redis -->
+    <path d="M 230 45 L 290 45 L 290 100" fill="none" stroke="#1e293b" stroke-width="2" />
+    <path d="M 230 45 L 290 45 L 290 100" fill="none" stroke="#38bdf8" stroke-width="2" class="flow-line-2" />
+
+    <!-- Path 3: API Gateway -> Backend Service -> DB -->
+    <path d="M 185 80 L 185 140 L 110 140 L 110 180" fill="none" stroke="#1e293b" stroke-width="2" />
+    <path d="M 185 80 L 185 140 L 110 140 L 110 180" fill="none" stroke="#22d3ee" stroke-width="2" class="flow-line-3" />
+
+    <!-- Path 4: Cache -> DB Sync -->
+    <path d="M 270 140 L 270 180 L 160 180" fill="none" stroke="#1e293b" stroke-dasharray="3 3" stroke-width="1.5" />
+
+    <!-- NODE 1: CLIENT LAYER -->
+    <g transform="translate(0, 20)">
+      <rect width="65" height="50" rx="8" fill="#0b1320" stroke="#334155" stroke-width="1.2" />
+      <rect x="6" y="8" width="53" height="6" rx="2" fill="#1e293b" />
+      <text x="32.5" y="32" text-anchor="middle" fill="#f8fafc" class="font-mono" font-size="10" font-weight="600">CLIENT</text>
+      <text x="32.5" y="44" text-anchor="middle" fill="#64748b" class="font-mono" font-size="8">REQ / SSE</text>
+    </g>
+
+    <!-- NODE 2: API GATEWAY / AUTH -->
+    <g transform="translate(130, 15)">
+      <rect width="105" height="60" rx="8" fill="#0d1829" stroke="#0ea5e9" stroke-width="1.4" class="node-active-1" />
+      <rect x="8" y="8" width="8" height="8" rx="2" fill="#22d3ee" filter="url(#glow)" />
+      <text x="22" y="16" fill="#38bdf8" class="font-mono" font-size="9" font-weight="700">GATEWAY</text>
+      <text x="52.5" y="35" text-anchor="middle" fill="#f1f5f9" class="font-mono" font-size="10" font-weight="600">JWT + RBAC</text>
+      <text x="52.5" y="49" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="8.5">Rate Limiter</text>
+    </g>
+
+    <!-- NODE 3: CACHE / REDIS -->
+    <g transform="translate(250, 95)">
+      <rect width="85" height="52" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.8" class="node-active-2" />
+      <circle cx="14" cy="14" r="3" fill="#38bdf8" />
+      <text x="23" y="17" fill="#38bdf8" class="font-mono" font-size="8.5" font-weight="700">REDIS</text>
+      <text x="42.5" y="34" text-anchor="middle" fill="#f8fafc" class="font-mono" font-size="9.5" font-weight="600">In-Memory</text>
+      <text x="42.5" y="45" text-anchor="middle" fill="#64748b" class="font-mono" font-size="8">Quota / Locks</text>
+    </g>
+
+    <!-- NODE 4: PERSISTENCE / DATABASE -->
+    <g transform="translate(70, 175)">
+      <rect width="100" height="54" rx="8" fill="#09141f" stroke="#14b8a6" stroke-width="1.4" class="node-active-3" />
+      <!-- Database cylinder icon lines -->
+      <ellipse cx="20" cy="18" rx="8" ry="4" fill="none" stroke="#14b8a6" stroke-width="1.2" />
+      <path d="M 12 18 L 12 28 A 8 4 0 0 0 28 28 L 28 18" fill="none" stroke="#14b8a6" stroke-width="1.2" />
+      <text x="35" y="22" fill="#2dd4bf" class="font-mono" font-size="9.5" font-weight="700">STORAGE</text>
+      <text x="50" y="38" text-anchor="middle" fill="#f8fafc" class="font-mono" font-size="9.5" font-weight="600">MongoDB / SQL</text>
+      <text x="50" y="48" text-anchor="middle" fill="#64748b" class="font-mono" font-size="8">ACID / Indexes</text>
+    </g>
+
+    <!-- Packet Simulation Pulse Rings -->
+    <g transform="translate(140, 45)">
+      <circle cx="0" cy="0" r="12" fill="none" stroke="#00f2fe" stroke-opacity="0.3">
+        <animate attributeName="r" values="4;18;4" dur="2.5s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.6;0;0.6" dur="2.5s" repeatCount="indefinite" />
+      </circle>
+    </g>
+  </g>
+
+  <!-- Bottom Accent / Corner Crosshairs -->
+  <g stroke="#334155" stroke-width="1.5">
+    <!-- Top-Left -->
+    <path d="M 16 22 L 24 22 M 20 18 L 20 26" />
+    <!-- Top-Right -->
+    <path d="M 876 22 L 884 22 M 880 18 L 880 26" />
+    <!-- Bottom-Left -->
+    <path d="M 16 318 L 24 318 M 20 314 L 20 322" />
+    <!-- Bottom-Right -->
+    <path d="M 876 318 L 884 318 M 880 314 L 880 322" />
+  </g>
+</svg>

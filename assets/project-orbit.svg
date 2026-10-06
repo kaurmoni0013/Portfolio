@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="card-bg-orb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090e17" />
+      <stop offset="50%" stop-color="#0c1422" />
+      <stop offset="100%" stop-color="#070a10" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace; }
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Helvetica, Arial, sans-serif; }
+    
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .status-live { animation: pulse-dot 2s infinite ease-in-out; }
+  </style>
+
+  <!-- Card Background -->
+  <rect width="900" height="220" rx="12" fill="url(#card-bg-orb)" stroke="#1e293b" stroke-width="1.2" />
+
+  <!-- Top Accent Header -->
+  <rect x="0" y="0" width="900" height="38" rx="12" fill="#0b1320" />
+  <rect y="24" width="900" height="14" fill="#0b1320" />
+  <line x1="0" y1="38" x2="900" y2="38" stroke="#1e293b" stroke-width="1" />
+
+  <!-- Live Status & Title -->
+  <circle cx="25" cy="19" r="4" fill="#38bdf8" class="status-live" />
+  <text x="38" y="23" fill="#38bdf8" class="font-mono" font-size="11" font-weight="700" letter-spacing="1">FEATURED APPLICATION // 02</text>
+  <text x="875" y="23" text-anchor="end" fill="#64748b" class="font-mono" font-size="10.5">REDIS • SSE STREAMING • MONGO TRANSACTIONS</text>
+
+  <!-- Main Info Left -->
+  <g transform="translate(25, 55)">
+    <text x="0" y="24" fill="#f8fafc" class="font-sans" font-size="22" font-weight="800" letter-spacing="-0.5">Orbit AI</text>
+    <text x="105" y="22" fill="#94a3b8" class="font-mono" font-size="11.5">— Full-Stack AI Conversation Workspace</text>
+
+    <!-- Engineering Highlights Grid -->
+    <g transform="translate(0, 42)">
+      <!-- Bullet 1 -->
+      <circle cx="4" cy="6" r="2.5" fill="#38bdf8" />
+      <text x="14" y="10" fill="#cbd5e1" class="font-sans" font-size="12">
+        <tspan font-weight="700" fill="#f8fafc">Resilient SSE Streaming:</tspan> Server-Sent Events with first-byte &amp; idle timeouts and client-disconnect aborts.
+      </text>
+
+      <!-- Bullet 2 -->
+      <circle cx="4" cy="28" r="2.5" fill="#38bdf8" />
+      <text x="14" y="32" fill="#cbd5e1" class="font-sans" font-size="12">
+        <tspan font-weight="700" fill="#f8fafc">Atomic Quotas &amp; Idempotency:</tspan> Redis token reservations reconciled on completion; deduplicated retry requests.
+      </text>
+
+      <!-- Bullet 3 -->
+      <circle cx="4" cy="50" r="2.5" fill="#38bdf8" />
+      <text x="14" y="54" fill="#cbd5e1" class="font-sans" font-size="12">
+        <tspan font-weight="700" fill="#f8fafc">Transactional Persistence:</tspan> Paired user-assistant messages and token ledger committed atomically in MongoDB.
+      </text>
+    </g>
+
+    <!-- Tech Badges Footer -->
+    <g transform="translate(0, 120)">
+      <rect x="0" y="0" width="55" height="22" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="27.5" y="15" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="10">React</text>
+
+      <rect x="63" y="0" width="62" height="22" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="94" y="15" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="10">Node.js</text>
+
+      <rect x="133" y="0" width="52" height="22" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="159" y="15" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="10">Redis</text>
+
+      <rect x="193" y="0" width="72" height="22" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="229" y="15" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="10">MongoDB</text>
+
+      <rect x="273" y="0" width="102" height="22" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="324" y="15" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="10">SSE Streaming</text>
+
+      <rect x="383" y="0" width="88" height="22" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="427" y="15" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="10">OpenRouter</text>
+
+      <rect x="479" y="0" width="60" height="22" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <text x="509" y="15" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="10">Docker</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 150" width="100%" height="100%">
+  <defs>
+    <linearGradient id="road-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c14" />
+      <stop offset="100%" stop-color="#06090f" />
+    </linearGradient>
+
+    <linearGradient id="progress-bar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="50%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#64748b" />
+    </linearGradient>
+
+    <filter id="road-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', 'SF Mono', Consolas, monospace; }
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Helvetica, Arial, sans-serif; }
+
+    @keyframes pulse-node {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.15); opacity: 0.5; }
+    }
+
+    .active-point {
+      transform-origin: center;
+      animation: pulse-node 2.2s infinite ease-in-out;
+    }
+  </style>
+
+  <!-- Container -->
+  <rect width="900" height="150" rx="10" fill="url(#road-bg)" stroke="#1e293b" stroke-width="1.2" />
+
+  <!-- Track Line -->
+  <line x1="70" y1="50" x2="830" y2="50" stroke="#1e293b" stroke-width="4" stroke-linecap="round" />
+  <line x1="70" y1="50" x2="520" y2="50" stroke="url(#progress-bar)" stroke-width="3" stroke-linecap="round" filter="url(#road-glow)" />
+
+  <!-- STAGE 1: BACKEND CORE -->
+  <g transform="translate(70, 50)">
+    <circle cx="0" cy="0" r="8" fill="#080c14" stroke="#22d3ee" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="3.5" fill="#22d3ee" />
+    <!-- Content Box Below -->
+    <rect x="-60" y="20" width="120" height="64" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+    <text x="0" y="36" text-anchor="middle" fill="#38bdf8" class="font-mono" font-size="9" font-weight="700">01. BACKEND</text>
+    <text x="0" y="52" text-anchor="middle" fill="#f8fafc" class="font-sans" font-size="10.5" font-weight="600">APIs &amp; Schemas</text>
+    <text x="0" y="66" text-anchor="middle" fill="#64748b" class="font-mono" font-size="7.5">REST • RBAC • MongoDB</text>
+    <rect x="-35" y="-30" width="70" height="16" rx="3" fill="#064e3b" />
+    <text x="0" y="-19" text-anchor="middle" fill="#34d399" class="font-mono" font-size="7.5" font-weight="700">IMPLEMENTED</text>
+  </g>
+
+  <!-- STAGE 2: CACHING & IN-MEMORY -->
+  <g transform="translate(255, 50)">
+    <circle cx="0" cy="0" r="8" fill="#080c14" stroke="#0ea5e9" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="3.5" fill="#0ea5e9" />
+    <rect x="-60" y="20" width="120" height="64" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+    <text x="0" y="36" text-anchor="middle" fill="#38bdf8" class="font-mono" font-size="9" font-weight="700">02. CACHING</text>
+    <text x="0" y="52" text-anchor="middle" fill="#f8fafc" class="font-sans" font-size="10.5" font-weight="600">Redis &amp; Quotas</text>
+    <text x="0" y="66" text-anchor="middle" fill="#64748b" class="font-mono" font-size="7.5">Token Reserv. • Locks</text>
+    <rect x="-35" y="-30" width="70" height="16" rx="3" fill="#064e3b" />
+    <text x="0" y="-19" text-anchor="middle" fill="#34d399" class="font-mono" font-size="7.5" font-weight="700">IMPLEMENTED</text>
+  </g>
+
+  <!-- STAGE 3: EVENT-DRIVEN SYSTEMS -->
+  <g transform="translate(440, 50)">
+    <circle cx="0" cy="0" r="10" fill="#080c14" stroke="#22d3ee" stroke-width="2.5" class="active-point" />
+    <circle cx="0" cy="0" r="4.5" fill="#22d3ee" />
+    <rect x="-60" y="20" width="120" height="64" rx="6" fill="#0c2033" stroke="#0ea5e9" stroke-width="1.2" />
+    <text x="0" y="36" text-anchor="middle" fill="#22d3ee" class="font-mono" font-size="9" font-weight="700">03. EVENT-DRIVEN</text>
+    <text x="0" y="52" text-anchor="middle" fill="#f8fafc" class="font-sans" font-size="10.5" font-weight="600">Kafka &amp; Queues</text>
+    <text x="0" y="66" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="7.5">Pub/Sub • Async Jobs</text>
+    <rect x="-38" y="-30" width="76" height="16" rx="3" fill="#1e3a8a" />
+    <text x="0" y="-19" text-anchor="middle" fill="#60a5fa" class="font-mono" font-size="7.5" font-weight="700">DEEPENING NOW</text>
+  </g>
+
+  <!-- STAGE 4: DISTRIBUTED PRIMITIVES -->
+  <g transform="translate(625, 50)">
+    <circle cx="0" cy="0" r="7" fill="#080c14" stroke="#64748b" stroke-width="2" />
+    <circle cx="0" cy="0" r="2.5" fill="#64748b" />
+    <rect x="-60" y="20" width="120" height="64" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+    <text x="0" y="36" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="9" font-weight="700">04. PRIMITIVES</text>
+    <text x="0" y="52" text-anchor="middle" fill="#f8fafc" class="font-sans" font-size="10.5" font-weight="600">Hashing &amp; Filters</text>
+    <text x="0" y="66" text-anchor="middle" fill="#64748b" class="font-mono" font-size="7.5">Consistent Hash • Bloom</text>
+    <rect x="-35" y="-30" width="70" height="16" rx="3" fill="#334155" />
+    <text x="0" y="-19" text-anchor="middle" fill="#cbd5e1" class="font-mono" font-size="7.5" font-weight="700">EXPLORING</text>
+  </g>
+
+  <!-- STAGE 5: SCALABLE ARCHITECTURES -->
+  <g transform="translate(810, 50)">
+    <circle cx="0" cy="0" r="7" fill="#080c14" stroke="#475569" stroke-width="2" />
+    <circle cx="0" cy="0" r="2.5" fill="#475569" />
+    <rect x="-60" y="20" width="120" height="64" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+    <text x="0" y="36" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="9" font-weight="700">05. ARCHITECTURE</text>
+    <text x="0" y="52" text-anchor="middle" fill="#f8fafc" class="font-sans" font-size="10.5" font-weight="600">Scalable Systems</text>
+    <text x="0" y="66" text-anchor="middle" fill="#64748b" class="font-mono" font-size="7.5">CAP • Sharding • CI/CD</text>
+    <rect x="-35" y="-30" width="70" height="16" rx="3" fill="#1e293b" />
+    <text x="0" y="-19" text-anchor="middle" fill="#94a3b8" class="font-mono" font-size="7.5" font-weight="700">ROADMAP</text>
+  </g>
+</svg>

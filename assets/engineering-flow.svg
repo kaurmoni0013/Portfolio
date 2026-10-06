@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="flow-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c14" />
+      <stop offset="100%" stop-color="#05080e" />
+    </linearGradient>
+
+    <linearGradient id="step-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1f33" />
+      <stop offset="100%" stop-color="#091320" />
+    </linearGradient>
+
+    <filter id="flow-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', 'SF Mono', Consolas, monospace; }
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Helvetica, Arial, sans-serif; }
+
+    @keyframes pulse-pipeline {
+      0% { stroke-dashoffset: 240; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    .pipeline-stream {
+      stroke-dasharray: 6 12;
+      animation: pulse-pipeline 3s linear infinite;
+    }
+  </style>
+
+  <!-- Container -->
+  <rect width="900" height="120" rx="10" fill="url(#flow-bg)" stroke="#1e293b" stroke-width="1.2" />
+
+  <!-- Flow Cable Running Across All Nodes -->
+  <path d="M 60 55 L 840 55" fill="none" stroke="#1e293b" stroke-width="3" />
+  <path d="M 60 55 L 840 55" fill="none" stroke="#22d3ee" stroke-width="2" class="pipeline-stream" filter="url(#flow-glow)" />
+
+  <!-- STEP 1: PROBLEM -->
+  <g transform="translate(25, 20)">
+    <rect width="125" height="74" rx="8" fill="url(#step-cyan)" stroke="#334155" stroke-width="1.2" />
+    <circle cx="16" cy="18" r="4" fill="#38bdf8" />
+    <text x="26" y="22" fill="#64748b" class="font-mono" font-size="9" font-weight="700">01 // SCOPE</text>
+    <text x="14" y="44" fill="#f8fafc" class="font-sans" font-size="13" font-weight="700">Problem</text>
+    <text x="14" y="60" fill="#94a3b8" class="font-mono" font-size="8.5">Failure modes &amp; trade-offs</text>
+  </g>
+
+  <!-- STEP 2: DESIGN -->
+  <g transform="translate(170, 20)">
+    <rect width="125" height="74" rx="8" fill="url(#step-cyan)" stroke="#0ea5e9" stroke-width="1.2" />
+    <circle cx="16" cy="18" r="4" fill="#22d3ee" />
+    <text x="26" y="22" fill="#38bdf8" class="font-mono" font-size="9" font-weight="700">02 // SCHEMA</text>
+    <text x="14" y="44" fill="#f8fafc" class="font-sans" font-size="13" font-weight="700">Design</text>
+    <text x="14" y="60" fill="#94a3b8" class="font-mono" font-size="8.5">APIs, schemas, invariants</text>
+  </g>
+
+  <!-- STEP 3: BUILD -->
+  <g transform="translate(315, 20)">
+    <rect width="125" height="74" rx="8" fill="url(#step-cyan)" stroke="#06b6d4" stroke-width="1.2" />
+    <circle cx="16" cy="18" r="4" fill="#00f2fe" />
+    <text x="26" y="22" fill="#22d3ee" class="font-mono" font-size="9" font-weight="700">03 // CORE</text>
+    <text x="14" y="44" fill="#f8fafc" class="font-sans" font-size="13" font-weight="700">Build</text>
+    <text x="14" y="60" fill="#94a3b8" class="font-mono" font-size="8.5">Server logic &amp; transactions</text>
+  </g>
+
+  <!-- STEP 4: TEST -->
+  <g transform="translate(460, 20)">
+    <rect width="125" height="74" rx="8" fill="url(#step-cyan)" stroke="#14b8a6" stroke-width="1.2" />
+    <circle cx="16" cy="18" r="4" fill="#2dd4bf" />
+    <text x="26" y="22" fill="#2dd4bf" class="font-mono" font-size="9" font-weight="700">04 // VERIFY</text>
+    <text x="14" y="44" fill="#f8fafc" class="font-sans" font-size="13" font-weight="700">Test</text>
+    <text x="14" y="60" fill="#94a3b8" class="font-mono" font-size="8.5">Race cases &amp; end-to-end</text>
+  </g>
+
+  <!-- STEP 5: OPTIMIZE -->
+  <g transform="translate(605, 20)">
+    <rect width="125" height="74" rx="8" fill="url(#step-cyan)" stroke="#38bdf8" stroke-width="1.2" />
+    <circle cx="16" cy="18" r="4" fill="#38bdf8" />
+    <text x="26" y="22" fill="#38bdf8" class="font-mono" font-size="9" font-weight="700">05 // SCALE</text>
+    <text x="14" y="44" fill="#f8fafc" class="font-sans" font-size="13" font-weight="700">Optimize</text>
+    <text x="14" y="60" fill="#94a3b8" class="font-mono" font-size="8.5">Caching, queries &amp; locks</text>
+  </g>
+
+  <!-- STEP 6: DEPLOY -->
+  <g transform="translate(750, 20)">
+    <rect width="125" height="74" rx="8" fill="url(#step-cyan)" stroke="#64748b" stroke-width="1.2" />
+    <circle cx="16" cy="18" r="4" fill="#94a3b8" />
+    <text x="26" y="22" fill="#94a3b8" class="font-mono" font-size="9" font-weight="700">06 // SHIP</text>
+    <text x="14" y="44" fill="#f8fafc" class="font-sans" font-size="13" font-weight="700">Deploy</text>
+    <text x="14" y="60" fill="#94a3b8" class="font-mono" font-size="8.5">CI/CD, Docker &amp; observability</text>
+  </g>
+</svg>

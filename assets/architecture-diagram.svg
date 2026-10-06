@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="arch-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c14" />
+      <stop offset="50%" stop-color="#0a101b" />
+      <stop offset="100%" stop-color="#05080e" />
+    </linearGradient>
+
+    <linearGradient id="cyan-conduit" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="50%" stop-color="#22d3ee" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+
+    <linearGradient id="teal-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1b2b" />
+      <stop offset="100%" stop-color="#0b131e" />
+    </linearGradient>
+
+    <pattern id="arch-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#1e293b" stroke-width="0.6" stroke-opacity="0.3" />
+      <circle cx="0" cy="0" r="0.75" fill="#22d3ee" fill-opacity="0.18" />
+    </pattern>
+
+    <filter id="arch-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="packet-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .font-mono { font-family: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', 'SF Mono', Consolas, monospace; }
+    .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Helvetica, Arial, sans-serif; }
+
+    @keyframes conduit-flow-1 {
+      0% { stroke-dashoffset: 300; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes conduit-flow-2 {
+      0% { stroke-dashoffset: 200; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes pulse-signal {
+      0%, 100% { opacity: 0.9; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.85); }
+    }
+
+    .flow-sync {
+      stroke-dasharray: 6 12;
+      animation: conduit-flow-1 4.5s linear infinite;
+    }
+
+    .flow-async {
+      stroke-dasharray: 4 8;
+      animation: conduit-flow-2 3.5s linear infinite;
+    }
+
+    .flow-cache {
+      stroke-dasharray: 5 10;
+      animation: conduit-flow-1 3s linear infinite reverse;
+    }
+
+    .status-pulse {
+      animation: pulse-signal 2.5s infinite ease-in-out;
+    }
+  </style>
+
+  <!-- Background Base -->
+  <rect width="900" height="300" rx="12" fill="url(#arch-bg)" stroke="#1e293b" stroke-width="1.2" />
+  <rect width="900" height="300" rx="12" fill="url(#arch-grid)" />
+
+  <!-- Top System Header Bar -->
+  <rect x="0" y="0" width="900" height="42" fill="#0b121e" fill-opacity="0.8" />
+  <line x1="0" y1="42" x2="900" y2="42" stroke="#1e293b" stroke-width="1" />
+  
+  <circle cx="28" cy="21" r="3.5" fill="#22d3ee" class="status-pulse" />
+  <text x="42" y="25" fill="#38bdf8" class="font-mono" font-size="11" font-weight="700" letter-spacing="1">SYSTEM ARCHITECTURE // DATA FLOW &amp; PIPELINES</text>
+  <text x="872" y="25" text-anchor="end" fill="#64748b" class="font-mono" font-size="10.5">TOPOLOGY: DISTRIBUTED / EVENT-DRIVEN</text>
+
+  <!-- ================= PIPELINE CHANNELS / CABLES ================= -->
+  
+  <!-- Main Conduit: Client -> API Gateway -> Auth -> Core Services -->
+  <path d="M 125 100 L 175 100" fill="none" stroke="#1e293b" stroke-width="2" />
+  <path d="M 125 100 L 175 100" fill="none" stroke="#22d3ee" stroke-width="2" class="flow-sync" />
+
+  <path d="M 285 100 L 325 100" fill="none" stroke="#1e293b" stroke-width="2" />
+  <path d="M 285 100 L 325 100" fill="none" stroke="#22d3ee" stroke-width="2" class="flow-sync" />
+
+  <path d="M 435 100 L 480 100" fill="none" stroke="#1e293b" stroke-width="2" />
+  <path d="M 435 100 L 480 100" fill="none" stroke="#22d3ee" stroke-width="2" class="flow-sync" />
+
+  <!-- Service -> Cache (Top branch) -->
+  <path d="M 545 70 L 545 130 L 605 130" fill="none" stroke="#1e293b" stroke-width="2" />
+  <path d="M 545 70 L 545 130 L 605 130" fill="none" stroke="#38bdf8" stroke-width="2" class="flow-cache" />
+
+  <!-- Service -> Database (Direct Persistence) -->
+  <path d="M 590 100 L 605 100" fill="none" stroke="#1e293b" stroke-width="2" />
+  <path d="M 590 100 L 605 100" fill="none" stroke="#2dd4bf" stroke-width="2" class="flow-sync" />
+
+  <!-- Service -> Kafka Events (Bottom branch) -->
+  <path d="M 545 130 L 545 220 L 605 220" fill="none" stroke="#1e293b" stroke-width="2" />
+  <path d="M 545 130 L 545 220 L 605 220" fill="none" stroke="#f59e0b" stroke-width="2" class="flow-async" />
+
+  <!-- Kafka Events -> Worker Fleet -->
+  <path d="M 725 220 L 765 220" fill="none" stroke="#1e293b" stroke-width="2" />
+  <path d="M 725 220 L 765 220" fill="none" stroke="#f59e0b" stroke-width="2" class="flow-async" />
+
+  <!-- ================= ARCHITECTURE NODES ================= -->
+
+  <!-- 1. CLIENT LAYER -->
+  <g transform="translate(25, 68)">
+    <rect width="100" height="64" rx="6" fill="url(#teal-card)" stroke="#334155" stroke-width="1.2" />
+    <rect x="0" y="0" width="100" height="18" rx="6" fill="#1e293b" fill-opacity="0.6" />
+    <circle cx="10" cy="9" r="2.5" fill="#38bdf8" />
+    <text x="18" y="12" fill="#94a3b8" class="font-mono" font-size="8.5" font-weight="700">CLIENT LAYER</text>
+    <text x="50" y="38" text-anchor="middle" fill="#f8fafc" class="font-sans" font-size="11" font-weight="600">Web / SPA</text>
+    <text x="50" y="52" text-anchor="middle" fill="#64748b" class="font-mono" font-size="8">SSE Stream • HTTP</text>
+  </g>
+
+  <!-- 2. API GATEWAY / RATE LIMITER -->
+  <g transform="translate(175, 68)">
+    <rect width="110" height="64" rx="6" fill="url(#teal-card)" stroke="#0ea5e9" stroke-width="1.2" />
+    <rect x="0" y="0" width="110" height="18" rx="6" fill="#0e2439" />
+    <circle cx="10" cy="9" r="2.5" fill="#00f2fe" filter="url(#arch-glow)" />
+    <text x="18" y="12" fill="#38bdf8" class="font-mono" font-size="8.5" font-weight="700">API GATEWAY</text>
+    <text x="55" y="38" text-anchor="middle" fill="#f8fafc" class="font-sans" font-size="11" font-weight="600">Rate Limiter</text>
+    <text x="55" y="52" text-anchor="middle" fill="#64748b" class="font-mono" font-size="8">Token Bucket • Cors</text>
+  </g>
+
+  <!-- 3. AUTHENTICATION & RBAC -->
+  <g transform="translate(325, 68)">
+    <rect width="110" height="64" rx="6" fill="url(#teal-card)" stroke="#22d3ee" stroke-width="1.2" />
+    <rect x="0" y="0" width="110" height="18" rx="6" fill="#082b3d" />
+    <circle cx="10" cy="9" r="2.5" fill="#22d3ee" filter="url(#arch-glow)" />
+    <text x="18" y="12" fill="#22d3ee" class="font-mono" font-size="8.5" font-weight="700">AUTH &amp; SECURITY</text>
+    <text x="55" y="38" text-anchor="middle" fill="#f8fafc" class="font-sans" font-size="11" font-weight="600">JWT + Version</text>
+    <text x="55" y="52" text-anchor="middle" fill="#64748b" class="font-mono" font-size="8">RBAC Guards • Bcrypt</text>
+  </g>
+
+  <!-- 4. CORE BACKEND SERVICES -->
+  <g transform="translate(480, 68)">
+    <rect width="110" height="64" rx="6" fill="url(#teal-card)" stroke="#38bdf8" stroke-width="1.4" />
+    <rect x="0" y="0" width="110" height="18" rx="6" fill="#0f2942" />
+    <circle cx="10" cy="9" r="2.5" fill="#38bdf8" filter="url(#arch-glow)" />
+    <text x="18" y="12" fill="#38bdf8" class="font-mono" font-size="8.5" font-weight="700">BACKEND CORE</text>
+    <text x="55" y="38" text-anchor="middle" fill="#f8fafc" class="font-sans" font-size="11" font-weight="600">Node / Express</text>
+    <text x="55" y="52" text-anchor="middle" fill="#64748b" class="font-mono" font-size="8">Business Logic • Rest</text>
+  </g>
+
+  <!-- 5. CACHE / REDIS -->
+  <g transform="translate(605, 52)">
+    <rect width="120" height="52" rx="6" fill="url(#teal-card)" stroke="#0ea5e9" stroke-width="1.2" />
+    <rect x="0" y="0" width="120" height="16" rx="6" fill="#0b2436" />
+    <circle cx="10" cy="8" r="2" fill="#38bdf8" />
+    <text x="18" y="11" fill="#38bdf8" class="font-mono" font-size="8" font-weight="700">CACHE LAYER</text>
+    <text x="60" y="32" text-anchor="middle" fill="#f8fafc" class="font-mono" font-size="10" font-weight="600">Redis In-Memory</text>
+    <text x="60" y="44" text-anchor="middle" fill="#64748b" class="font-mono" font-size="7.5">Token Quota • Concurrency Locks</text>
+  </g>
+
+  <!-- 6. PERSISTENCE / DATABASE -->
+  <g transform="translate(605, 116)">
+    <rect width="120" height="54" rx="6" fill="url(#teal-card)" stroke="#14b8a6" stroke-width="1.4" />
+    <rect x="0" y="0" width="120" height="16" rx="6" fill="#0a2a29" />
+    <circle cx="10" cy="8" r="2" fill="#2dd4bf" />
+    <text x="18" y="11" fill="#2dd4bf" class="font-mono" font-size="8" font-weight="700">PERSISTENCE</text>
+    <text x="60" y="34" text-anchor="middle" fill="#f8fafc" class="font-mono" font-size="10" font-weight="600">MongoDB / MySQL</text>
+    <text x="60" y="46" text-anchor="middle" fill="#64748b" class="font-mono" font-size="7.5">ACID Transactions • Partial Indexes</text>
+  </g>
+
+  <!-- 7. EVENT BROKER / KAFKA -->
+  <g transform="translate(605, 195)">
+    <rect width="120" height="52" rx="6" fill="url(#teal-card)" stroke="#f59e0b" stroke-width="1.2" />
+    <rect x="0" y="0" width="120" height="16" rx="6" fill="#2e1a06" />
+    <circle cx="10" cy="8" r="2" fill="#fbbf24" />
+    <text x="18" y="11" fill="#fbbf24" class="font-mono" font-size="8" font-weight="700">EVENT PIPELINE</text>
+    <text x="60" y="32" text-anchor="middle" fill="#f8fafc" class="font-mono" font-size="10" font-weight="600">Kafka / Message Bus</text>
+    <text x="60" y="44" text-anchor="middle" fill="#64748b" class="font-mono" font-size="7.5">Pub/Sub • Event Streaming</text>
+  </g>
+
+  <!-- 8. ASYNC WORKERS -->
+  <g transform="translate(765, 195)">
+    <rect width="110" height="52" rx="6" fill="url(#teal-card)" stroke="#f59e0b" stroke-width="1.2" />
+    <rect x="0" y="0" width="110" height="16" rx="6" fill="#2e1a06" />
+    <circle cx="10" cy="8" r="2" fill="#fbbf24" />
+    <text x="18" y="11" fill="#fbbf24" class="font-mono" font-size="8" font-weight="700">WORKER FLEET</text>
+    <text x="55" y="32" text-anchor="middle" fill="#f8fafc" class="font-mono" font-size="10" font-weight="600">Async Jobs</text>
+    <text x="55" y="44" text-anchor="middle" fill="#64748b" class="font-mono" font-size="7.5">Summaries • Background Tasks</text>
+  </g>
+
+  <!-- Bottom Telemetry Legend -->
+  <g transform="translate(25, 274)">
+    <line x1="0" y1="0" x2="850" y2="0" stroke="#1e293b" stroke-width="0.8" />
+    <circle cx="6" cy="12" r="3" fill="#22d3ee" />
+    <text x="16" y="15" fill="#94a3b8" class="font-mono" font-size="9.5">Synchronous Request Path</text>
+
+    <circle cx="210" cy="12" r="3" fill="#38bdf8" />
+    <text x="220" y="15" fill="#94a3b8" class="font-mono" font-size="9.5">In-Memory Cache &amp; Lock Path</text>
+
+    <circle cx="430" cy="12" r="3" fill="#14b8a6" />
+    <text x="440" y="15" fill="#94a3b8" class="font-mono" font-size="9.5">Transactional Database Write</text>
+
+    <circle cx="650" cy="12" r="3" fill="#f59e0b" />
+    <text x="660" y="15" fill="#94a3b8" class="font-mono" font-size="9.5">Asynchronous Event Pipeline</text>
+  </g>
+</svg>
