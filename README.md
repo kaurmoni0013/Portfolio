@@ -351,9 +351,7 @@ LINKS: [ 📦 GitHub Repository: github.com/kaurmoni0013/Orbit-AI ] • [ 🌐 L
 ### 📊 GitHub Activity
 
 <div align="center">
-  <img src="https://github-readme-stats-sigma-five.vercel.app/api?username=kaurmoni0013&show_icons=true&theme=tokyonight&bg_color=080c14&title_color=22d3ee&text_color=94a3b8&icon_color=38bdf8&border_color=1e293b&hide_border=false" alt="GitHub Stats" height="155" />
-  &nbsp;
-  <img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=kaurmoni0013&layout=compact&theme=tokyonight&bg_color=080c14&title_color=22d3ee&text_color=94a3b8&border_color=1e293b&hide_border=false" alt="Top Languages" height="155" />
+  <img src="https://raw.githubusercontent.com/kaurmoni0013/Portfolio/main/assets/github-stats.svg" alt="Moni Kaur GitHub Activity & Metrics" width="100%" />
 </div>
 
 <br/>
